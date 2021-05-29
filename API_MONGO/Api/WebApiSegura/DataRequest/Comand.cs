@@ -8,7 +8,8 @@ using System.Data;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Linq;
-
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver.Builders;
 
 namespace Proyecto2.DataRequest
 {
@@ -49,21 +50,45 @@ namespace Proyecto2.DataRequest
             return (lista);
 
         }
+        public static MongoCursor<Cliente> Consultar_correo(Cliente cliente)
+        {
+            var db = server.GetDatabase("GymTEC");
+            var collection = db.GetCollection<Cliente>("Cliente");
+            var query = Query<Cliente>.EQ(e => e.Correo, cliente.Correo);
+            
+            return (collection.Find(query));
 
+        }
+
+        public static string Editar(Cliente cliente)
+        {
+            //error
+            var db = server.GetDatabase("GymTEC");
+            var collection = db.GetCollection<Cliente>("Cliente");
+            
+
+            var Cliente_nuevo = cliente;
+            var query2 = Query<Cliente>.EQ(e => e.Correo, cliente.Correo);
+            List<Cliente> lista = collection.Find(query2).ToList<Cliente>();
+         
+            var filter = Builders<Cliente>.Filter.Eq(s => s.Cedula, cliente.Cedula);
+            
+            cliente.Id = lista[0].Id;
+            var query = Query<Cliente>.EQ(e => e.Cedula, cliente.Cedula);
+            collection.Update(query,Update.Replace(cliente));
+            
+            return ("Editado");
+
+        }
         public static string Borrar(Cliente cliente)
         {
             //error
             var db = server.GetDatabase("GymTEC");
             var collection = db.GetCollection<Cliente>("Cliente");
 
-            var Cliente_nuevo = cliente;
-
-            string update = "{'_id': " + cliente.Id + ", 'Nombre' : '"+cliente.Nombre + "', 'Apellido' : '" + cliente.Apellido + "', 'Apellido2' : '" + cliente.Apellido2 + ", 'Cedula' : " + cliente.Cedula+ ", 'Direccion' : '" + cliente.Direccion + "', 'Correo' : '" + cliente.Correo + "', 'Password' : '" + cliente.Password + "', 'IMC' : " + cliente.IMC + ", 'Peso' : " + cliente.Peso + ", 'Fecha_Nacimiento' : " + cliente.Fecha_Nacimiento.ToString() + ", 'Edad' : " + cliente.Edad + "}";
-            string filtro = "{'Cedula': "+cliente.Cedula +"}";
-            BsonDocument filtroDoc = BsonDocument.Parse(filtro);
-            BsonDocument document = BsonDocument.Parse(update);
-            collection.Update((IMongoQuery)filtroDoc,(IMongoUpdate)document);
-            return ("Borrado");
+            var query = Query<Cliente>.EQ(e => e.Cedula, cliente.Cedula);
+            collection.Remove(query);
+            return ("Cliente Borrado");
 
         }
 

@@ -46,6 +46,17 @@ namespace Proyecto2.Controllers
         }
 
         [HttpPost]
+        [Route("Consultar_Correo")]
+        public IHttpActionResult Consultar_correo(Cliente nuevo)
+        {
+            Proyecto2.DataRequest.BD_Mongo_Conection.MongoDataService();
+
+            
+            return Ok(Proyecto2.DataRequest.BD_Mongo_Conection.Consultar_correo(nuevo));
+
+        }
+
+        [HttpPost]
         [Route("Borrar")]
         public IHttpActionResult Borrar(Cliente nuevo)
         {
@@ -57,6 +68,17 @@ namespace Proyecto2.Controllers
             return Ok("Usuario ha sido borrado");
         }
 
+        [HttpPost]
+        [Route("Editar")]
+        public IHttpActionResult Editar(Cliente nuevo)
+        {
+            Proyecto2.DataRequest.BD_Mongo_Conection.MongoDataService();
+
+
+            Proyecto2.DataRequest.BD_Mongo_Conection.Editar(nuevo);
+
+            return Ok("Usuario ha sido editado");
+        }
 
     }
 
