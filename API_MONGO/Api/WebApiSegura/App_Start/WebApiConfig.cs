@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 
-namespace Proyecto1
+namespace Proyecto2
 {
     /*
      * La clase WebApiConfig configura las rutas y servivios API
