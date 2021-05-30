@@ -167,3 +167,4 @@ C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\Poyecto
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\Poyecto1.pdb
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\MongoDB.Driver.Legacy.dll
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\MongoDB.Driver.Legacy.xml
+C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\EasyEncryption.dll

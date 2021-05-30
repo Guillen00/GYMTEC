@@ -50,13 +50,13 @@ namespace Proyecto2.DataRequest
             return (lista);
 
         }
-        public static MongoCursor<Cliente> Consultar_correo(Cliente cliente)
+        public static List<Cliente> Consultar_correo(Cliente cliente)
         {
             var db = server.GetDatabase("GymTEC");
             var collection = db.GetCollection<Cliente>("Cliente");
             var query = Query<Cliente>.EQ(e => e.Correo, cliente.Correo);
-            
-            return (collection.Find(query));
+            List<Cliente> resultado = collection.Find(query).ToList<Cliente>();
+            return (resultado);
 
         }
 
