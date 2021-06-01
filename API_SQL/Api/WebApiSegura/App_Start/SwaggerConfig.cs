@@ -4,10 +4,10 @@ using Swashbuckle.Application;
 using Swashbuckle.Swagger;
 using System.Web.Http.Description;
 using System.Collections.Generic;
-using Proyecto1;
+using Proyecto2;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
-namespace Proyecto1
+namespace Proyecto2
 {
     /*
      * La clase SwaggerConfig , agrega configuracion al API

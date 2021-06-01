@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Npgsql;
 using System.Data;
 
-namespace Proyecto1.DataRequest
+namespace Proyecto2.DataRequest
 {
     /*
      * En esta clase se conectara con la base de datos en postgresql con todas las peticiones especificas para las tablas de la base 

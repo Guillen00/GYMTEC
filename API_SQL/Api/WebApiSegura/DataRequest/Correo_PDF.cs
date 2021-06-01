@@ -8,7 +8,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
 
-namespace Proyecto1.DataRequest
+namespace Proyecto2.DataRequest
 {
     /*
      * La clase Correo_PDF tiene la funcionalidad de crear un correo electronico, y tambien crea dos pdf

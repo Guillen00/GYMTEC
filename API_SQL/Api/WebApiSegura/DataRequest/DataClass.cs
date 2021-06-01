@@ -8,7 +8,7 @@ using System.Web;
  * 
  * 
  */
-namespace Proyecto1.DataRequest
+namespace Proyecto2.DataRequest
 {
     /*
      * Esta clase maneja la informacion de todos los dispositivos, se puede almacenar temporalmente y transportar la informacion

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Http;
-using Proyecto1;
+using Proyecto2;
 
 namespace Tarea1_API
 {
