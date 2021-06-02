@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GymTECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clase">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Modalidad" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Instructor" Type="int" Nullable="false" />
+    <Property Name="Hora_inicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Hora_fin" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clases_de_clientes">
+    <Key>
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="ID_clase" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="ID_clase" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Cedula" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="Cedula" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Salario" Type="int" Nullable="false" />
+    <Property Name="Provincia" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Distrito" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Canton" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleados_admin">
+    <Key>
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="ID_sucursal" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maquina">
+    <Key>
+      <PropertyRef Name="Serie" />
+    </Key>
+    <Property Name="Serie" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" />
+    <Property Name="Costo" Type="int" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maquinas_tipos">
+    <Key>
+      <PropertyRef Name="Serie" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Serie" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Numeros_sucursal">
+    <Key>
+      <PropertyRef Name="ID_sucursal" />
+      <PropertyRef Name="Numero" />
+    </Key>
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Numero" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Bar_code" />
+    </Key>
+    <Property Name="Bar_code" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_servicio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Costo" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Puesto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Puestos_empleados">
+    <Key>
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="ID_puesto" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="ID_puesto" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles_empleados">
+    <Key>
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="ID_rol" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="ID_rol" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Spa" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Tienda" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Max_capacidad" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Provincia" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Distrito" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Canton" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fecha_apertura" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_equipo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_planilla">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipos_planillas_empleados">
+    <Key>
+      <PropertyRef Name="Cedula" />
+      <PropertyRef Name="ID_tipo_planilla" />
+    </Key>
+    <Property Name="Cedula" Type="int" Nullable="false" />
+    <Property Name="ID_tipo_planilla" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Clases" Type="varchar" MaxLength="30" />
+    <Property Name="Horas" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Tratamiento">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_servicio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Clase_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Cedula" />
+      </Principal>
+      <Dependent Role="Clase">
+        <PropertyRef Name="Instructor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clase_Sucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Clase">
+        <PropertyRef Name="ID_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clases_de_clientes_Clase">
+    <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+    <End Role="Clases_de_clientes" Type="Self.Clases_de_clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clase">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Clases_de_clientes">
+        <PropertyRef Name="ID_clase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clases_de_clientes_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Clases_de_clientes" Type="Self.Clases_de_clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Cedula" />
+      </Principal>
+      <Dependent Role="Clases_de_clientes">
+        <PropertyRef Name="Cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleados_admin_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Empleados_admin" Type="Self.Empleados_admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Cedula" />
+      </Principal>
+      <Dependent Role="Empleados_admin">
+        <PropertyRef Name="Cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleados_admin_Sucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="Empleados_admin" Type="Self.Empleados_admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Empleados_admin">
+        <PropertyRef Name="ID_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maquina_Sucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Maquina">
+        <PropertyRef Name="ID_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maquinas_tipos_Maquina">
+    <End Role="Maquina" Type="Self.Maquina" Multiplicity="1" />
+    <End Role="Maquinas_tipos" Type="Self.Maquinas_tipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquina">
+        <PropertyRef Name="Serie" />
+      </Principal>
+      <Dependent Role="Maquinas_tipos">
+        <PropertyRef Name="Serie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maquinas_tipos_Tipo_equipo">
+    <End Role="Tipo_equipo" Type="Self.Tipo_equipo" Multiplicity="1" />
+    <End Role="Maquinas_tipos" Type="Self.Maquinas_tipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_equipo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Maquinas_tipos">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Numeros_sucursal_Sucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="Numeros_sucursal" Type="Self.Numeros_sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Numeros_sucursal">
+        <PropertyRef Name="ID_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="ID_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puestos_empleados_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Puestos_empleados" Type="Self.Puestos_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Cedula" />
+      </Principal>
+      <Dependent Role="Puestos_empleados">
+        <PropertyRef Name="Cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puestos_empleados_Puesto">
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+    <End Role="Puestos_empleados" Type="Self.Puestos_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Puestos_empleados">
+        <PropertyRef Name="ID_puesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_empleados_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Roles_empleados" Type="Self.Roles_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Cedula" />
+      </Principal>
+      <Dependent Role="Roles_empleados">
+        <PropertyRef Name="Cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_empleados_Roles_empleados">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Roles_empleados" Type="Self.Roles_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Roles_empleados">
+        <PropertyRef Name="ID_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicio_Sucursal1">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="ID_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tipos_planillas_empleados_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Tipos_planillas_empleados" Type="Self.Tipos_planillas_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Cedula" />
+      </Principal>
+      <Dependent Role="Tipos_planillas_empleados">
+        <PropertyRef Name="Cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tipos_planillas_empleados_Tipo_planilla">
+    <End Role="Tipo_planilla" Type="Self.Tipo_planilla" Multiplicity="1" />
+    <End Role="Tipos_planillas_empleados" Type="Self.Tipos_planillas_empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_planilla">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tipos_planillas_empleados">
+        <PropertyRef Name="ID_tipo_planilla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tratamiento_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Tratamiento" Type="Self.Tratamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tratamiento">
+        <PropertyRef Name="ID_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GymTECModelStoreContainer">
+    <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clases_de_clientes" EntityType="Self.Clases_de_clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados_admin" EntityType="Self.Empleados_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maquinas_tipos" EntityType="Self.Maquinas_tipos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Numeros_sucursal" EntityType="Self.Numeros_sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puestos_empleados" EntityType="Self.Puestos_empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles_empleados" EntityType="Self.Roles_empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_equipo" EntityType="Self.Tipo_equipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_planilla" EntityType="Self.Tipo_planilla" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipos_planillas_empleados" EntityType="Self.Tipos_planillas_empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tratamiento" EntityType="Self.Tratamiento" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Clase_Empleado" Association="Self.FK_Clase_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Clase" EntitySet="Clase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clase_Sucursal" Association="Self.FK_Clase_Sucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Clase" EntitySet="Clase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clases_de_clientes_Clase" Association="Self.FK_Clases_de_clientes_Clase">
+      <End Role="Clase" EntitySet="Clase" />
+      <End Role="Clases_de_clientes" EntitySet="Clases_de_clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clases_de_clientes_Cliente" Association="Self.FK_Clases_de_clientes_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Clases_de_clientes" EntitySet="Clases_de_clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleados_admin_Empleado" Association="Self.FK_Empleados_admin_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Empleados_admin" EntitySet="Empleados_admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleados_admin_Sucursal" Association="Self.FK_Empleados_admin_Sucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Empleados_admin" EntitySet="Empleados_admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maquina_Sucursal" Association="Self.FK_Maquina_Sucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Maquina" EntitySet="Maquina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maquinas_tipos_Maquina" Association="Self.FK_Maquinas_tipos_Maquina">
+      <End Role="Maquina" EntitySet="Maquina" />
+      <End Role="Maquinas_tipos" EntitySet="Maquinas_tipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maquinas_tipos_Tipo_equipo" Association="Self.FK_Maquinas_tipos_Tipo_equipo">
+      <End Role="Tipo_equipo" EntitySet="Tipo_equipo" />
+      <End Role="Maquinas_tipos" EntitySet="Maquinas_tipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Numeros_sucursal_Sucursal" Association="Self.FK_Numeros_sucursal_Sucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Numeros_sucursal" EntitySet="Numeros_sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Servicio" Association="Self.FK_Producto_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puestos_empleados_Empleado" Association="Self.FK_Puestos_empleados_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Puestos_empleados" EntitySet="Puestos_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puestos_empleados_Puesto" Association="Self.FK_Puestos_empleados_Puesto">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Puestos_empleados" EntitySet="Puestos_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_empleados_Empleado" Association="Self.FK_Roles_empleados_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Roles_empleados" EntitySet="Roles_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_empleados_Roles_empleados" Association="Self.FK_Roles_empleados_Roles_empleados">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Roles_empleados" EntitySet="Roles_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicio_Sucursal1" Association="Self.FK_Servicio_Sucursal1">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tipos_planillas_empleados_Empleado" Association="Self.FK_Tipos_planillas_empleados_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Tipos_planillas_empleados" EntitySet="Tipos_planillas_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tipos_planillas_empleados_Tipo_planilla" Association="Self.FK_Tipos_planillas_empleados_Tipo_planilla">
+      <End Role="Tipo_planilla" EntitySet="Tipo_planilla" />
+      <End Role="Tipos_planillas_empleados" EntitySet="Tipos_planillas_empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tratamiento_Servicio" Association="Self.FK_Tratamiento_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Tratamiento" EntitySet="Tratamiento" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -16,7 +16,7 @@
     <RootNamespace>Proyecto1</RootNamespace>
     <AssemblyName>Poyecto1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -106,6 +106,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -154,12 +155,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="GymTECSQL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GymTECSQL.edmx</DependentUpon>
+      <LastGenOutput>GymTECSQL.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GymTECSQL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GymTECSQL.edmx</DependentUpon>
+      <LastGenOutput>GymTECSQL.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="Clase.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -167,12 +184,70 @@
     <Compile Include="DataRequest\Correo_PDF.cs" />
     <Compile Include="DataRequest\DataClass.cs" />
     <Compile Include="DataRequest\Comand.cs" />
+    <Compile Include="Empleado.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GymTECSQL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymTECSQL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GymTECSQL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GymTECSQL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymTECSQL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Maquina.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Numeros_sucursal.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Puesto.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rol.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicio.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sucursal.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipos_planillas_empleados.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipo_equipo.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipo_planilla.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tratamiento.cs">
+      <DependentUpon>GymTECSQL.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="GymTECSQL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GymTECSQL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="GymTECSQL.edmx.diagram">
+      <DependentUpon>GymTECSQL.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -184,6 +259,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -200,7 +278,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49220</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://smarthome</IISUrl>
+          <IISUrl>http://localhost:49220/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

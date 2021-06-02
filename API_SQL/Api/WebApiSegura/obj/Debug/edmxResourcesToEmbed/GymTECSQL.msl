@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities">
+    <EntitySetMapping Name="Clase">
+      <EntityTypeMapping TypeName="GymTECModel.Clase">
+        <MappingFragment StoreEntitySet="Clase">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
+          <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="GymTECModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="GymTECModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maquina">
+      <EntityTypeMapping TypeName="GymTECModel.Maquina">
+        <MappingFragment StoreEntitySet="Maquina">
+          <ScalarProperty Name="Serie" ColumnName="Serie" />
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Numeros_sucursal">
+      <EntityTypeMapping TypeName="GymTECModel.Numeros_sucursal">
+        <MappingFragment StoreEntitySet="Numeros_sucursal">
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="GymTECModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="Bar_code" ColumnName="Bar_code" />
+          <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puesto">
+      <EntityTypeMapping TypeName="GymTECModel.Puesto">
+        <MappingFragment StoreEntitySet="Puesto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="GymTECModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicio">
+      <EntityTypeMapping TypeName="GymTECModel.Servicio">
+        <MappingFragment StoreEntitySet="Servicio">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+          <ScalarProperty Name="Spa" ColumnName="Spa" />
+          <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursal">
+      <EntityTypeMapping TypeName="GymTECModel.Sucursal">
+        <MappingFragment StoreEntitySet="Sucursal">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Max_capacidad" ColumnName="Max_capacidad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="Fecha_apertura" ColumnName="Fecha_apertura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_equipo">
+      <EntityTypeMapping TypeName="GymTECModel.Tipo_equipo">
+        <MappingFragment StoreEntitySet="Tipo_equipo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_planilla">
+      <EntityTypeMapping TypeName="GymTECModel.Tipo_planilla">
+        <MappingFragment StoreEntitySet="Tipo_planilla">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipos_planillas_empleados">
+      <EntityTypeMapping TypeName="GymTECModel.Tipos_planillas_empleados">
+        <MappingFragment StoreEntitySet="Tipos_planillas_empleados">
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="ID_tipo_planilla" ColumnName="ID_tipo_planilla" />
+          <ScalarProperty Name="Clases" ColumnName="Clases" />
+          <ScalarProperty Name="Horas" ColumnName="Horas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tratamiento">
+      <EntityTypeMapping TypeName="GymTECModel.Tratamiento">
+        <MappingFragment StoreEntitySet="Tratamiento">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Clases_de_clientes" TypeName="GymTECModel.Clases_de_clientes" StoreEntitySet="Clases_de_clientes">
+      <EndProperty Name="Clase">
+        <ScalarProperty Name="ID" ColumnName="ID_clase" />
+      </EndProperty>
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Empleados_admin" TypeName="GymTECModel.Empleados_admin" StoreEntitySet="Empleados_admin">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+      </EndProperty>
+      <EndProperty Name="Sucursal">
+        <ScalarProperty Name="ID" ColumnName="ID_sucursal" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Maquinas_tipos" TypeName="GymTECModel.Maquinas_tipos" StoreEntitySet="Maquinas_tipos">
+      <EndProperty Name="Maquina">
+        <ScalarProperty Name="Serie" ColumnName="Serie" />
+      </EndProperty>
+      <EndProperty Name="Tipo_equipo">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Puestos_empleados" TypeName="GymTECModel.Puestos_empleados" StoreEntitySet="Puestos_empleados">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+      </EndProperty>
+      <EndProperty Name="Puesto">
+        <ScalarProperty Name="ID" ColumnName="ID_puesto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Roles_empleados" TypeName="GymTECModel.Roles_empleados" StoreEntitySet="Roles_empleados">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+      </EndProperty>
+      <EndProperty Name="Rol">
+        <ScalarProperty Name="ID" ColumnName="ID_rol" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

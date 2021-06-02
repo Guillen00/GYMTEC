@@ -18,15 +18,24 @@ namespace Proyecto2.Controllers
          */
     public class LoginController : ApiController
     {
+        
         //Verifica si el usuario ingresado, correo y Contraseña coinciden con alguno guardado en la base de datos 
-        [HttpPost]
-        [Route("verificar")]
-        public IHttpActionResult Verificar(Usuario user)
+        [HttpGet]
+        [Route("lista_Empleados")]
+        public IHttpActionResult Verificar()
         {
             
-            return Ok("Usuario no encontrado");
+
+            return Ok(Proyecto2.DataRequest.BDConection.lista_empleados());
         }
-        
+        [HttpPost]
+        [Route("Agregar_Empleados")]
+        public IHttpActionResult Agregar(Empleado emp)
+        {
+            Proyecto2.DataRequest.BDConection.agregar_empleado(emp);
+
+            return Ok("Empleado Agregado");
+        }
     }
 
 }

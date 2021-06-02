@@ -16,8 +16,7 @@ namespace Proyecto2.Controllers
     [RoutePrefix("api/general")]
     public class GeneralController : ApiController
     {
-        //-------------------------------------------------Dispositivo-----------------------------------------
-        // Agrega un nuevo dispositivo a la base de datos revisando que no se repita el numero de serie 
+        
         [HttpPost]
         [Route("AgregarDispositivo")]
         public IHttpActionResult Agregar(Dispositivo disp)
@@ -27,7 +26,6 @@ namespace Proyecto2.Controllers
         }
 
         
-        ///----------------------------------------------------------Tienda en linea-----------------------------------
         
     }
 }
