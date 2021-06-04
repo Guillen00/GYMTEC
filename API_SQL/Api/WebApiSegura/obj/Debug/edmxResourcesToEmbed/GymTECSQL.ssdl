@@ -40,6 +40,7 @@
     <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="Empleados_admin">
     <Key>

@@ -22,19 +22,70 @@ namespace Proyecto2.Controllers
         //Verifica si el usuario ingresado, correo y Contraseña coinciden con alguno guardado en la base de datos 
         [HttpGet]
         [Route("lista_Empleados")]
-        public IHttpActionResult Verificar()
+        public IHttpActionResult Lista_Empleados()
         {
             
 
             return Ok(Proyecto2.DataRequest.BDConection.lista_empleados());
         }
+
         [HttpPost]
         [Route("Agregar_Empleados")]
-        public IHttpActionResult Agregar(Empleado emp)
+        public IHttpActionResult Agregar_Empleado(Empleado emp)
         {
-            Proyecto2.DataRequest.BDConection.agregar_empleado(emp);
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_empleado(emp);
+            }
+            catch { return Ok("Empleado No encontrado"); }
+
 
             return Ok("Empleado Agregado");
+        }
+        [HttpPost]
+        [Route("Borrar_Empleado")]
+        public IHttpActionResult Borrar_Empleado(Empleado emp)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar_empleado(emp);
+            }
+            catch { return Ok("Empleado No encontrado"); }
+
+            return Ok("Empleado Borrado");
+        }
+
+        [HttpPost]
+        [Route("Login_Empleados")]
+        public IHttpActionResult Login_Empleado(Empleado emp)
+        {
+            Empleado revisar = new Empleado();
+            try{
+                revisar = Proyecto2.DataRequest.BDConection.login_empleado(emp);
+            }
+            catch { return Ok("Empleado No encontrado"); }
+
+            
+
+           if (emp.Password == revisar.Password) {
+                return Ok(revisar.Rol);
+            }
+
+            return Ok("Password incorrecta");
+        }
+
+        [HttpPost]
+        [Route("Editar_Empleados")]
+        public IHttpActionResult Editar_Empleado(Empleado emp)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar_empleado(emp);
+            }
+            catch { return Ok("Empleado No encontrado"); }
+
+            return Ok("Empleado Actualizado");
+            
         }
     }
 

@@ -19,7 +19,7 @@ namespace Proyecto2.Controllers
         
         [HttpPost]
         [Route("AgregarDispositivo")]
-        public IHttpActionResult Agregar(Dispositivo disp)
+        public IHttpActionResult Agregar()
         {
             
             return Ok("El dispositivo se ha agregado exitosamente");
