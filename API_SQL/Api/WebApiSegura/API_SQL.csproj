@@ -203,15 +203,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="GymTECSQL.Context.tt">
+    <Content Include="GymTECEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GymTECSQL.edmx</DependentUpon>
-      <LastGenOutput>GymTECSQL.Context.cs</LastGenOutput>
+      <DependentUpon>GymTECEntities.edmx</DependentUpon>
+      <LastGenOutput>GymTECEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="GymTECSQL.tt">
+    <Content Include="GymTECEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GymTECSQL.edmx</DependentUpon>
-      <LastGenOutput>GymTECSQL.cs</LastGenOutput>
+      <DependentUpon>GymTECEntities.edmx</DependentUpon>
+      <LastGenOutput>GymTECEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -220,10 +220,10 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Clase.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Cliente.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -233,68 +233,68 @@
     <Compile Include="DataRequest\DataClass.cs" />
     <Compile Include="DataRequest\Comand.cs" />
     <Compile Include="Empleado.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GymTECSQL.Context.cs">
+    <Compile Include="GymTECEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GymTECSQL.Context.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="GymTECSQL.cs">
+    <Compile Include="GymTECEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="GymTECSQL.Designer.cs">
+    <Compile Include="GymTECEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GymTECSQL.edmx</DependentUpon>
+      <DependentUpon>GymTECEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Maquina.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Numeros_sucursal.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Puesto.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Rol.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Servicio.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Sucursal.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipos_planillas_empleados.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipo_equipo.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipo_planilla.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tratamiento.cs">
-      <DependentUpon>GymTECSQL.tt</DependentUpon>
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="GymTECSQL.edmx">
+    <EntityDeploy Include="GymTECEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GymTECSQL.Designer.cs</LastGenOutput>
+      <LastGenOutput>GymTECEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="GymTECSQL.edmx.diagram">
-      <DependentUpon>GymTECSQL.edmx</DependentUpon>
+    <Content Include="GymTECEntities.edmx.diagram">
+      <DependentUpon>GymTECEntities.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

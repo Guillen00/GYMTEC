@@ -13,10 +13,10 @@ namespace Proyecto2
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GymTECEntities : DbContext
+    public partial class GymTECEntities1 : DbContext
     {
-        public GymTECEntities()
-            : base("name=GymTECEntities")
+        public GymTECEntities1()
+            : base("name=GymTECEntities1")
         {
         }
     

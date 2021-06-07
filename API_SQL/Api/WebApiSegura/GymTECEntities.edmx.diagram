@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="267ef526bbda4b96b62dca45a99b9e3b" Name="Diagram1">
-        <EntityTypeShape EntityType="GymTECModel.Clase" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GymTECModel.Cliente" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="GymTECModel.Empleado" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+      <Diagram DiagramId="abc9cd480793413aa2e3fe116a06e590" Name="Diagram1">
+        <EntityTypeShape EntityType="GymTECModel.Clase" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymTECModel.Cliente" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymTECModel.Empleado" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GymTECModel.Maquina" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GymTECModel.Numeros_sucursal" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GymTECModel.Producto" Width="1.5" PointX="7.5" PointY="19.125" IsExpanded="true" />

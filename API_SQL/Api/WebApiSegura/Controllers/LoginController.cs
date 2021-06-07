@@ -33,11 +33,10 @@ namespace Proyecto2.Controllers
         [Route("Agregar_Empleados")]
         public IHttpActionResult Agregar_Empleado(Empleado emp)
         {
-            try
-            {
+            try{
                 Proyecto2.DataRequest.BDConection.agregar_empleado(emp);
             }
-            catch { return Ok("Empleado No encontrado"); }
+            catch { return Ok("Empleado No se pudo agregar"); }
 
 
             return Ok("Empleado Agregado");
@@ -86,6 +85,20 @@ namespace Proyecto2.Controllers
 
             return Ok("Empleado Actualizado");
             
+        }
+        [HttpPost]
+        [Route("Consultar_Empleado")]
+        public IHttpActionResult Consultar_Empleado(Empleado emp)
+        {
+            Empleado nuevo = new Empleado();
+            try
+            {
+                nuevo = Proyecto2.DataRequest.BDConection.login_empleado(emp);
+            }
+            catch { return Ok("Empleado No encontrado"); }
+
+            return Ok(nuevo);
+
         }
     }
 

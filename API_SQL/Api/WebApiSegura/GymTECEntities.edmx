@@ -45,7 +45,7 @@
           <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Apellido1" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Apellido2" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleados_admin">
           <Key>
@@ -539,7 +539,7 @@
           <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Clase" Relationship="Self.FK_Clase_Empleado" FromRole="Empleado" ToRole="Clase" />
           <NavigationProperty Name="Tipos_planillas_empleados" Relationship="Self.FK_Tipos_planillas_empleados_Empleado" FromRole="Empleado" ToRole="Tipos_planillas_empleados" />
           <NavigationProperty Name="Sucursal" Relationship="Self.Empleados_admin" FromRole="Empleado" ToRole="Sucursal" />
@@ -787,7 +787,7 @@
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="GymTECEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GymTECEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clase" EntityType="Self.Clase" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
@@ -864,7 +864,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities">
+        <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities1">
           <EntitySetMapping Name="Clase">
             <EntityTypeMapping TypeName="GymTECModel.Clase">
               <MappingFragment StoreEntitySet="Clase">
