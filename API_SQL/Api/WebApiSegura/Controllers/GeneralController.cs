@@ -292,5 +292,73 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_Maquina(maq));
         }
+        //---------------------------------------------------------------------------Productos------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarProducto")]
+        public IHttpActionResult AgregarProducto(Producto pro)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_producto(pro);
+            }
+            catch
+            {
+                return Ok("Producto no agregado");
+            }
+
+            return Ok("Producto agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarProducto")]
+        public IHttpActionResult BorrarProducto(Producto pro)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar_producto(pro);
+            }
+            catch
+            {
+                return Ok("Producto no borrado");
+            }
+
+            return Ok("Producto borrado");
+        }
+
+        [HttpPost]
+        [Route("EditarProducto")]
+        public IHttpActionResult EditarProducto(Producto pro)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar_producto(pro);
+            }
+            catch
+            {
+                return Ok("Producto no editado");
+            }
+
+            return Ok("Producto editado");
+        }
+
+        [HttpPost]
+        [Route("ConsultarProducto")]
+        public IHttpActionResult ConsultarProducto(Producto pro)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar_producto(pro);
+            }
+            catch
+            {
+                return Ok("Producto encontrado");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar_producto(pro));
+        }
+
+
+
     }
 }

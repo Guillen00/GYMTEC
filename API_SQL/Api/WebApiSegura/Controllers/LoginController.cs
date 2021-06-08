@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Collections.Generic;
 using Proyecto2.DataRequest;
 using System.Data;
+using EasyEncryption;
 
 namespace Proyecto2.Controllers
 {
@@ -64,9 +65,9 @@ namespace Proyecto2.Controllers
             }
             catch { return Ok("Empleado No encontrado"); }
 
-            
 
-           if (emp.Password == revisar.Password) {
+           revisar.Password = EasyEncryption.MD5.ComputeMD5Hash(revisar.Password);
+           if (EasyEncryption.MD5.ComputeMD5Hash(emp.Password) == revisar.Password) {
                 return Ok(revisar.Rol);
             }
 

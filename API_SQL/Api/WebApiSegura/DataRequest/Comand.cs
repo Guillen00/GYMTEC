@@ -478,5 +478,40 @@ namespace Proyecto2.DataRequest
             con.SaveChanges();
             return TPE;
         }
+        //----------------------------------------------------------------------Producto-------------------------------------------------------------
+        public static void agregar_producto(Producto pro)
+        {
+            con.Producto.Add(pro);
+            con.SaveChanges();
+        }
+        public static void borrar_producto(Producto pro)
+        {
+            var customer = con.Producto.Single(o => o.Bar_code == pro.Bar_code);
+            con.Producto.Remove(customer);
+            con.SaveChanges();
+        }
+
+        public static Producto editar_producto(Producto pro)
+        {
+            var customer = con.Producto.Single(o => o.Bar_code == pro.Bar_code);
+
+            Producto producto = con.Producto.Find(customer.Bar_code);
+
+            if (pro.Nombre != "") { producto.Nombre = pro.Nombre; }
+
+            if (pro.Costo != 0) { producto.Costo = pro.Costo; }
+
+            if (pro.Descripcion != "") { producto.Descripcion = pro.Descripcion; }
+
+            con.SaveChanges();
+            return producto;
+        }
+
+        public static Producto consultar_producto(Producto pro)
+        {
+            var customer = con.Producto.Single(o => o.Bar_code == pro.Bar_code);
+            Producto producto = con.Producto.Find(customer.Bar_code);
+            return producto;
+        }
     }
 }
