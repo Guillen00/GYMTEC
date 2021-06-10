@@ -186,3 +186,4 @@ C:\Users\leona\Source\Repos\GYM-TEC\API_SQL\Api\WebApiSegura\bin\Microsoft.Exten
 C:\Users\leona\Source\Repos\GYM-TEC\API_SQL\Api\WebApiSegura\bin\Microsoft.Extensions.Primitives.xml
 C:\Users\leona\Source\Repos\GYM-TEC\API_SQL\Api\WebApiSegura\bin\System.Collections.Immutable.xml
 C:\Users\leona\Source\Repos\GYM-TEC\API_SQL\Api\WebApiSegura\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\leona\Source\Repos\GYM-TEC\API_SQL\Api\WebApiSegura\bin\EasyEncryption.dll

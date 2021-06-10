@@ -10,20 +10,10 @@
 namespace Proyecto1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Tipo_planilla
+    public partial class Consultar_All_Tipo_Planillas_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tipo_planilla()
-        {
-            this.Tipos_planillas_empleados = new HashSet<Tipos_planillas_empleados>();
-        }
-    
         public string ID { get; set; }
         public string Descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tipos_planillas_empleados> Tipos_planillas_empleados { get; set; }
     }
 }

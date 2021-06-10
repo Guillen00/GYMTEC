@@ -10,20 +10,18 @@
 namespace Proyecto1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Tipo_equipo
+    public partial class Consultar_Empleado_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tipo_equipo()
-        {
-            this.Maquina = new HashSet<Maquina>();
-        }
-    
-        public string ID { get; set; }
+        public int Cedula { get; set; }
+        public string Correo { get; set; }
+        public int Salario { get; set; }
+        public string Provincia { get; set; }
+        public string Distrito { get; set; }
+        public string Canton { get; set; }
         public string Nombre { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Maquina> Maquina { get; set; }
+        public string Apellido1 { get; set; }
+        public string Apellido2 { get; set; }
+        public string Password { get; set; }
     }
 }

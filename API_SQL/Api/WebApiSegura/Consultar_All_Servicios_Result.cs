@@ -10,20 +10,12 @@
 namespace Proyecto1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Puesto
+    public partial class Consultar_All_Servicios_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Puesto()
-        {
-            this.Empleado = new HashSet<Empleado>();
-        }
-    
         public string ID { get; set; }
-        public string Descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public string ID_sucursal { get; set; }
+        public string Spa { get; set; }
+        public string Tienda { get; set; }
     }
 }

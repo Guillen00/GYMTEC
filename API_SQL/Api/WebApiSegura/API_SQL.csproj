@@ -228,6 +228,60 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultar_All_Empleados_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Maquinas_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Productos_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Puestos_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Servicios_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Sucursales_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Tipo_equipos_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Tipo_Planillas_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Tratamientos_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Empleado_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Maquina_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Producto_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Puesto_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Servicio_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Sucursal_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Tipo_equipo_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Tipo_Planilla_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Tratamiento_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Data;
 using Proyecto2.DataRequest;
 using System;
+using Proyecto1;
 
 namespace Proyecto2.Controllers
 {

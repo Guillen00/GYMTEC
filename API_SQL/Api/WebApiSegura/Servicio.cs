@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto2
+namespace Proyecto1
 {
     using System;
     using System.Collections.Generic;

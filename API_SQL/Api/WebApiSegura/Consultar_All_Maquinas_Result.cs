@@ -10,23 +10,12 @@
 namespace Proyecto1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Maquina
+    public partial class Consultar_All_Maquinas_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Maquina()
-        {
-            this.Tipo_equipo = new HashSet<Tipo_equipo>();
-        }
-    
         public string Serie { get; set; }
         public string ID_sucursal { get; set; }
         public int Costo { get; set; }
         public string Marca { get; set; }
-    
-        public virtual Sucursal Sucursal { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tipo_equipo> Tipo_equipo { get; set; }
     }
 }

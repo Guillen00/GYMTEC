@@ -355,5 +355,273 @@
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="Rol" EntitySet="Rol" />
     </AssociationSet>
+    <FunctionImport Name="InsertarEmpleado">
+      <Parameter Name="Cedula" Mode="In" Type="Int32" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Salario" Mode="In" Type="Int32" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Distrito" Mode="In" Type="String" />
+      <Parameter Name="Canton" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido1" Mode="In" Type="String" />
+      <Parameter Name="Apellido2" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Empleado">
+      <Parameter Name="Cedula" Mode="In" Type="Int32" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Salario" Mode="In" Type="Int32" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Distrito" Mode="In" Type="String" />
+      <Parameter Name="Canton" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido1" Mode="In" Type="String" />
+      <Parameter Name="Apellido2" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Maquina">
+      <Parameter Name="Serie" Mode="In" Type="String" />
+      <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+      <Parameter Name="Costo" Mode="In" Type="Int32" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Puesto">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Servicio">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+      <Parameter Name="Spa" Mode="In" Type="String" />
+      <Parameter Name="Tienda" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Sucursal">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Max_capacidad" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Distrito" Mode="In" Type="String" />
+      <Parameter Name="Canton" Mode="In" Type="String" />
+      <Parameter Name="Fecha_apertura" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Tipo_equipo">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Tipo_Planilla">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Tratamiento">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="ID_servicio" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Empleado">
+      <Parameter Name="Cedula" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Maquina">
+      <Parameter Name="Serie" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Puesto">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Servicio">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Sucursal">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Tipo_equipo">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Tipo_Planilla">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Borrar_Tratamiento">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_All_Empleados" ReturnType="Collection(GymTECModel.Consultar_All_Empleados_Result)" />
+    <FunctionImport Name="Consultar_All_Maquinas" ReturnType="Collection(GymTECModel.Consultar_All_Maquinas_Result)" />
+    <FunctionImport Name="Consultar_All_Puestos" ReturnType="Collection(GymTECModel.Consultar_All_Puestos_Result)" />
+    <FunctionImport Name="Consultar_All_Servicios" ReturnType="Collection(GymTECModel.Consultar_All_Servicios_Result)" />
+    <FunctionImport Name="Consultar_All_Sucursales" ReturnType="Collection(GymTECModel.Consultar_All_Sucursales_Result)" />
+    <FunctionImport Name="Consultar_All_Tipo_equipos" ReturnType="Collection(GymTECModel.Consultar_All_Tipo_equipos_Result)" />
+    <FunctionImport Name="Consultar_All_Tipo_Planillas" ReturnType="Collection(GymTECModel.Consultar_All_Tipo_Planillas_Result)" />
+    <FunctionImport Name="Consultar_All_Tratamientos" ReturnType="Collection(GymTECModel.Consultar_All_Tratamientos_Result)" />
+    <FunctionImport Name="Consultar_Empleado" ReturnType="Collection(GymTECModel.Consultar_Empleado_Result)">
+      <Parameter Name="Cedula" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Maquina" ReturnType="Collection(GymTECModel.Consultar_Maquina_Result)">
+      <Parameter Name="Serie" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Puesto" ReturnType="Collection(GymTECModel.Consultar_Puesto_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Servicio" ReturnType="Collection(GymTECModel.Consultar_Servicio_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Sucursal" ReturnType="Collection(GymTECModel.Consultar_Sucursal_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Tipo_equipo" ReturnType="Collection(GymTECModel.Consultar_Tipo_equipo_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Tipo_Planilla" ReturnType="Collection(GymTECModel.Consultar_Tipo_Planilla_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultar_Tratamiento" ReturnType="Collection(GymTECModel.Consultar_Tratamiento_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Empleado">
+      <Parameter Name="Cedula" Mode="In" Type="Int32" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Salario" Mode="In" Type="Int32" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Distrito" Mode="In" Type="String" />
+      <Parameter Name="Canton" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido1" Mode="In" Type="String" />
+      <Parameter Name="Apellido2" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Maquina">
+      <Parameter Name="Serie" Mode="In" Type="String" />
+      <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+      <Parameter Name="Costo" Mode="In" Type="Int32" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Puesto">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Servicio">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+      <Parameter Name="Spa" Mode="In" Type="String" />
+      <Parameter Name="Tienda" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Sucursal">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Max_capacidad" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Distrito" Mode="In" Type="String" />
+      <Parameter Name="Canton" Mode="In" Type="String" />
+      <Parameter Name="Fecha_apertura" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Tipo_equipo">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Tipo_Planilla">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_Tratamiento">
+      <Parameter Name="ID" Mode="In" Type="String" />
+      <Parameter Name="ID_servicio" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="Consultar_All_Empleados_Result">
+    <Property Type="Int32" Name="Cedula" Nullable="false" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Salario" Nullable="false" />
+    <Property Type="String" Name="Provincia" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Distrito" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Canton" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido1" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido2" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Maquinas_Result">
+    <Property Type="String" Name="Serie" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_sucursal" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Costo" Nullable="false" />
+    <Property Type="String" Name="Marca" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Puestos_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Servicios_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Spa" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Tienda" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Sucursales_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Max_capacidad" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Provincia" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Distrito" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Canton" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="Fecha_apertura" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Tipo_equipos_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Tipo_Planillas_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Consultar_All_Tratamientos_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Empleado_Result">
+    <Property Type="Int32" Name="Cedula" Nullable="false" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Salario" Nullable="false" />
+    <Property Type="String" Name="Provincia" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Distrito" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Canton" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido1" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido2" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Maquina_Result">
+    <Property Type="String" Name="Serie" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_sucursal" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Costo" Nullable="false" />
+    <Property Type="String" Name="Marca" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Puesto_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Servicio_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Spa" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Tienda" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Sucursal_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Max_capacidad" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Provincia" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Distrito" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Canton" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="Fecha_apertura" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Tipo_equipo_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Tipo_Planilla_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Consultar_Tratamiento_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+  </ComplexType>
 </Schema>

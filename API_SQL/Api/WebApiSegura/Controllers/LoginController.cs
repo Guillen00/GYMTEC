@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Proyecto2.DataRequest;
 using System.Data;
 using EasyEncryption;
+using Proyecto1;
 
 namespace Proyecto2.Controllers
 {

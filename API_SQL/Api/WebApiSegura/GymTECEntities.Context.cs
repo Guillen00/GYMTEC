@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto2
+namespace Proyecto1
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class GymTECEntities1 : DbContext
     {
@@ -39,5 +41,754 @@ namespace Proyecto2
         public virtual DbSet<Tipo_planilla> Tipo_planilla { get; set; }
         public virtual DbSet<Tipos_planillas_empleados> Tipos_planillas_empleados { get; set; }
         public virtual DbSet<Tratamiento> Tratamiento { get; set; }
+    
+        public virtual int InsertarEmpleado(Nullable<int> cedula, string correo, Nullable<int> salario, string provincia, string distrito, string canton, string nombre, string apellido1, string apellido2, string password)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("Correo", correo) :
+                new ObjectParameter("Correo", typeof(string));
+    
+            var salarioParameter = salario.HasValue ?
+                new ObjectParameter("Salario", salario) :
+                new ObjectParameter("Salario", typeof(int));
+    
+            var provinciaParameter = provincia != null ?
+                new ObjectParameter("Provincia", provincia) :
+                new ObjectParameter("Provincia", typeof(string));
+    
+            var distritoParameter = distrito != null ?
+                new ObjectParameter("Distrito", distrito) :
+                new ObjectParameter("Distrito", typeof(string));
+    
+            var cantonParameter = canton != null ?
+                new ObjectParameter("Canton", canton) :
+                new ObjectParameter("Canton", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellido1Parameter = apellido1 != null ?
+                new ObjectParameter("Apellido1", apellido1) :
+                new ObjectParameter("Apellido1", typeof(string));
+    
+            var apellido2Parameter = apellido2 != null ?
+                new ObjectParameter("Apellido2", apellido2) :
+                new ObjectParameter("Apellido2", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarEmpleado", cedulaParameter, correoParameter, salarioParameter, provinciaParameter, distritoParameter, cantonParameter, nombreParameter, apellido1Parameter, apellido2Parameter, passwordParameter);
+        }
+    
+        public virtual int Actualizar_Empleado(Nullable<int> cedula, string correo, Nullable<int> salario, string provincia, string distrito, string canton, string nombre, string apellido1, string apellido2, string password)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("Correo", correo) :
+                new ObjectParameter("Correo", typeof(string));
+    
+            var salarioParameter = salario.HasValue ?
+                new ObjectParameter("Salario", salario) :
+                new ObjectParameter("Salario", typeof(int));
+    
+            var provinciaParameter = provincia != null ?
+                new ObjectParameter("Provincia", provincia) :
+                new ObjectParameter("Provincia", typeof(string));
+    
+            var distritoParameter = distrito != null ?
+                new ObjectParameter("Distrito", distrito) :
+                new ObjectParameter("Distrito", typeof(string));
+    
+            var cantonParameter = canton != null ?
+                new ObjectParameter("Canton", canton) :
+                new ObjectParameter("Canton", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellido1Parameter = apellido1 != null ?
+                new ObjectParameter("Apellido1", apellido1) :
+                new ObjectParameter("Apellido1", typeof(string));
+    
+            var apellido2Parameter = apellido2 != null ?
+                new ObjectParameter("Apellido2", apellido2) :
+                new ObjectParameter("Apellido2", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Empleado", cedulaParameter, correoParameter, salarioParameter, provinciaParameter, distritoParameter, cantonParameter, nombreParameter, apellido1Parameter, apellido2Parameter, passwordParameter);
+        }
+    
+        public virtual int Actualizar_Maquina(string serie, string iD_sucursal, Nullable<int> costo, string marca)
+        {
+            var serieParameter = serie != null ?
+                new ObjectParameter("Serie", serie) :
+                new ObjectParameter("Serie", typeof(string));
+    
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(int));
+    
+            var marcaParameter = marca != null ?
+                new ObjectParameter("Marca", marca) :
+                new ObjectParameter("Marca", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Maquina", serieParameter, iD_sucursalParameter, costoParameter, marcaParameter);
+        }
+    
+        public virtual int Actualizar_Puesto(string iD, string descripcion)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Puesto", iDParameter, descripcionParameter);
+        }
+    
+        public virtual int Actualizar_Servicio(string iD, string iD_sucursal, string spa, string tienda)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            var spaParameter = spa != null ?
+                new ObjectParameter("Spa", spa) :
+                new ObjectParameter("Spa", typeof(string));
+    
+            var tiendaParameter = tienda != null ?
+                new ObjectParameter("Tienda", tienda) :
+                new ObjectParameter("Tienda", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Servicio", iDParameter, iD_sucursalParameter, spaParameter, tiendaParameter);
+        }
+    
+        public virtual int Actualizar_Sucursal(string iD, Nullable<int> max_capacidad, string nombre, string provincia, string distrito, string canton, Nullable<System.DateTime> fecha_apertura)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var max_capacidadParameter = max_capacidad.HasValue ?
+                new ObjectParameter("Max_capacidad", max_capacidad) :
+                new ObjectParameter("Max_capacidad", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var provinciaParameter = provincia != null ?
+                new ObjectParameter("Provincia", provincia) :
+                new ObjectParameter("Provincia", typeof(string));
+    
+            var distritoParameter = distrito != null ?
+                new ObjectParameter("Distrito", distrito) :
+                new ObjectParameter("Distrito", typeof(string));
+    
+            var cantonParameter = canton != null ?
+                new ObjectParameter("Canton", canton) :
+                new ObjectParameter("Canton", typeof(string));
+    
+            var fecha_aperturaParameter = fecha_apertura.HasValue ?
+                new ObjectParameter("Fecha_apertura", fecha_apertura) :
+                new ObjectParameter("Fecha_apertura", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Sucursal", iDParameter, max_capacidadParameter, nombreParameter, provinciaParameter, distritoParameter, cantonParameter, fecha_aperturaParameter);
+        }
+    
+        public virtual int Actualizar_Tipo_equipo(string iD, string nombre)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipo_equipo", iDParameter, nombreParameter);
+        }
+    
+        public virtual int Actualizar_Tipo_Planilla(string iD, string descripcion)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipo_Planilla", iDParameter, descripcionParameter);
+        }
+    
+        public virtual int Actualizar_Tratamiento(string iD, string iD_servicio, string nombre)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var iD_servicioParameter = iD_servicio != null ?
+                new ObjectParameter("ID_servicio", iD_servicio) :
+                new ObjectParameter("ID_servicio", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tratamiento", iDParameter, iD_servicioParameter, nombreParameter);
+        }
+    
+        public virtual int Borrar_Empleado(Nullable<int> cedula)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Empleado", cedulaParameter);
+        }
+    
+        public virtual int Borrar_Maquina(string serie)
+        {
+            var serieParameter = serie != null ?
+                new ObjectParameter("Serie", serie) :
+                new ObjectParameter("Serie", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Maquina", serieParameter);
+        }
+    
+        public virtual int Borrar_Puesto(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Puesto", iDParameter);
+        }
+    
+        public virtual int Borrar_Servicio(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Servicio", iDParameter);
+        }
+    
+        public virtual int Borrar_Sucursal(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Sucursal", iDParameter);
+        }
+    
+        public virtual int Borrar_Tipo_equipo(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Tipo_equipo", iDParameter);
+        }
+    
+        public virtual int Borrar_Tipo_Planilla(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Tipo_Planilla", iDParameter);
+        }
+    
+        public virtual int Borrar_Tratamiento(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Tratamiento", iDParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_All_Empleados_Result> Consultar_All_Empleados()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Empleados_Result>("Consultar_All_Empleados");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Maquinas_Result> Consultar_All_Maquinas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Maquinas_Result>("Consultar_All_Maquinas");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Puestos_Result> Consultar_All_Puestos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Puestos_Result>("Consultar_All_Puestos");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Servicios_Result> Consultar_All_Servicios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Servicios_Result>("Consultar_All_Servicios");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Sucursales_Result> Consultar_All_Sucursales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Sucursales_Result>("Consultar_All_Sucursales");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Tipo_equipos_Result> Consultar_All_Tipo_equipos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Tipo_equipos_Result>("Consultar_All_Tipo_equipos");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Tipo_Planillas_Result> Consultar_All_Tipo_Planillas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Tipo_Planillas_Result>("Consultar_All_Tipo_Planillas");
+        }
+    
+        public virtual ObjectResult<Consultar_All_Tratamientos_Result> Consultar_All_Tratamientos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Tratamientos_Result>("Consultar_All_Tratamientos");
+        }
+    
+        public virtual ObjectResult<Consultar_Empleado_Result> Consultar_Empleado(Nullable<int> cedula)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Empleado_Result>("Consultar_Empleado", cedulaParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Maquina_Result> Consultar_Maquina(string serie)
+        {
+            var serieParameter = serie != null ?
+                new ObjectParameter("Serie", serie) :
+                new ObjectParameter("Serie", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Maquina_Result>("Consultar_Maquina", serieParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Puesto_Result> Consultar_Puesto(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Puesto_Result>("Consultar_Puesto", iDParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Servicio_Result> Consultar_Servicio(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Servicio_Result>("Consultar_Servicio", iDParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Sucursal_Result> Consultar_Sucursal(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Sucursal_Result>("Consultar_Sucursal", iDParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Tipo_equipo_Result> Consultar_Tipo_equipo(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Tipo_equipo_Result>("Consultar_Tipo_equipo", iDParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Tipo_Planilla_Result> Consultar_Tipo_Planilla(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Tipo_Planilla_Result>("Consultar_Tipo_Planilla", iDParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Tratamiento_Result> Consultar_Tratamiento(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Tratamiento_Result>("Consultar_Tratamiento", iDParameter);
+        }
+    
+        public virtual int Insertar_Empleado(Nullable<int> cedula, string correo, Nullable<int> salario, string provincia, string distrito, string canton, string nombre, string apellido1, string apellido2, string password)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("Correo", correo) :
+                new ObjectParameter("Correo", typeof(string));
+    
+            var salarioParameter = salario.HasValue ?
+                new ObjectParameter("Salario", salario) :
+                new ObjectParameter("Salario", typeof(int));
+    
+            var provinciaParameter = provincia != null ?
+                new ObjectParameter("Provincia", provincia) :
+                new ObjectParameter("Provincia", typeof(string));
+    
+            var distritoParameter = distrito != null ?
+                new ObjectParameter("Distrito", distrito) :
+                new ObjectParameter("Distrito", typeof(string));
+    
+            var cantonParameter = canton != null ?
+                new ObjectParameter("Canton", canton) :
+                new ObjectParameter("Canton", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellido1Parameter = apellido1 != null ?
+                new ObjectParameter("Apellido1", apellido1) :
+                new ObjectParameter("Apellido1", typeof(string));
+    
+            var apellido2Parameter = apellido2 != null ?
+                new ObjectParameter("Apellido2", apellido2) :
+                new ObjectParameter("Apellido2", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Empleado", cedulaParameter, correoParameter, salarioParameter, provinciaParameter, distritoParameter, cantonParameter, nombreParameter, apellido1Parameter, apellido2Parameter, passwordParameter);
+        }
+    
+        public virtual int Insertar_Maquina(string serie, string iD_sucursal, Nullable<int> costo, string marca)
+        {
+            var serieParameter = serie != null ?
+                new ObjectParameter("Serie", serie) :
+                new ObjectParameter("Serie", typeof(string));
+    
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(int));
+    
+            var marcaParameter = marca != null ?
+                new ObjectParameter("Marca", marca) :
+                new ObjectParameter("Marca", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Maquina", serieParameter, iD_sucursalParameter, costoParameter, marcaParameter);
+        }
+    
+        public virtual int Insertar_Puesto(string iD, string descripcion)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Puesto", iDParameter, descripcionParameter);
+        }
+    
+        public virtual int Insertar_Servicio(string iD, string iD_sucursal, string spa, string tienda)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            var spaParameter = spa != null ?
+                new ObjectParameter("Spa", spa) :
+                new ObjectParameter("Spa", typeof(string));
+    
+            var tiendaParameter = tienda != null ?
+                new ObjectParameter("Tienda", tienda) :
+                new ObjectParameter("Tienda", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Servicio", iDParameter, iD_sucursalParameter, spaParameter, tiendaParameter);
+        }
+    
+        public virtual int Insertar_Sucursal(string iD, Nullable<int> max_capacidad, string nombre, string provincia, string distrito, string canton, Nullable<System.DateTime> fecha_apertura)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var max_capacidadParameter = max_capacidad.HasValue ?
+                new ObjectParameter("Max_capacidad", max_capacidad) :
+                new ObjectParameter("Max_capacidad", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var provinciaParameter = provincia != null ?
+                new ObjectParameter("Provincia", provincia) :
+                new ObjectParameter("Provincia", typeof(string));
+    
+            var distritoParameter = distrito != null ?
+                new ObjectParameter("Distrito", distrito) :
+                new ObjectParameter("Distrito", typeof(string));
+    
+            var cantonParameter = canton != null ?
+                new ObjectParameter("Canton", canton) :
+                new ObjectParameter("Canton", typeof(string));
+    
+            var fecha_aperturaParameter = fecha_apertura.HasValue ?
+                new ObjectParameter("Fecha_apertura", fecha_apertura) :
+                new ObjectParameter("Fecha_apertura", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Sucursal", iDParameter, max_capacidadParameter, nombreParameter, provinciaParameter, distritoParameter, cantonParameter, fecha_aperturaParameter);
+        }
+    
+        public virtual int Insertar_Tipo_equipo(string iD, string nombre)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tipo_equipo", iDParameter, nombreParameter);
+        }
+    
+        public virtual int Insertar_Tipo_Planilla(string iD, string descripcion)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tipo_Planilla", iDParameter, descripcionParameter);
+        }
+    
+        public virtual int Insertar_Tratamiento(string iD, string iD_servicio, string nombre)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var iD_servicioParameter = iD_servicio != null ?
+                new ObjectParameter("ID_servicio", iD_servicio) :
+                new ObjectParameter("ID_servicio", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tratamiento", iDParameter, iD_servicioParameter, nombreParameter);
+        }
+    
+        public virtual int Actualizar_Producto(string bar_code, string iD_servicio, string nombre, Nullable<int> costo, string descripcion)
+        {
+            var bar_codeParameter = bar_code != null ?
+                new ObjectParameter("Bar_code", bar_code) :
+                new ObjectParameter("Bar_code", typeof(string));
+    
+            var iD_servicioParameter = iD_servicio != null ?
+                new ObjectParameter("ID_servicio", iD_servicio) :
+                new ObjectParameter("ID_servicio", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Producto", bar_codeParameter, iD_servicioParameter, nombreParameter, costoParameter, descripcionParameter);
+        }
+    
+        public virtual int Borrar_Numeros_sucursal(string iD_sucursal)
+        {
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Numeros_sucursal", iD_sucursalParameter);
+        }
+    
+        public virtual int Borrar_Producto(string bar_code)
+        {
+            var bar_codeParameter = bar_code != null ?
+                new ObjectParameter("Bar_code", bar_code) :
+                new ObjectParameter("Bar_code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Producto", bar_codeParameter);
+        }
+    
+        public virtual int Borrar_Rol(string iD)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Rol", iDParameter);
+        }
+    
+        public virtual int Borrar_Tipos_planillas_empleados(Nullable<int> cedula)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Borrar_Tipos_planillas_empleados", cedulaParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_All_Productos_Result> Consultar_All_Productos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_All_Productos_Result>("Consultar_All_Productos");
+        }
+    
+        public virtual ObjectResult<Consultar_Producto_Result> Consultar_Producto(string bar_code)
+        {
+            var bar_codeParameter = bar_code != null ?
+                new ObjectParameter("Bar_code", bar_code) :
+                new ObjectParameter("Bar_code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Producto_Result>("Consultar_Producto", bar_codeParameter);
+        }
+    
+        public virtual int Insertar_Numeros_sucursal(string iD_sucursal, Nullable<int> numero)
+        {
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            var numeroParameter = numero.HasValue ?
+                new ObjectParameter("Numero", numero) :
+                new ObjectParameter("Numero", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Numeros_sucursal", iD_sucursalParameter, numeroParameter);
+        }
+    
+        public virtual int Insertar_Producto(string bar_code, string iD_servicio, string nombre, Nullable<int> costo, string descripcion)
+        {
+            var bar_codeParameter = bar_code != null ?
+                new ObjectParameter("Bar_code", bar_code) :
+                new ObjectParameter("Bar_code", typeof(string));
+    
+            var iD_servicioParameter = iD_servicio != null ?
+                new ObjectParameter("ID_servicio", iD_servicio) :
+                new ObjectParameter("ID_servicio", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Producto", bar_codeParameter, iD_servicioParameter, nombreParameter, costoParameter, descripcionParameter);
+        }
+    
+        public virtual int Insertar_Rol(string iD, string descripcion)
+        {
+            var iDParameter = iD != null ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Rol", iDParameter, descripcionParameter);
+        }
+    
+        public virtual int Insertar_Tipos_planillas_empleados(Nullable<int> cedula, string iD_tipo_planilla, string clases, string horas)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var iD_tipo_planillaParameter = iD_tipo_planilla != null ?
+                new ObjectParameter("ID_tipo_planilla", iD_tipo_planilla) :
+                new ObjectParameter("ID_tipo_planilla", typeof(string));
+    
+            var clasesParameter = clases != null ?
+                new ObjectParameter("Clases", clases) :
+                new ObjectParameter("Clases", typeof(string));
+    
+            var horasParameter = horas != null ?
+                new ObjectParameter("Horas", horas) :
+                new ObjectParameter("Horas", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tipos_planillas_empleados", cedulaParameter, iD_tipo_planillaParameter, clasesParameter, horasParameter);
+        }
+    
+        public virtual int Actualizar_Tipos_planillas_empleados(Nullable<int> cedula, string iD_tipo_planilla, string clases, string horas)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var iD_tipo_planillaParameter = iD_tipo_planilla != null ?
+                new ObjectParameter("ID_tipo_planilla", iD_tipo_planilla) :
+                new ObjectParameter("ID_tipo_planilla", typeof(string));
+    
+            var clasesParameter = clases != null ?
+                new ObjectParameter("Clases", clases) :
+                new ObjectParameter("Clases", typeof(string));
+    
+            var horasParameter = horas != null ?
+                new ObjectParameter("Horas", horas) :
+                new ObjectParameter("Horas", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipos_planillas_empleados", cedulaParameter, iD_tipo_planillaParameter, clasesParameter, horasParameter);
+        }
     }
 }
