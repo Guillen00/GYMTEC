@@ -16,7 +16,7 @@
     <RootNamespace>Proyecto1</RootNamespace>
     <AssemblyName>Poyecto1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -221,11 +221,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activo.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Clase.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Cliente.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Activo_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_All_Clase_Result.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Empleados_Result.cs">
@@ -255,6 +264,15 @@
     <Compile Include="Consultar_All_Tratamientos_Result.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultar_Clase_Cliente_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Clase_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Empleado_Admin_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Consultar_Empleado_Result.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
@@ -264,7 +282,13 @@
     <Compile Include="Consultar_Producto_Result.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultar_Puestos_empleados_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Consultar_Puesto_Result.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultar_Roles_empleados_Result.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Servicio_Result.cs">
@@ -290,6 +314,9 @@
     <Compile Include="DataRequest\DataClass.cs" />
     <Compile Include="DataRequest\Comand.cs" />
     <Compile Include="Empleado.cs">
+      <DependentUpon>GymTECEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generar_Plantilla_Result.cs">
       <DependentUpon>GymTECEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -383,7 +410,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49220</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49220/</IISUrl>
+          <IISUrl>http://localhost/API_SQL</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

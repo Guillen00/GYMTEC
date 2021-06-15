@@ -286,7 +286,7 @@ namespace Proyecto2.DataRequest
         {
 
             //con.Servicio.Add(ser);
-            con.Insertar_Servicio(ser.ID, ser.ID_sucursal, ser.Spa, ser.Tienda);
+            con.Insertar_Servicio(ser.ID, ser.ID_sucursal, ser.Descripcion);
             con.SaveChanges();
         }
         public static void borrar_Servicio(Servicio ser)
@@ -304,9 +304,8 @@ namespace Proyecto2.DataRequest
             Servicio servicio = con.Servicio.Find(customer.ID);
 
             if (ser.ID_sucursal != "") { servicio.ID_sucursal = ser.ID_sucursal; }
-            if (ser.Spa != "") { servicio.Spa = ser.Spa; }
-            if (ser.Tienda != "") { servicio.Tienda = ser.Tienda; }
-            con.Actualizar_Servicio(servicio.ID, servicio.ID_sucursal, servicio.Spa, servicio.Tienda);
+            if (ser.Descripcion != "") { servicio.Descripcion = ser.Descripcion; }
+            con.Actualizar_Servicio(servicio.ID, servicio.ID_sucursal, ser.Descripcion);
             con.SaveChanges();
             return servicio;
         }
@@ -518,6 +517,207 @@ namespace Proyecto2.DataRequest
             var customer = con.Producto.Single(o => o.Bar_code == pro.Bar_code);
             Producto producto = con.Producto.Find(customer.Bar_code);
             return producto;
+        }
+        //------------------------------------------------------------------------Activo----------------------------------------------------------------------
+        public static void agregar_activo(Activo act)
+        {
+            con.Insertar_Activo(act.ID, act.Spa, act.Tienda);
+            
+            con.SaveChanges();
+        }
+        public static void editar_activo(Activo act)
+        {
+            var customer = con.Activo.Single(o => o.ID == act.ID);
+
+            Activo activo = con.Activo.Find(customer.ID);
+
+            if (act.Spa != "") { activo.Spa = act.Spa; }
+
+            if (act.Tienda != "") { activo.Tienda = act.Tienda; }
+
+
+            con.Actualizar_Activo(act.ID, act.Spa, act.Tienda);
+            con.SaveChanges();
+        }
+        public static Activo consultar_Activo(Activo act)
+        {
+            var customer = con.Activo.Single(o => o.ID == act.ID);
+            Activo activo = con.Activo.Find(customer.ID);
+            return activo;
+        }
+
+
+        //---------------------------------------------------------------------------Clase-------------------------------------------------------------
+        public static void agregar_Clase(Clase cla)
+        {
+            con.Insertar_Clase(cla.ID, cla.ID_sucursal, cla.Tipo, cla.Modalidad, cla.Instructor, cla.Hora_inicio, cla.Hora_fin, cla.Fecha);
+            
+            con.SaveChanges();
+        }
+        public static void borrar__Clase(Clase cla)
+        {
+            con.Borrar_Clase(cla.ID);
+            con.SaveChanges();
+        }
+
+        public static Clase editar__Clase(Clase cla)
+        {
+            var customer = con.Clase.Single(o => o.ID == cla.ID);
+
+            Clase clase = con.Clase.Find(customer.ID);
+            con.Actualizar_Clase(cla.ID, cla.ID_sucursal, cla.Tipo, cla.Modalidad, cla.Instructor, cla.Hora_inicio, cla.Hora_fin, cla.Fecha);
+            con.SaveChanges();
+            return clase;
+        }
+
+        public static Clase consultar__Clase(Clase cla)
+        {
+            var customer = con.Clase.Single(o => o.ID == cla.ID);
+
+            Clase clase = con.Clase.Find(customer.ID);
+            return clase;
+        }
+
+        //---------------------------------------------------------------------------------Cliente------------------------------------------------
+
+        public static void agregar_Cliente(Cliente cli)
+        {
+            con.Insertar_Cliente(cli.Cedula);
+
+            con.SaveChanges();
+        }
+        public static void borrar__Cliente(Cliente cli)
+        {
+            con.Borrar_Cliente(cli.Cedula);
+            con.SaveChanges();
+        }
+
+        public static List<Cliente> lista_Cliente()
+        {
+
+            List<Cliente> lista = con.Cliente.ToList<Cliente>();
+            return lista;
+        }
+
+        //--------------------------------------------------------------Roles Empleados-----------------------------------------------------------
+        public static void agregar_Roles_Empleados(Consultar_Roles_empleados_Result rol)
+        {
+            con.Insertar_Roles_empleados(rol.Cedula, rol.ID_rol);
+
+            con.SaveChanges();
+        }
+        public static void borrar__Roles_Empleados(Consultar_Roles_empleados_Result rol)
+        {
+            con.Borrar_Roles_empleados(rol.Cedula);
+            con.SaveChanges();
+        }
+
+        public static void editar__Roles_Empleados(Consultar_Roles_empleados_Result rol)
+        {
+
+            con.Actualizar_Roles_empleados(rol.Cedula, rol.ID_rol);
+            con.SaveChanges();
+            
+        }
+
+        public static List<Consultar_Roles_empleados_Result> consultar__Roles_Empleados(Consultar_Roles_empleados_Result rol)
+        {
+            
+
+            List<Consultar_Roles_empleados_Result> clase = con.Consultar_Roles_empleados(rol.Cedula).ToList<Consultar_Roles_empleados_Result>();
+            return clase;
+        }
+
+        //------------------------------------------------------------------Puestos_Empleados------------------------------------------------------------
+
+        public static void agregar_Puestos_Empleados(Consultar_Puestos_empleados_Result pue)
+        {
+            con.Insertar_Puestos_empleados(pue.Cedula, pue.ID_puesto);
+
+            con.SaveChanges();
+        }
+        public static void borrar__Puestos_Empleados(Consultar_Puestos_empleados_Result pue)
+        {
+            con.Borrar_Roles_empleados(pue.Cedula);
+            con.SaveChanges();
+        }
+
+        public static void editar__Puestos_Empleados(Consultar_Puestos_empleados_Result pue)
+        {
+
+            con.Actualizar_Puestos_empleados(pue.Cedula, pue.ID_puesto);
+            con.SaveChanges();
+
+        }
+
+        public static List<Consultar_Puestos_empleados_Result> consultar__Puestos_Empleados(Consultar_Puestos_empleados_Result pue)
+        {
+
+
+            List<Consultar_Puestos_empleados_Result> result = con.Consultar_Puestos_empleados(pue.Cedula).ToList<Consultar_Puestos_empleados_Result>();
+            return result;
+        }
+
+        //---------------------------------------------------------------------Empleado_Admin----------------------------------------------------------
+        public static void agregar_Empleado_Admin(Empleado_Admin emp)
+        {
+            con.Insertar_Empleado_Admin(emp.Cedula, emp.ID_sucursal);
+
+            con.SaveChanges();
+        }
+        public static void borrar__Empleado_Admin(Empleado_Admin emp)
+        {
+            con.Borrar_Empleado_Admin(emp.Cedula);
+            con.SaveChanges();
+        }
+
+        public static List<Consultar_Empleado_Admin_Result> consultar_Empleado_Admin(Empleado_Admin emp)
+        {
+
+            List<Consultar_Empleado_Admin_Result> lista = con.Consultar_Empleado_Admin(emp.Cedula).ToList<Consultar_Empleado_Admin_Result>();
+            return lista;
+        }
+
+        //---------------------------------------------------------------------Clase Cliente----------------------------------------------------
+
+        public static void agregar_Clase_Cliente(Consultar_Clase_Cliente_Result cli)
+        {
+            con.Insertar_Clase_Cliente(cli.Cedula, cli.ID_clase);
+
+            con.SaveChanges();
+        }
+        public static void borrar__Clase_Cliente(Consultar_Clase_Cliente_Result cli)
+        {
+            con.Borrar_Clase_Cliente(cli.Cedula);
+            con.SaveChanges();
+        }
+
+        public static List<Consultar_Clase_Cliente_Result> consultar_Clase_Cliente(Consultar_Clase_Cliente_Result cli)
+        {
+
+            List<Consultar_Clase_Cliente_Result> lista = con.Consultar_Clase_Cliente(cli.Cedula).ToList<Consultar_Clase_Cliente_Result>();
+            return lista;
+        }
+
+        //-------------------------------------------------------------------Maquina_Tipo-------------------------------------------------------------
+        public static void agregar_Maquina_Tipo(Maquina_Tipo maq)
+        {
+            con.Insertar_Maquinas_Tipos(maq.Serie, maq.ID);
+
+            con.SaveChanges();
+        }
+        public static void borrar__Maquina_Tipo(Maquina_Tipo maq)
+        {
+            con.Borrar_Maquinas_Tipos(maq.Serie);
+            con.SaveChanges();
+        }
+
+        public static void editar__Maquina_Tipo(Maquina_Tipo maq)
+        {
+
+            con.Actualizar_Maquinas_Tipos(maq.Serie, maq.ID);
+            con.SaveChanges();
+
         }
     }
 }

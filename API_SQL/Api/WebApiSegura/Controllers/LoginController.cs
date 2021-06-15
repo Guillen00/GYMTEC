@@ -35,13 +35,16 @@ namespace Proyecto2.Controllers
         [Route("Agregar_Empleados")]
         public IHttpActionResult Agregar_Empleado(Empleado emp)
         {
-            try{
+            emp.Password = EasyEncryption.MD5.ComputeMD5Hash(emp.Password);
+            try
+            {
                 Proyecto2.DataRequest.BDConection.agregar_empleado(emp);
             }
             catch { return Ok("Empleado No se pudo agregar"); }
 
 
             return Ok("Empleado Agregado");
+            
         }
         [HttpPost]
         [Route("Borrar_Empleado")]
@@ -67,8 +70,9 @@ namespace Proyecto2.Controllers
             catch { return Ok("Empleado No encontrado"); }
 
 
-           revisar.Password = EasyEncryption.MD5.ComputeMD5Hash(revisar.Password);
+           
            if (EasyEncryption.MD5.ComputeMD5Hash(emp.Password) == revisar.Password) {
+                //Arreglar el rol ingresando en la tabla rol que tiene el mismo id--------------------------------------------------------------------------------------
                 return Ok(revisar.Rol);
             }
 

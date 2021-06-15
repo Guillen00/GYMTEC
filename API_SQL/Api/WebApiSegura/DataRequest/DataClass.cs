@@ -10,9 +10,21 @@ using System.Web;
  */
 namespace Proyecto2.DataRequest
 {
+
+    public class Maquina_Tipo
+    {
+    public string Serie { get; set; }
+    public string ID { get; set; }
+    }
+
+    public class Empleado_Admin
+    {
+        public int Cedula { get; set; }
+        public string ID_sucursal { get; set; }
+    }
     /*
      * Esta clase maneja la informacion de todos los dispositivos, se puede almacenar temporalmente y transportar la informacion
      */
-   
+
 
 }

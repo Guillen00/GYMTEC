@@ -22,7 +22,8 @@ namespace Proyecto2.Controllers
         [Route("AgregarSucursal")]
         public IHttpActionResult AgregarSucursal(Sucursal suc)
         {
-            try { Proyecto2.DataRequest.BDConection.agregar_sucursal(suc); }
+            try {
+            Proyecto2.DataRequest.BDConection.agregar_sucursal(suc);}
             catch { return Ok("La sucursal no ha sido agregada"); }
             
             return Ok("La sucursal se ha agregado exitosamente");
@@ -61,9 +62,9 @@ namespace Proyecto2.Controllers
         [Route("AgregarTratamiento")]
         public IHttpActionResult AgregarTratamiento(Tratamiento tra)
         {
-           //try {
-           Proyecto2.DataRequest.BDConection.agregar_tratamiento(tra); // }
-           //catch { return Ok("El tratamiento no se ha agregado"); }
+           try {
+           Proyecto2.DataRequest.BDConection.agregar_tratamiento(tra);  }
+           catch { return Ok("El tratamiento no se ha agregado"); }
 
             return Ok("El tratamiento se ha agregado exitosamente");
         }
@@ -358,7 +359,578 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.consultar_producto(pro));
         }
+        //-------------------------------------------------------------------------Rol-------------------------------------------------------------
 
+        [HttpPost]
+        [Route("AgregarRol")]
+        public IHttpActionResult AgregarRol(Rol rol)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Rol(rol);
+            }
+            catch
+            {
+                return Ok("Rol no agregado");
+            }
+
+            return Ok("Rol agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarRol")]
+        public IHttpActionResult BorrarRol(Rol rol)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar_Rol(rol);
+            }
+            catch
+            {
+                return Ok("Rol no borrado");
+            }
+
+            return Ok("Rol borrado");
+        }
+
+        //---------------------------------------------------------------------Numero Sucursal-----------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarNumero_Sucursal")]
+        public IHttpActionResult AgregarNumero_Sucursal(Numeros_sucursal num)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_numero_sucursal(num);
+            }
+            catch
+            {
+                return Ok("Numero de Sucursal no agregado");
+            }
+
+            return Ok("Numero de Sucursal agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarNumero_Sucursal")]
+        public IHttpActionResult BorrarNumero_Sucursal(Numeros_sucursal num)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar_numero_sucursal(num);
+            }
+            catch
+            {
+                return Ok("Numero de Sucursal no borrado");
+            }
+
+            return Ok("Numero de Sucursal borrado");
+        }
+
+        //-----------------------------------------------------------------Tipo_Planilla_Empleado-----------------------------------------------------
+        [HttpPost]
+        [Route("AgregarTipo_Planilla_Empleado")]
+        public IHttpActionResult AgregarTipo_Planilla_Empleado(Tipos_planillas_empleados tip)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_TPE(tip);
+            }
+            catch
+            {
+                return Ok("Tipo de Planilla relacionada a un empleado no se ha agregado");
+            }
+
+            return Ok("Tipo de Planilla relacionada a un empleado agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarTipo_Planilla_Empleado")]
+        public IHttpActionResult BorrarTipo_Planilla_Empleado(Tipos_planillas_empleados tip)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar_TPE(tip);
+            }
+            catch
+            {
+                return Ok("Tipo de Planilla relacionada a un empleado no borrado");
+            }
+
+            return Ok("Tipo de Planilla relacionada a un empleado borrado");
+        }
+
+        [HttpPost]
+        [Route("EditarTipo_Planilla_Empleado")]
+        public IHttpActionResult EditarTipo_Planilla_Empleado(Tipos_planillas_empleados tip)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar_TPE(tip);
+            }
+            catch
+            {
+                return Ok("Tipo de Planilla relacionada a un empleado no editado");
+            }
+
+            return Ok("Tipo de Planilla relacionada a un empleado editado");
+        }
+
+        //-------------------------------------------------------------------------Activo---------------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarActivo")]
+        public IHttpActionResult AgregarActivo(Activo act)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_activo(act);
+            }
+            catch
+            {
+                return Ok("Activo no agregado");
+            }
+
+            return Ok("Activo agregado");
+        }
+
+        
+
+        [HttpPost]
+        [Route("EditarActivo")]
+        public IHttpActionResult EditarActivo(Activo act)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar_activo(act);
+            }
+            catch
+            {
+                return Ok("Activo no editado");
+            }
+
+            return Ok("Activo editado");
+        }
+
+        [HttpPost]
+        [Route("ConsultarActivo")]
+        public IHttpActionResult ConsultarActivo(Activo act)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar_Activo(act);
+            }
+            catch
+            {
+                return Ok("Activo encontrado");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar_Activo(act));
+        }
+
+        //------------------------------------------------------------------------Clase------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarClase")]
+        public IHttpActionResult AgregarClase(Clase cla)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Clase(cla);
+            }
+            catch
+            {
+                return Ok("Clase no agregada");
+            }
+
+            return Ok("Clase agregada");
+        }
+
+        [HttpPost]
+        [Route("BorrarClase")]
+        public IHttpActionResult BorrarClase(Clase cla)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Clase(cla);
+            }
+            catch
+            {
+                return Ok("Clase no borrada");
+            }
+
+            return Ok("Clase borrada");
+        }
+
+        [HttpPost]
+        [Route("EditarClase")]
+        public IHttpActionResult EditarClase(Clase cla)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar__Clase(cla);
+            }
+            catch
+            {
+                return Ok("Clase no editada");
+            }
+
+            return Ok("Clase editada");
+        }
+
+        [HttpPost]
+        [Route("ConsultarClase")]
+        public IHttpActionResult ConsultarClase(Clase cla)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar__Clase(cla);
+            }
+            catch
+            {
+                return Ok("Clase encontrada");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar__Clase(cla));
+        }
+
+        //--------------------------------------------------------------------------------Clase_Cliente------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarClase_Cliente")]
+        public IHttpActionResult AgregarClase_Cliente(Consultar_Clase_Cliente_Result cla)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Clase_Cliente(cla);
+            }
+            catch
+            {
+                return Ok("Clase Cliente no agregada");
+            }
+
+            return Ok("Clase Cliente agregada");
+        }
+
+        [HttpPost]
+        [Route("BorrarClase_Cliente")]
+        public IHttpActionResult BorrarClase_Cliente(Consultar_Clase_Cliente_Result cla)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Clase_Cliente(cla);
+            }
+            catch
+            {
+                return Ok("Clase Cliente no borrada");
+            }
+
+            return Ok("Clase Cliente borrada");
+        }
+
+
+        [HttpPost]
+        [Route("ConsultarClase_Cliente")]
+        public IHttpActionResult ConsultarClase_Cliente(Consultar_Clase_Cliente_Result cla)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar_Clase_Cliente(cla);
+            }
+            catch
+            {
+                return Ok("Clase Cliente no encontrada");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar_Clase_Cliente(cla));
+        }
+
+        //-----------------------------------------------------------------------Cliente------------------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarCliente")]
+        public IHttpActionResult AgregarCliente(Cliente cli)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Cliente(cli);
+            }
+            catch
+            {
+                return Ok("Cliente no agregado");
+            }
+
+            return Ok("Cliente agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarCliente")]
+        public IHttpActionResult BorrarCliente(Cliente cli)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Cliente(cli);
+            }
+            catch
+            {
+                return Ok("Cliente no borrado");
+            }
+
+            return Ok("Cliente borrado");
+        }
+
+
+        [HttpGet]
+        [Route("ConsultarCliente")]
+        public IHttpActionResult ConsultarCliente()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.lista_Cliente();
+            }
+            catch
+            {
+                return Ok("Cliente no encontrados");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.lista_Cliente());
+        }
+
+        //---------------------------------------------------------------------------Empleado_Admin----------------------------------------------
+
+        [HttpPost]
+        [Route("AgregarEmpleado_Admin")]
+        public IHttpActionResult AgregarEmpleado_Admin(Empleado_Admin emp)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Empleado_Admin(emp);
+            }
+            catch
+            {
+                return Ok("Empleado_Admin no agregado");
+            }
+
+            return Ok("Empleado_Admin agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarEmpleado_Admin")]
+        public IHttpActionResult BorrarEmpleado_Admin(Empleado_Admin emp)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Empleado_Admin(emp);
+            }
+            catch
+            {
+                return Ok("Empleado_Admin no borrado");
+            }
+
+            return Ok("Empleado_Admin borrado");
+        }
+
+
+        [HttpPost]
+        [Route("ConsultarEmpleado_Admin")]
+        public IHttpActionResult ConsultarEmpleado_Admin(Empleado_Admin emp)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar_Empleado_Admin(emp);
+            }
+            catch
+            {
+                return Ok("Empleado_Admin no encontrados");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar_Empleado_Admin(emp));
+        }
+
+        //---------------------------------------------------------------------Maquina Tipo-------------------------------------------------------------
+        [HttpPost]
+        [Route("AgregarMaquina_Tipo")]
+        public IHttpActionResult AgregarMaquina_Tipo(Maquina_Tipo tip)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Maquina_Tipo(tip);
+            }
+            catch
+            {
+                return Ok("Maquina Tipo agregado");
+            }
+
+            return Ok("Maquina Tipo agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarMaquina_Tipo")]
+        public IHttpActionResult BorrarMaquina_Tipo(Maquina_Tipo tip)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Maquina_Tipo(tip);
+            }
+            catch
+            {
+                return Ok("Maquina Tipo no borrado");
+            }
+
+            return Ok("Maquina Tipo borrado");
+        }
+
+        [HttpPost]
+        [Route("EditarMaquina_Tipo")]
+        public IHttpActionResult EditarMaquina_Tipo(Maquina_Tipo tip)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar__Maquina_Tipo(tip);
+            }
+            catch
+            {
+                return Ok("Maquina Tipo no editado");
+            }
+
+            return Ok("Maquina Tipo editado");
+        }
+
+        //-----------------------------------------------------------------------------Puesto_Empleado------------------------------------------------
+        [HttpPost]
+        [Route("AgregarPuesto_Empleado")]
+        public IHttpActionResult AgregarPuesto_Empleado(Consultar_Puestos_empleados_Result pue)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Puestos_Empleados(pue);
+            }
+            catch
+            {
+                return Ok("Puesto Empleado no agregado");
+            }
+
+            return Ok("Puesto Empleado agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarPuesto_Empleado")]
+        public IHttpActionResult BorrarPuesto_Empleado(Consultar_Puestos_empleados_Result pue)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Puestos_Empleados(pue);
+            }
+            catch
+            {
+                return Ok("Puesto Empleado no borrado");
+            }
+
+            return Ok("Puesto Empleado borrado");
+        }
+
+        [HttpPost]
+        [Route("EditarPuesto_Empleado")]
+        public IHttpActionResult EditarPuesto_Empleado(Consultar_Puestos_empleados_Result pue)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar__Puestos_Empleados(pue);
+            }
+            catch
+            {
+                return Ok("Puesto Empleado no editado");
+            }
+
+            return Ok("Puesto Empleado editado");
+        }
+
+        [HttpPost]
+        [Route("ConsultarPuesto_Empleado")]
+        public IHttpActionResult ConsultarPuesto_Empleado(Consultar_Puestos_empleados_Result pue)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar__Puestos_Empleados(pue);
+            }
+            catch
+            {
+                return Ok("Puesto Empleado encontrado");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar__Puestos_Empleados(pue));
+        }
+
+
+        //-------------------------------------------------------------------------Roles_Empleado----------------------------------------------------
+        [HttpPost]
+        [Route("AgregarRoles_Empleado")]
+        public IHttpActionResult AgregarRoles_Empleado(Consultar_Roles_empleados_Result rol)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.agregar_Roles_Empleados(rol);
+            }
+            catch
+            {
+                return Ok("Rol Empleado no agregado");
+            }
+
+            return Ok("Rol Empleado agregado");
+        }
+
+        [HttpPost]
+        [Route("BorrarRoles_Empleado")]
+        public IHttpActionResult BorrarRoles_Empleado(Consultar_Roles_empleados_Result rol)
+        {
+
+            try
+            {
+                Proyecto2.DataRequest.BDConection.borrar__Roles_Empleados(rol);
+            }
+            catch
+            {
+                return Ok("Rol Empleado no borrado");
+            }
+
+            return Ok("Rol Empleado borrado");
+        }
+
+        [HttpPost]
+        [Route("EditarRoles_Empleado")]
+        public IHttpActionResult EditarRoles_Empleado(Consultar_Roles_empleados_Result rol)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.editar__Roles_Empleados(rol);
+            }
+            catch
+            {
+                return Ok("Rol Empleado no editado");
+            }
+
+            return Ok("Rol Empleado editado");
+        }
+
+        [HttpPost]
+        [Route("ConsultarRoles_Empleado")]
+        public IHttpActionResult ConsultarRoles_Empleado(Consultar_Roles_empleados_Result rol)
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.consultar__Roles_Empleados(rol);
+            }
+            catch
+            {
+                return Ok("Rol Empleado encontrado");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.consultar__Roles_Empleados(rol));
+        }
 
 
     }
