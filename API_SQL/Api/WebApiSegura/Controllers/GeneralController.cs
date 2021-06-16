@@ -930,5 +930,22 @@ namespace Proyecto2.Controllers
         }
 
 
+        //-----------------------------------------------------------------------------Planilla----------------------------
+        [HttpGet]
+        [Route("Generar_Planilla")]
+        public IHttpActionResult Generar_Planilla()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.Planilla();
+            }
+            catch
+            {
+                return Ok("Error al generar Planilla");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.Planilla());
+        }
+
     }
 }

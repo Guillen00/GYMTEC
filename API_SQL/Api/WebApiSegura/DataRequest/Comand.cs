@@ -719,5 +719,15 @@ namespace Proyecto2.DataRequest
             con.SaveChanges();
 
         }
+
+        //-----------------------------------------------------------------------------Planilla------------------------------------------
+
+        public static System.Data.Entity.Core.Objects.ObjectResult<Generar_Plantilla_Result> Planilla()
+        {
+
+            con.Generar_Plantilla();
+            con.SaveChanges();
+            return con.Generar_Plantilla();
+        }
     }
 }
