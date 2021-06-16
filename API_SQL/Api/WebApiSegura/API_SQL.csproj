@@ -16,7 +16,7 @@
     <RootNamespace>Proyecto1</RootNamespace>
     <AssemblyName>Poyecto1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -206,15 +206,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="GymTECEntities.Context.tt">
+    <Content Include="GymTEC.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GymTECEntities.edmx</DependentUpon>
-      <LastGenOutput>GymTECEntities.Context.cs</LastGenOutput>
+      <DependentUpon>GymTEC.edmx</DependentUpon>
+      <LastGenOutput>GymTEC.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="GymTECEntities.tt">
+    <Content Include="GymTEC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GymTECEntities.edmx</DependentUpon>
-      <LastGenOutput>GymTECEntities.cs</LastGenOutput>
+      <DependentUpon>GymTEC.edmx</DependentUpon>
+      <LastGenOutput>GymTEC.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -222,89 +222,89 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activo.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Clase.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Cliente.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Activo_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Clase_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Empleados_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Maquinas_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Productos_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Puestos_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Servicios_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Sucursales_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Tipo_equipos_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Tipo_Planillas_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_All_Tratamientos_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Clase_Cliente_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Clase_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Empleado_Admin_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Empleado_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Maquina_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Producto_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Puestos_empleados_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Puesto_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Roles_empleados_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Servicio_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Sucursal_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Tipo_equipo_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Tipo_Planilla_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultar_Tratamiento_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -314,71 +314,71 @@
     <Compile Include="DataRequest\DataClass.cs" />
     <Compile Include="DataRequest\Comand.cs" />
     <Compile Include="Empleado.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Generar_Plantilla_Result.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GymTECEntities.Context.cs">
+    <Compile Include="GymTEC.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GymTECEntities.Context.tt</DependentUpon>
+      <DependentUpon>GymTEC.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="GymTECEntities.cs">
+    <Compile Include="GymTEC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
-    <Compile Include="GymTECEntities.Designer.cs">
+    <Compile Include="GymTEC.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GymTECEntities.edmx</DependentUpon>
+      <DependentUpon>GymTEC.edmx</DependentUpon>
     </Compile>
     <Compile Include="Maquina.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Numeros_sucursal.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Puesto.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Rol.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Servicio.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Sucursal.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipos_planillas_empleados.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipo_equipo.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipo_planilla.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Tratamiento.cs">
-      <DependentUpon>GymTECEntities.tt</DependentUpon>
+      <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="GymTECEntities.edmx">
+    <EntityDeploy Include="GymTEC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GymTECEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>GymTEC.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="GymTECEntities.edmx.diagram">
-      <DependentUpon>GymTECEntities.edmx</DependentUpon>
+    <Content Include="GymTEC.edmx.diagram">
+      <DependentUpon>GymTEC.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

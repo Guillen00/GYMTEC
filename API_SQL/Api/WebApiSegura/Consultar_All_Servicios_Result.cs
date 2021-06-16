@@ -15,7 +15,6 @@ namespace Proyecto1
     {
         public string ID { get; set; }
         public string ID_sucursal { get; set; }
-        public string Spa { get; set; }
-        public string Tienda { get; set; }
+        public string Descripcion { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Proyecto2.DataRequest
     public static class BDConection {
         
         
-        public static GymTECEntities1 con = new GymTECEntities1();
+        public static GymTECEntities2 con = new GymTECEntities2();
         
         //-------------------------------------------------------------------------------Empleado---------------------------------------------------------------
         public static List<Empleado> lista_empleados() {
@@ -671,7 +671,7 @@ namespace Proyecto2.DataRequest
             con.SaveChanges();
         }
 
-        public static List<Consultar_Empleado_Admin_Result> consultar_Empleado_Admin(Empleado_Admin emp)
+        public static List<Consultar_Empleado_Admin_Result> consultar_Empleado_Admin(Consultar_Empleado_Admin_Result emp)
         {
 
             List<Consultar_Empleado_Admin_Result> lista = con.Consultar_Empleado_Admin(emp.Cedula).ToList<Consultar_Empleado_Admin_Result>();

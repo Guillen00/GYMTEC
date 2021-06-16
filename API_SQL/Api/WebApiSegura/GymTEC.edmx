@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GymTECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GymTECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activo">
           <Key>
             <PropertyRef Name="ID" />
@@ -817,10 +817,19 @@
             <End Role="Tratamiento" EntitySet="Tratamiento" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GymTECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Spa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tienda" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clase">
           <Key>
             <PropertyRef Name="ID" />
@@ -917,10 +926,10 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_sucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Servicio" FromRole="Servicio" ToRole="Producto" />
           <NavigationProperty Name="Sucursal" Relationship="Self.FK_Servicio_Sucursal1" FromRole="Servicio" ToRole="Sucursal" />
           <NavigationProperty Name="Tratamiento" Relationship="Self.FK_Tratamiento_Servicio" FromRole="Servicio" ToRole="Tratamiento" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -1104,7 +1113,8 @@
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="GymTECEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GymTECEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activo" EntityType="Self.Activo" />
           <EntitySet Name="Clase" EntityType="Self.Clase" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
@@ -1175,17 +1185,20 @@
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Rol" EntitySet="Rol" />
           </AssociationSet>
-          <FunctionImport Name="InsertarEmpleado">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="Correo" Mode="In" Type="String" />
-            <Parameter Name="Salario" Mode="In" Type="Int32" />
-            <Parameter Name="Provincia" Mode="In" Type="String" />
-            <Parameter Name="Distrito" Mode="In" Type="String" />
-            <Parameter Name="Canton" Mode="In" Type="String" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Apellido1" Mode="In" Type="String" />
-            <Parameter Name="Apellido2" Mode="In" Type="String" />
-            <Parameter Name="Password" Mode="In" Type="String" />
+          <FunctionImport Name="Actualizar_Activo">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="Spa" Mode="In" Type="String" />
+            <Parameter Name="Tienda" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Actualizar_Clase">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+            <Parameter Name="Modalidad" Mode="In" Type="String" />
+            <Parameter Name="Instructor" Mode="In" Type="Int32" />
+            <Parameter Name="Hora_inicio" Mode="In" Type="Time" />
+            <Parameter Name="Hora_fin" Mode="In" Type="Time" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="Actualizar_Empleado">
             <Parameter Name="Cedula" Mode="In" Type="Int32" />
@@ -1205,9 +1218,28 @@
             <Parameter Name="Costo" Mode="In" Type="Int32" />
             <Parameter Name="Marca" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Actualizar_Maquinas_Tipos">
+            <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Actualizar_Producto">
+            <Parameter Name="Bar_code" Mode="In" Type="String" />
+            <Parameter Name="ID_servicio" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Costo" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Actualizar_Puesto">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Actualizar_Puestos_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_puesto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Actualizar_Roles_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_rol" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Actualizar_Servicio">
             <Parameter Name="ID" Mode="In" Type="String" />
@@ -1231,66 +1263,152 @@
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Actualizar_Tipos_planillas_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_tipo_planilla" Mode="In" Type="String" />
+            <Parameter Name="Clases" Mode="In" Type="String" />
+            <Parameter Name="Horas" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Actualizar_Tratamiento">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="ID_servicio" Mode="In" Type="String" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Borrar_Clase">
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Clase_Cliente">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Cliente">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Borrar_Empleado">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Empleado_Admin">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Maquina">
-          <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="Serie" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Maquinas_Tipos">
+            <Parameter Name="Serie" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Numeros_sucursal">
+            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Producto">
+            <Parameter Name="Bar_code" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Puesto">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Puestos_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Rol">
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Roles_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Servicio">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Sucursal">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Tipo_equipo">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Tipo_Planilla">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Borrar_Tipos_planillas_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Borrar_Tratamiento">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Consultar_Activo" ReturnType="Collection(GymTECModel.Consultar_Activo_Result)">
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_All_Clase" ReturnType="Collection(GymTECModel.Consultar_All_Clase_Result)" />
           <FunctionImport Name="Consultar_All_Empleados" ReturnType="Collection(GymTECModel.Consultar_All_Empleados_Result)" />
           <FunctionImport Name="Consultar_All_Maquinas" ReturnType="Collection(GymTECModel.Consultar_All_Maquinas_Result)" />
+          <FunctionImport Name="Consultar_All_Productos" ReturnType="Collection(GymTECModel.Consultar_All_Productos_Result)" />
           <FunctionImport Name="Consultar_All_Puestos" ReturnType="Collection(GymTECModel.Consultar_All_Puestos_Result)" />
           <FunctionImport Name="Consultar_All_Servicios" ReturnType="Collection(GymTECModel.Consultar_All_Servicios_Result)" />
           <FunctionImport Name="Consultar_All_Sucursales" ReturnType="Collection(GymTECModel.Consultar_All_Sucursales_Result)" />
           <FunctionImport Name="Consultar_All_Tipo_equipos" ReturnType="Collection(GymTECModel.Consultar_All_Tipo_equipos_Result)" />
           <FunctionImport Name="Consultar_All_Tipo_Planillas" ReturnType="Collection(GymTECModel.Consultar_All_Tipo_Planillas_Result)" />
           <FunctionImport Name="Consultar_All_Tratamientos" ReturnType="Collection(GymTECModel.Consultar_All_Tratamientos_Result)" />
+          <FunctionImport Name="Consultar_Clase" ReturnType="Collection(GymTECModel.Consultar_Clase_Result)">
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_Clase_Cliente" ReturnType="Collection(GymTECModel.Consultar_Clase_Cliente_Result)">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_Cliente" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Consultar_Empleado" ReturnType="Collection(GymTECModel.Consultar_Empleado_Result)">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_Empleado_Admin" ReturnType="Collection(GymTECModel.Consultar_Empleado_Admin_Result)">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Maquina" ReturnType="Collection(GymTECModel.Consultar_Maquina_Result)">
-          <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="Serie" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_Producto" ReturnType="Collection(GymTECModel.Consultar_Producto_Result)">
+            <Parameter Name="Bar_code" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Puesto" ReturnType="Collection(GymTECModel.Consultar_Puesto_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_Puestos_empleados" ReturnType="Collection(GymTECModel.Consultar_Puestos_empleados_Result)">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Consultar_Roles_empleados" ReturnType="Collection(GymTECModel.Consultar_Roles_empleados_Result)">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Servicio" ReturnType="Collection(GymTECModel.Consultar_Servicio_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Sucursal" ReturnType="Collection(GymTECModel.Consultar_Sucursal_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Tipo_equipo" ReturnType="Collection(GymTECModel.Consultar_Tipo_equipo_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Tipo_Planilla" ReturnType="Collection(GymTECModel.Consultar_Tipo_Planilla_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Consultar_Tratamiento" ReturnType="Collection(GymTECModel.Consultar_Tratamiento_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Generar_Plantilla" ReturnType="Collection(GymTECModel.Generar_Plantilla_Result)" />
+          <FunctionImport Name="Insertar_Activo">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="Spa" Mode="In" Type="String" />
+            <Parameter Name="Tienda" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Clase">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+            <Parameter Name="Modalidad" Mode="In" Type="String" />
+            <Parameter Name="Instructor" Mode="In" Type="Int32" />
+            <Parameter Name="Hora_inicio" Mode="In" Type="Time" />
+            <Parameter Name="Hora_fin" Mode="In" Type="Time" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Clase_Cliente">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_clase" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Cliente">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Insertar_Empleado">
             <Parameter Name="Cedula" Mode="In" Type="Int32" />
@@ -1304,15 +1422,46 @@
             <Parameter Name="Apellido2" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Insertar_Empleado_Admin">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Insertar_Maquina">
             <Parameter Name="Serie" Mode="In" Type="String" />
             <Parameter Name="ID_sucursal" Mode="In" Type="String" />
             <Parameter Name="Costo" Mode="In" Type="Int32" />
             <Parameter Name="Marca" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Insertar_Maquinas_Tipos">
+            <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Numeros_sucursal">
+            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+            <Parameter Name="Numero" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Producto">
+            <Parameter Name="Bar_code" Mode="In" Type="String" />
+            <Parameter Name="ID_servicio" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Costo" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Insertar_Puesto">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Puestos_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_puesto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Rol">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insertar_Roles_empleados">
+            <Parameter Name="Cedula" Mode="In" Type="Int32" />
+            <Parameter Name="ID_rol" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Insertar_Servicio">
             <Parameter Name="ID" Mode="In" Type="String" />
@@ -1336,170 +1485,33 @@
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Insertar_Tratamiento">
-            <Parameter Name="ID" Mode="In" Type="String" />
-            <Parameter Name="ID_servicio" Mode="In" Type="String" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Actualizar_Producto">
-            <Parameter Name="Bar_code" Mode="In" Type="String" />
-            <Parameter Name="ID_servicio" Mode="In" Type="String" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Costo" Mode="In" Type="Int32" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Numeros_sucursal">
-          <Parameter Name="ID_sucursal" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Producto">
-          <Parameter Name="Bar_code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Rol">
-          <Parameter Name="ID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Tipos_planillas_empleados">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_All_Productos" ReturnType="Collection(GymTECModel.Consultar_All_Productos_Result)" />
-          <FunctionImport Name="Consultar_Producto" ReturnType="Collection(GymTECModel.Consultar_Producto_Result)">
-          <Parameter Name="Bar_code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Numeros_sucursal">
-            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
-            <Parameter Name="Numero" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Producto">
-            <Parameter Name="Bar_code" Mode="In" Type="String" />
-            <Parameter Name="ID_servicio" Mode="In" Type="String" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Costo" Mode="In" Type="Int32" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Rol">
-            <Parameter Name="ID" Mode="In" Type="String" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="Insertar_Tipos_planillas_empleados">
             <Parameter Name="Cedula" Mode="In" Type="Int32" />
             <Parameter Name="ID_tipo_planilla" Mode="In" Type="String" />
             <Parameter Name="Clases" Mode="In" Type="String" />
             <Parameter Name="Horas" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Actualizar_Tipos_planillas_empleados">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_tipo_planilla" Mode="In" Type="String" />
-            <Parameter Name="Clases" Mode="In" Type="String" />
-            <Parameter Name="Horas" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="Activo" EntityType="GymTECModel.Activo" />
-          <FunctionImport Name="Actualizar_Activo">
+          <FunctionImport Name="Insertar_Tratamiento">
             <Parameter Name="ID" Mode="In" Type="String" />
-            <Parameter Name="Spa" Mode="In" Type="String" />
-            <Parameter Name="Tienda" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Actualizar_Clase">
-            <Parameter Name="ID" Mode="In" Type="String" />
-            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
-            <Parameter Name="Tipo" Mode="In" Type="String" />
-            <Parameter Name="Modalidad" Mode="In" Type="String" />
-            <Parameter Name="Instructor" Mode="In" Type="Int32" />
-            <Parameter Name="Hora_inicio" Mode="In" Type="Time" />
-            <Parameter Name="Hora_fin" Mode="In" Type="Time" />
-            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="Actualizar_Maquinas_Tipos">
-            <Parameter Name="Serie" Mode="In" Type="String" />
-            <Parameter Name="ID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Actualizar_Puestos_empleados">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_puesto" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Actualizar_Roles_empleados">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_rol" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Clase">
-          <Parameter Name="ID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Clase_Cliente">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Cliente">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Empleado_Admin">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Maquinas_Tipos">
-          <Parameter Name="Serie" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Puestos_empleados">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Borrar_Roles_empleados">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_Activo" ReturnType="Collection(GymTECModel.Consultar_Activo_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_All_Clase" ReturnType="Collection(GymTECModel.Consultar_All_Clase_Result)" />
-          <FunctionImport Name="Consultar_Clase" ReturnType="Collection(GymTECModel.Consultar_Clase_Result)">
-          <Parameter Name="ID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_Clase_Cliente" ReturnType="Collection(GymTECModel.Consultar_Clase_Cliente_Result)">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_Cliente" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="Consultar_Empleado_Admin" ReturnType="Collection(GymTECModel.Consultar_Empleado_Admin_Result)">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_Puestos_empleados" ReturnType="Collection(GymTECModel.Consultar_Puestos_empleados_Result)">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Consultar_Roles_empleados" ReturnType="Collection(GymTECModel.Consultar_Roles_empleados_Result)">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Generar_Plantilla" ReturnType="Collection(GymTECModel.Generar_Plantilla_Result)" />
-          <FunctionImport Name="Insertar_Activo">
-            <Parameter Name="ID" Mode="In" Type="String" />
-            <Parameter Name="Spa" Mode="In" Type="String" />
-            <Parameter Name="Tienda" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Clase">
-            <Parameter Name="ID" Mode="In" Type="String" />
-            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
-            <Parameter Name="Tipo" Mode="In" Type="String" />
-            <Parameter Name="Modalidad" Mode="In" Type="String" />
-            <Parameter Name="Instructor" Mode="In" Type="Int32" />
-            <Parameter Name="Hora_inicio" Mode="In" Type="Time" />
-            <Parameter Name="Hora_fin" Mode="In" Type="Time" />
-            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Clase_Cliente">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_clase" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Cliente">
-          <Parameter Name="Cedula" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Empleado_Admin">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_sucursal" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Maquinas_Tipos">
-            <Parameter Name="Serie" Mode="In" Type="String" />
-            <Parameter Name="ID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Puestos_empleados">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_puesto" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Insertar_Roles_empleados">
-            <Parameter Name="Cedula" Mode="In" Type="Int32" />
-            <Parameter Name="ID_rol" Mode="In" Type="String" />
+            <Parameter Name="ID_servicio" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="Consultar_Activo_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Spa" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Tienda" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Consultar_All_Clase_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Modalidad" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Instructor" Nullable="false" />
+          <Property Type="Time" Name="Hora_inicio" Nullable="false" />
+          <Property Type="Time" Name="Hora_fin" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="Consultar_All_Empleados_Result">
           <Property Type="Int32" Name="Cedula" Nullable="false" />
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="50" />
@@ -1518,6 +1530,13 @@
           <Property Type="Int32" Name="Costo" Nullable="false" />
           <Property Type="String" Name="Marca" Nullable="false" MaxLength="30" />
         </ComplexType>
+        <ComplexType Name="Consultar_All_Productos_Result">
+          <Property Type="String" Name="Bar_code" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Costo" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
+        </ComplexType>
         <ComplexType Name="Consultar_All_Puestos_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
@@ -1525,8 +1544,7 @@
         <ComplexType Name="Consultar_All_Servicios_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Spa" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Tienda" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
         </ComplexType>
         <ComplexType Name="Consultar_All_Sucursales_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="20" />
@@ -1550,6 +1568,20 @@
           <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
         </ComplexType>
+        <ComplexType Name="Consultar_Clase_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Modalidad" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Instructor" Nullable="false" />
+          <Property Type="Time" Name="Hora_inicio" Nullable="false" />
+          <Property Type="Time" Name="Hora_fin" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Consultar_Clase_Cliente_Result">
+          <Property Type="Int32" Name="Cedula" Nullable="false" />
+          <Property Type="String" Name="ID_clase" Nullable="false" MaxLength="30" />
+        </ComplexType>
         <ComplexType Name="Consultar_Empleado_Result">
           <Property Type="Int32" Name="Cedula" Nullable="false" />
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="50" />
@@ -1562,21 +1594,39 @@
           <Property Type="String" Name="Apellido2" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Consultar_Empleado_Admin_Result">
+          <Property Type="Int32" Name="Cedula" Nullable="false" />
+          <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
+        </ComplexType>
         <ComplexType Name="Consultar_Maquina_Result">
           <Property Type="String" Name="Serie" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="ID_sucursal" Nullable="true" MaxLength="20" />
           <Property Type="Int32" Name="Costo" Nullable="false" />
           <Property Type="String" Name="Marca" Nullable="false" MaxLength="30" />
         </ComplexType>
+        <ComplexType Name="Consultar_Producto_Result">
+          <Property Type="String" Name="Bar_code" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Costo" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
+        </ComplexType>
         <ComplexType Name="Consultar_Puesto_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Consultar_Puestos_empleados_Result">
+          <Property Type="Int32" Name="Cedula" Nullable="false" />
+          <Property Type="String" Name="ID_puesto" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Consultar_Roles_empleados_Result">
+          <Property Type="Int32" Name="Cedula" Nullable="false" />
+          <Property Type="String" Name="ID_rol" Nullable="false" MaxLength="30" />
+        </ComplexType>
         <ComplexType Name="Consultar_Servicio_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Spa" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Tienda" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
         </ComplexType>
         <ComplexType Name="Consultar_Sucursal_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="20" />
@@ -1600,69 +1650,6 @@
           <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
         </ComplexType>
-        <ComplexType Name="Consultar_All_Productos_Result">
-          <Property Type="String" Name="Bar_code" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
-          <Property Type="Int32" Name="Costo" Nullable="false" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Consultar_Producto_Result">
-          <Property Type="String" Name="Bar_code" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
-          <Property Type="Int32" Name="Costo" Nullable="false" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
-        </ComplexType>
-        <EntityType Name="Activo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Spa" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Tienda" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <ComplexType Name="Consultar_Activo_Result">
-          <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Spa" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Tienda" Nullable="false" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Consultar_All_Clase_Result">
-          <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Modalidad" Nullable="false" MaxLength="30" />
-          <Property Type="Int32" Name="Instructor" Nullable="false" />
-          <Property Type="Time" Name="Hora_inicio" Nullable="false" />
-          <Property Type="Time" Name="Hora_fin" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Consultar_Clase_Result">
-          <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="ID_sucursal" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Modalidad" Nullable="false" MaxLength="30" />
-          <Property Type="Int32" Name="Instructor" Nullable="false" />
-          <Property Type="Time" Name="Hora_inicio" Nullable="false" />
-          <Property Type="Time" Name="Hora_fin" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Consultar_Clase_Cliente_Result">
-          <Property Type="Int32" Name="Cedula" Nullable="false" />
-          <Property Type="String" Name="ID_clase" Nullable="false" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Consultar_Empleado_Admin_Result">
-          <Property Type="Int32" Name="Cedula" Nullable="false" />
-          <Property Type="String" Name="ID_clase" Nullable="false" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Consultar_Puestos_empleados_Result">
-          <Property Type="Int32" Name="Cedula" Nullable="false" />
-          <Property Type="String" Name="ID_puesto" Nullable="false" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="Consultar_Roles_empleados_Result">
-          <Property Type="Int32" Name="Cedula" Nullable="false" />
-          <Property Type="String" Name="ID_rol" Nullable="false" MaxLength="30" />
-        </ComplexType>
         <ComplexType Name="Generar_Plantilla_Result">
           <Property Type="Int32" Name="Cedula" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
@@ -1677,7 +1664,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities1">
+        <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities2">
+          <EntitySetMapping Name="Activo">
+            <EntityTypeMapping TypeName="GymTECModel.Activo">
+              <MappingFragment StoreEntitySet="Activo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Spa" ColumnName="Spa" />
+                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Clase">
             <EntityTypeMapping TypeName="GymTECModel.Clase">
               <MappingFragment StoreEntitySet="Clase">
@@ -1763,10 +1759,10 @@
           <EntitySetMapping Name="Servicio">
             <EntityTypeMapping TypeName="GymTECModel.Servicio">
               <MappingFragment StoreEntitySet="Servicio">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-                </MappingFragment>
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sucursal">
@@ -1857,22 +1853,63 @@
               <ScalarProperty Name="ID" ColumnName="ID_rol" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Actualizar_Activo" FunctionName="GymTECModel.Store.Actualizar_Activo" />
+          <FunctionImportMapping FunctionImportName="Actualizar_Clase" FunctionName="GymTECModel.Store.Actualizar_Clase" />
           <FunctionImportMapping FunctionImportName="Actualizar_Empleado" FunctionName="GymTECModel.Store.Actualizar_Empleado" />
           <FunctionImportMapping FunctionImportName="Actualizar_Maquina" FunctionName="GymTECModel.Store.Actualizar_Maquina" />
+          <FunctionImportMapping FunctionImportName="Actualizar_Maquinas_Tipos" FunctionName="GymTECModel.Store.Actualizar_Maquinas_Tipos" />
+          <FunctionImportMapping FunctionImportName="Actualizar_Producto" FunctionName="GymTECModel.Store.Actualizar_Producto" />
           <FunctionImportMapping FunctionImportName="Actualizar_Puesto" FunctionName="GymTECModel.Store.Actualizar_Puesto" />
+          <FunctionImportMapping FunctionImportName="Actualizar_Puestos_empleados" FunctionName="GymTECModel.Store.Actualizar_Puestos_empleados" />
+          <FunctionImportMapping FunctionImportName="Actualizar_Roles_empleados" FunctionName="GymTECModel.Store.Actualizar_Roles_empleados" />
           <FunctionImportMapping FunctionImportName="Actualizar_Servicio" FunctionName="GymTECModel.Store.Actualizar_Servicio" />
           <FunctionImportMapping FunctionImportName="Actualizar_Sucursal" FunctionName="GymTECModel.Store.Actualizar_Sucursal" />
           <FunctionImportMapping FunctionImportName="Actualizar_Tipo_equipo" FunctionName="GymTECModel.Store.Actualizar_Tipo_equipo" />
           <FunctionImportMapping FunctionImportName="Actualizar_Tipo_Planilla" FunctionName="GymTECModel.Store.Actualizar_Tipo_Planilla" />
+          <FunctionImportMapping FunctionImportName="Actualizar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Actualizar_Tipos_planillas_empleados" />
           <FunctionImportMapping FunctionImportName="Actualizar_Tratamiento" FunctionName="GymTECModel.Store.Actualizar_Tratamiento" />
+          <FunctionImportMapping FunctionImportName="Borrar_Clase" FunctionName="GymTECModel.Store.Borrar_Clase" />
+          <FunctionImportMapping FunctionImportName="Borrar_Clase_Cliente" FunctionName="GymTECModel.Store.Borrar_Clase_Cliente" />
+          <FunctionImportMapping FunctionImportName="Borrar_Cliente" FunctionName="GymTECModel.Store.Borrar_Cliente" />
           <FunctionImportMapping FunctionImportName="Borrar_Empleado" FunctionName="GymTECModel.Store.Borrar_Empleado" />
+          <FunctionImportMapping FunctionImportName="Borrar_Empleado_Admin" FunctionName="GymTECModel.Store.Borrar_Empleado_Admin" />
           <FunctionImportMapping FunctionImportName="Borrar_Maquina" FunctionName="GymTECModel.Store.Borrar_Maquina" />
+          <FunctionImportMapping FunctionImportName="Borrar_Maquinas_Tipos" FunctionName="GymTECModel.Store.Borrar_Maquinas_Tipos" />
+          <FunctionImportMapping FunctionImportName="Borrar_Numeros_sucursal" FunctionName="GymTECModel.Store.Borrar_Numeros_sucursal" />
+          <FunctionImportMapping FunctionImportName="Borrar_Producto" FunctionName="GymTECModel.Store.Borrar_Producto" />
           <FunctionImportMapping FunctionImportName="Borrar_Puesto" FunctionName="GymTECModel.Store.Borrar_Puesto" />
+          <FunctionImportMapping FunctionImportName="Borrar_Puestos_empleados" FunctionName="GymTECModel.Store.Borrar_Puestos_empleados" />
+          <FunctionImportMapping FunctionImportName="Borrar_Rol" FunctionName="GymTECModel.Store.Borrar_Rol" />
+          <FunctionImportMapping FunctionImportName="Borrar_Roles_empleados" FunctionName="GymTECModel.Store.Borrar_Roles_empleados" />
           <FunctionImportMapping FunctionImportName="Borrar_Servicio" FunctionName="GymTECModel.Store.Borrar_Servicio" />
           <FunctionImportMapping FunctionImportName="Borrar_Sucursal" FunctionName="GymTECModel.Store.Borrar_Sucursal" />
           <FunctionImportMapping FunctionImportName="Borrar_Tipo_equipo" FunctionName="GymTECModel.Store.Borrar_Tipo_equipo" />
           <FunctionImportMapping FunctionImportName="Borrar_Tipo_Planilla" FunctionName="GymTECModel.Store.Borrar_Tipo_Planilla" />
+          <FunctionImportMapping FunctionImportName="Borrar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Borrar_Tipos_planillas_empleados" />
           <FunctionImportMapping FunctionImportName="Borrar_Tratamiento" FunctionName="GymTECModel.Store.Borrar_Tratamiento" />
+          <FunctionImportMapping FunctionImportName="Consultar_Activo" FunctionName="GymTECModel.Store.Consultar_Activo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Activo_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Spa" ColumnName="Spa" />
+                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_All_Clase" FunctionName="GymTECModel.Store.Consultar_All_Clase">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Clase_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+                <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
+                <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Consultar_All_Empleados" FunctionName="GymTECModel.Store.Consultar_All_Empleados">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Empleados_Result">
@@ -1899,6 +1936,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_All_Productos" FunctionName="GymTECModel.Store.Consultar_All_Productos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Productos_Result">
+                <ScalarProperty Name="Bar_code" ColumnName="Bar_code" />
+                <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Consultar_All_Puestos" FunctionName="GymTECModel.Store.Consultar_All_Puestos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Puestos_Result">
@@ -1912,8 +1960,7 @@
               <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Servicios_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-                <ScalarProperty Name="Spa" ColumnName="Spa" />
-                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1955,6 +2002,29 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Clase" FunctionName="GymTECModel.Store.Consultar_Clase">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Clase_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+                <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
+                <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Clase_Cliente" FunctionName="GymTECModel.Store.Consultar_Clase_Cliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Clase_Cliente_Result">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ID_clase" ColumnName="ID_clase" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Cliente" FunctionName="GymTECModel.Store.Consultar_Cliente" />
           <FunctionImportMapping FunctionImportName="Consultar_Empleado" FunctionName="GymTECModel.Store.Consultar_Empleado">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GymTECModel.Consultar_Empleado_Result">
@@ -1971,6 +2041,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Empleado_Admin" FunctionName="GymTECModel.Store.Consultar_Empleado_Admin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Empleado_Admin_Result">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Consultar_Maquina" FunctionName="GymTECModel.Store.Consultar_Maquina">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GymTECModel.Consultar_Maquina_Result">
@@ -1978,6 +2056,17 @@
                 <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
                 <ScalarProperty Name="Costo" ColumnName="Costo" />
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Producto" FunctionName="GymTECModel.Store.Consultar_Producto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Producto_Result">
+                <ScalarProperty Name="Bar_code" ColumnName="Bar_code" />
+                <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1989,13 +2078,28 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Puestos_empleados" FunctionName="GymTECModel.Store.Consultar_Puestos_empleados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Puestos_empleados_Result">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ID_puesto" ColumnName="ID_puesto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultar_Roles_empleados" FunctionName="GymTECModel.Store.Consultar_Roles_empleados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Roles_empleados_Result">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ID_rol" ColumnName="ID_rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Consultar_Servicio" FunctionName="GymTECModel.Store.Consultar_Servicio">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GymTECModel.Consultar_Servicio_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-                <ScalarProperty Name="Spa" ColumnName="Spa" />
-                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2037,137 +2141,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Insertar_Empleado" FunctionName="GymTECModel.Store.Insertar_Empleado" />
-          <FunctionImportMapping FunctionImportName="Insertar_Maquina" FunctionName="GymTECModel.Store.Insertar_Maquina" />
-          <FunctionImportMapping FunctionImportName="Insertar_Puesto" FunctionName="GymTECModel.Store.Insertar_Puesto" />
-          <FunctionImportMapping FunctionImportName="Insertar_Servicio" FunctionName="GymTECModel.Store.Insertar_Servicio" />
-          <FunctionImportMapping FunctionImportName="Insertar_Sucursal" FunctionName="GymTECModel.Store.Insertar_Sucursal" />
-          <FunctionImportMapping FunctionImportName="Insertar_Tipo_equipo" FunctionName="GymTECModel.Store.Insertar_Tipo_equipo" />
-          <FunctionImportMapping FunctionImportName="Insertar_Tipo_Planilla" FunctionName="GymTECModel.Store.Insertar_Tipo_Planilla" />
-          <FunctionImportMapping FunctionImportName="Insertar_Tratamiento" FunctionName="GymTECModel.Store.Insertar_Tratamiento" />
-          <FunctionImportMapping FunctionImportName="Actualizar_Producto" FunctionName="GymTECModel.Store.Actualizar_Producto" />
-          <FunctionImportMapping FunctionImportName="Borrar_Numeros_sucursal" FunctionName="GymTECModel.Store.Borrar_Numeros_sucursal" />
-          <FunctionImportMapping FunctionImportName="Borrar_Producto" FunctionName="GymTECModel.Store.Borrar_Producto" />
-          <FunctionImportMapping FunctionImportName="Borrar_Rol" FunctionName="GymTECModel.Store.Borrar_Rol" />
-          <FunctionImportMapping FunctionImportName="Borrar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Borrar_Tipos_planillas_empleados" />
-          <FunctionImportMapping FunctionImportName="Consultar_All_Productos" FunctionName="GymTECModel.Store.Consultar_All_Productos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Productos_Result">
-                <ScalarProperty Name="Bar_code" ColumnName="Bar_code" />
-                <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_Producto" FunctionName="GymTECModel.Store.Consultar_Producto">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Producto_Result">
-                <ScalarProperty Name="Bar_code" ColumnName="Bar_code" />
-                <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Insertar_Numeros_sucursal" FunctionName="GymTECModel.Store.Insertar_Numeros_sucursal" />
-          <FunctionImportMapping FunctionImportName="Insertar_Producto" FunctionName="GymTECModel.Store.Insertar_Producto" />
-          <FunctionImportMapping FunctionImportName="Insertar_Rol" FunctionName="GymTECModel.Store.Insertar_Rol" />
-          <FunctionImportMapping FunctionImportName="Insertar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Insertar_Tipos_planillas_empleados" />
-          <FunctionImportMapping FunctionImportName="Actualizar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Actualizar_Tipos_planillas_empleados" />
-          <EntitySetMapping Name="Activo">
-            <EntityTypeMapping TypeName="GymTECModel.Activo">
-              <MappingFragment StoreEntitySet="Activo">
-                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
-                <ScalarProperty Name="Spa" ColumnName="Spa" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Actualizar_Activo" FunctionName="GymTECModel.Store.Actualizar_Activo" />
-          <FunctionImportMapping FunctionImportName="Actualizar_Clase" FunctionName="GymTECModel.Store.Actualizar_Clase" />
-          <FunctionImportMapping FunctionImportName="Actualizar_Maquinas_Tipos" FunctionName="GymTECModel.Store.Actualizar_Maquinas_Tipos" />
-          <FunctionImportMapping FunctionImportName="Actualizar_Puestos_empleados" FunctionName="GymTECModel.Store.Actualizar_Puestos_empleados" />
-          <FunctionImportMapping FunctionImportName="Actualizar_Roles_empleados" FunctionName="GymTECModel.Store.Actualizar_Roles_empleados" />
-          <FunctionImportMapping FunctionImportName="Borrar_Clase" FunctionName="GymTECModel.Store.Borrar_Clase" />
-          <FunctionImportMapping FunctionImportName="Borrar_Clase_Cliente" FunctionName="GymTECModel.Store.Borrar_Clase_Cliente" />
-          <FunctionImportMapping FunctionImportName="Borrar_Cliente" FunctionName="GymTECModel.Store.Borrar_Cliente" />
-          <FunctionImportMapping FunctionImportName="Borrar_Empleado_Admin" FunctionName="GymTECModel.Store.Borrar_Empleado_Admin" />
-          <FunctionImportMapping FunctionImportName="Borrar_Maquinas_Tipos" FunctionName="GymTECModel.Store.Borrar_Maquinas_Tipos" />
-          <FunctionImportMapping FunctionImportName="Borrar_Puestos_empleados" FunctionName="GymTECModel.Store.Borrar_Puestos_empleados" />
-          <FunctionImportMapping FunctionImportName="Borrar_Roles_empleados" FunctionName="GymTECModel.Store.Borrar_Roles_empleados" />
-          <FunctionImportMapping FunctionImportName="Consultar_Activo" FunctionName="GymTECModel.Store.Consultar_Activo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Activo_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Spa" ColumnName="Spa" />
-                <ScalarProperty Name="Tienda" ColumnName="Tienda" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_All_Clase" FunctionName="GymTECModel.Store.Consultar_All_Clase">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_All_Clase_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
-                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
-                <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
-                <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_Clase" FunctionName="GymTECModel.Store.Consultar_Clase">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Clase_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
-                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
-                <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
-                <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_Clase_Cliente" FunctionName="GymTECModel.Store.Consultar_Clase_Cliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Clase_Cliente_Result">
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="ID_clase" ColumnName="ID_clase" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_Cliente" FunctionName="GymTECModel.Store.Consultar_Cliente" />
-          <FunctionImportMapping FunctionImportName="Consultar_Empleado_Admin" FunctionName="GymTECModel.Store.Consultar_Empleado_Admin">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Empleado_Admin_Result">
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="ID_clase" ColumnName="ID_clase" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_Puestos_empleados" FunctionName="GymTECModel.Store.Consultar_Puestos_empleados">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Puestos_empleados_Result">
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="ID_puesto" ColumnName="ID_puesto" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Consultar_Roles_empleados" FunctionName="GymTECModel.Store.Consultar_Roles_empleados">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GymTECModel.Consultar_Roles_empleados_Result">
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="ID_rol" ColumnName="ID_rol" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Generar_Plantilla" FunctionName="GymTECModel.Store.Generar_Plantilla">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GymTECModel.Generar_Plantilla_Result">
@@ -2185,10 +2158,22 @@
           <FunctionImportMapping FunctionImportName="Insertar_Clase" FunctionName="GymTECModel.Store.Insertar_Clase" />
           <FunctionImportMapping FunctionImportName="Insertar_Clase_Cliente" FunctionName="GymTECModel.Store.Insertar_Clase_Cliente" />
           <FunctionImportMapping FunctionImportName="Insertar_Cliente" FunctionName="GymTECModel.Store.Insertar_Cliente" />
+          <FunctionImportMapping FunctionImportName="Insertar_Empleado" FunctionName="GymTECModel.Store.Insertar_Empleado" />
           <FunctionImportMapping FunctionImportName="Insertar_Empleado_Admin" FunctionName="GymTECModel.Store.Insertar_Empleado_Admin" />
+          <FunctionImportMapping FunctionImportName="Insertar_Maquina" FunctionName="GymTECModel.Store.Insertar_Maquina" />
           <FunctionImportMapping FunctionImportName="Insertar_Maquinas_Tipos" FunctionName="GymTECModel.Store.Insertar_Maquinas_Tipos" />
+          <FunctionImportMapping FunctionImportName="Insertar_Numeros_sucursal" FunctionName="GymTECModel.Store.Insertar_Numeros_sucursal" />
+          <FunctionImportMapping FunctionImportName="Insertar_Producto" FunctionName="GymTECModel.Store.Insertar_Producto" />
+          <FunctionImportMapping FunctionImportName="Insertar_Puesto" FunctionName="GymTECModel.Store.Insertar_Puesto" />
           <FunctionImportMapping FunctionImportName="Insertar_Puestos_empleados" FunctionName="GymTECModel.Store.Insertar_Puestos_empleados" />
+          <FunctionImportMapping FunctionImportName="Insertar_Rol" FunctionName="GymTECModel.Store.Insertar_Rol" />
           <FunctionImportMapping FunctionImportName="Insertar_Roles_empleados" FunctionName="GymTECModel.Store.Insertar_Roles_empleados" />
+          <FunctionImportMapping FunctionImportName="Insertar_Servicio" FunctionName="GymTECModel.Store.Insertar_Servicio" />
+          <FunctionImportMapping FunctionImportName="Insertar_Sucursal" FunctionName="GymTECModel.Store.Insertar_Sucursal" />
+          <FunctionImportMapping FunctionImportName="Insertar_Tipo_equipo" FunctionName="GymTECModel.Store.Insertar_Tipo_equipo" />
+          <FunctionImportMapping FunctionImportName="Insertar_Tipo_Planilla" FunctionName="GymTECModel.Store.Insertar_Tipo_Planilla" />
+          <FunctionImportMapping FunctionImportName="Insertar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Insertar_Tipos_planillas_empleados" />
+          <FunctionImportMapping FunctionImportName="Insertar_Tratamiento" FunctionName="GymTECModel.Store.Insertar_Tratamiento" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

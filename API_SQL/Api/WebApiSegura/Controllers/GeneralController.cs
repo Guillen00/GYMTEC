@@ -735,16 +735,13 @@ namespace Proyecto2.Controllers
 
         [HttpPost]
         [Route("ConsultarEmpleado_Admin")]
-        public IHttpActionResult ConsultarEmpleado_Admin(Empleado_Admin emp)
+        public IHttpActionResult ConsultarEmpleado_Admin(Consultar_Empleado_Admin_Result emp)
         {
-            try
-            {
+            //try{
                 Proyecto2.DataRequest.BDConection.consultar_Empleado_Admin(emp);
-            }
-            catch
-            {
-                return Ok("Empleado_Admin no encontrados");
-            }
+            //}catch{
+                //return Ok("Empleado_Admin no encontrados");
+            //}
 
             return Ok(Proyecto2.DataRequest.BDConection.consultar_Empleado_Admin(emp));
         }

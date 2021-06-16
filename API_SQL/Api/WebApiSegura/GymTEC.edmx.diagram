@@ -4,7 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="abc9cd480793413aa2e3fe116a06e590" Name="Diagram1">
+      <Diagram DiagramId="17645f2c5b7347bb9919fb985b8c60d7" Name="Diagram1">
+        <EntityTypeShape EntityType="GymTECModel.Activo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GymTECModel.Clase" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="GymTECModel.Cliente" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GymTECModel.Empleado" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
@@ -33,7 +34,6 @@
         <AssociationConnector Association="GymTECModel.Maquinas_tipos" ManuallyRouted="false" />
         <AssociationConnector Association="GymTECModel.Puestos_empleados" ManuallyRouted="false" />
         <AssociationConnector Association="GymTECModel.Roles_empleados" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="GymTECModel.Activo" Width="1.5" PointX="2.25" PointY="3.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
