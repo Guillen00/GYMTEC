@@ -42,6 +42,8 @@ namespace Proyecto1
         public virtual DbSet<Tipo_planilla> Tipo_planilla { get; set; }
         public virtual DbSet<Tipos_planillas_empleados> Tipos_planillas_empleados { get; set; }
         public virtual DbSet<Tratamiento> Tratamiento { get; set; }
+        public virtual DbSet<Clase_R_Cliente> Clase_R_Cliente { get; set; }
+        public virtual DbSet<Maquina_R_Tipo> Maquina_R_Tipo { get; set; }
     
         public virtual int Actualizar_Activo(string iD, string spa, string tienda)
         {

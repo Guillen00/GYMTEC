@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Data;
 using Proyecto2.DataRequest;
 using System;
+using System.Data.Entity;
 using Proyecto1;
 
 namespace Proyecto2.Controllers
@@ -947,5 +948,37 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Planilla());
         }
 
+        //----------------------------------------------------------------------------Vistas--------
+        [HttpGet]
+        [Route("Vista1")]
+        public IHttpActionResult Vista1()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.MaquinaTipo();
+            }
+            catch
+            {
+                return Ok("Error al generar Maquina Tipo");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.MaquinaTipo());
+        }
+
+        [HttpGet]
+        [Route("Vista2")]
+        public IHttpActionResult Vista2()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ClaseCliente()
+            }
+            catch
+            {
+                return Ok("Error al generar Clase Cliente");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ClaseCliente());
+        }
     }
 }

@@ -34,6 +34,8 @@
         <AssociationConnector Association="GymTECModel.Maquinas_tipos" ManuallyRouted="false" />
         <AssociationConnector Association="GymTECModel.Puestos_empleados" ManuallyRouted="false" />
         <AssociationConnector Association="GymTECModel.Roles_empleados" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GymTECModel.Clase_R_Cliente" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GymTECModel.Maquina_R_Tipo" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

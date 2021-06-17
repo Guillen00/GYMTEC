@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Npgsql;
 using System.Data;
 using System.IO;
+using System.Data.Entity;
 using System.Linq;
 using Proyecto2;
 using Proyecto1;
@@ -728,6 +729,18 @@ namespace Proyecto2.DataRequest
             con.Generar_Plantilla();
             con.SaveChanges();
             return con.Generar_Plantilla();
+        }
+
+        public static DbSet<Maquina_R_Tipo> MaquinaTipo()
+        {
+            con.SaveChanges();
+            return con.Maquina_R_Tipo;
+        }
+
+        public static DbSet<Clase_R_Cliente> ClaseCliente()
+        {
+            con.SaveChanges();
+            return con.Clase_R_Cliente;
         }
     }
 }
