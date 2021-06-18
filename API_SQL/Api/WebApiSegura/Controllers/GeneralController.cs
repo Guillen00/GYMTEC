@@ -971,7 +971,7 @@ namespace Proyecto2.Controllers
         {
             try
             {
-                Proyecto2.DataRequest.BDConection.ClaseCliente()
+                Proyecto2.DataRequest.BDConection.ClaseCliente();
             }
             catch
             {
@@ -980,5 +980,6 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.ClaseCliente());
         }
+
     }
 }

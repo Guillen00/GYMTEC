@@ -175,6 +175,45 @@
     <Property Name="ID_servicio" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GymTEC.dbo.Clase_R_Cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Clase_R_Cliente">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_sucursal" />
+      <PropertyRef Name="Instructor" />
+      <PropertyRef Name="Modalidad" />
+      <PropertyRef Name="Hora_inicio" />
+      <PropertyRef Name="Hora_fin" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="Cliente" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Instructor" Type="int" Nullable="false" />
+    <Property Name="Modalidad" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Hora_inicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Hora_fin" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cliente" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Maquina_R_Tipo">
+    <Key>
+      <PropertyRef Name="Serie" />
+      <PropertyRef Name="Marca" />
+      <PropertyRef Name="Costo" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="Serie" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_sucursal" Type="varchar" MaxLength="20" />
+    <Property Name="Costo" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Clase_Empleado">
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
     <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
@@ -735,6 +774,28 @@
     <EntitySet Name="Tipo_planilla" EntityType="Self.Tipo_planilla" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tipos_planillas_empleados" EntityType="Self.Tipos_planillas_empleados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tratamiento" EntityType="Self.Tratamiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clase_R_Cliente" EntityType="Self.Clase_R_Cliente" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Clase_R_Cliente].[ID] AS [ID], 
+    [Clase_R_Cliente].[ID_sucursal] AS [ID_sucursal], 
+    [Clase_R_Cliente].[Instructor] AS [Instructor], 
+    [Clase_R_Cliente].[Modalidad] AS [Modalidad], 
+    [Clase_R_Cliente].[Hora_inicio] AS [Hora_inicio], 
+    [Clase_R_Cliente].[Hora_fin] AS [Hora_fin], 
+    [Clase_R_Cliente].[Fecha] AS [Fecha], 
+    [Clase_R_Cliente].[Tipo] AS [Tipo], 
+    [Clase_R_Cliente].[Cliente] AS [Cliente]
+    FROM [dbo].[Clase_R_Cliente] AS [Clase_R_Cliente]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Maquina_R_Tipo" EntityType="Self.Maquina_R_Tipo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Maquina_R_Tipo].[Serie] AS [Serie], 
+    [Maquina_R_Tipo].[Marca] AS [Marca], 
+    [Maquina_R_Tipo].[ID_sucursal] AS [ID_sucursal], 
+    [Maquina_R_Tipo].[Costo] AS [Costo], 
+    [Maquina_R_Tipo].[Nombre] AS [Nombre]
+    FROM [dbo].[Maquina_R_Tipo] AS [Maquina_R_Tipo]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Clase_Empleado" Association="Self.FK_Clase_Empleado">
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="Clase" EntitySet="Clase" />

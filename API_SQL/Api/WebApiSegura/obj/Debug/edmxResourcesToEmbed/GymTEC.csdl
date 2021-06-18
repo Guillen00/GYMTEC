@@ -674,6 +674,8 @@
       <Parameter Name="ID_servicio" Mode="In" Type="String" />
       <Parameter Name="Nombre" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Clase_R_Cliente" EntityType="GymTECModel.Clase_R_Cliente" />
+    <EntitySet Name="Maquina_R_Tipo" EntityType="GymTECModel.Maquina_R_Tipo" />
   </EntityContainer>
   <ComplexType Name="Consultar_Activo_Result">
     <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
@@ -837,4 +839,39 @@
     <Property Type="String" Name="Horas" Nullable="true" MaxLength="30" />
     <Property Type="Int32" Name="Pago" Nullable="true" />
   </ComplexType>
+  <EntityType Name="Clase_R_Cliente">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_sucursal" />
+      <PropertyRef Name="Instructor" />
+      <PropertyRef Name="Modalidad" />
+      <PropertyRef Name="Hora_inicio" />
+      <PropertyRef Name="Hora_fin" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="Cliente" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ID_sucursal" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Instructor" Type="Int32" Nullable="false" />
+    <Property Name="Modalidad" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Hora_inicio" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Hora_fin" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cliente" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maquina_R_Tipo">
+    <Key>
+      <PropertyRef Name="Serie" />
+      <PropertyRef Name="Marca" />
+      <PropertyRef Name="Costo" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="Serie" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ID_sucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Costo" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
