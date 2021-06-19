@@ -35,6 +35,7 @@ namespace Proyecto2.DataRequest
         public int Numero { get; set; }
         public string Spa { get; set; }
         public string Tienda { get; set; }
+        public string EmpleadoAdmin { get; set; }
     }
 
     public class EmpleadoCompleto

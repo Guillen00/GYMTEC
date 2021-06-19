@@ -1155,9 +1155,13 @@ namespace Proyecto2.Controllers
                 sucursal.Fecha_apertura = suc.Fecha_apertura;
                 Proyecto2.DataRequest.BDConection.agregar_sucursal(sucursal);
 
+                //Empleado_Admin empad = new Empleado_Admin();
+                //empad.Cedula = Int32.Parse(suc.EmpleadoAdmin);
+                //Proyecto2.DataRequest.BDConection.agregar_Empleado_Admin();
+
                 activo.ID = suc.ID;
-                activo.Spa = suc.Spa;
-                activo.Tienda = suc.Tienda;
+                activo.Spa = "F";
+                activo.Tienda = "F";
                 Proyecto2.DataRequest.BDConection.editar_activo(activo);
 
                 num.ID_sucursal = suc.ID;
