@@ -24,7 +24,9 @@ namespace Proyecto2.Controllers
         public IHttpActionResult AgregarSucursal(Sucursal suc)
         {
             try {
-            Proyecto2.DataRequest.BDConection.agregar_sucursal(suc);}
+            Proyecto2.DataRequest.BDConection.agregar_sucursal(suc);
+            
+            }
             catch { return Ok("La sucursal no ha sido agregada"); }
             
             return Ok("La sucursal se ha agregado exitosamente");
@@ -1134,6 +1136,70 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.ALL_Tratamiento());
         }
 
+        //-----------------------------------------------------------------------------Extras------------------------------------------------------
 
+        [HttpPost]
+        [Route("AgregarSucursalCompleta")]
+        public IHttpActionResult AgregarSucursalCompleta(Sucursal_Completa suc)
+        {
+            try{
+                Sucursal sucursal = new Sucursal();
+                Activo activo = new Activo();
+                Numeros_sucursal num = new Numeros_sucursal();
+                sucursal.ID = suc.ID;
+                sucursal.Max_capacidad = suc.Max_capacidad;
+                sucursal.Nombre = suc.Nombre;
+                sucursal.Provincia = suc.Provincia;
+                sucursal.Canton = suc.Canton;
+                sucursal.Distrito = suc.Distrito;
+                sucursal.Fecha_apertura = suc.Fecha_apertura;
+                Proyecto2.DataRequest.BDConection.agregar_sucursal(sucursal);
+
+                activo.ID = suc.ID;
+                activo.Spa = suc.Spa;
+                activo.Tienda = suc.Tienda;
+                Proyecto2.DataRequest.BDConection.editar_activo(activo);
+
+                num.ID_sucursal = suc.ID;
+                num.Numero = suc.Numero;
+                Proyecto2.DataRequest.BDConection.agregar_numero_sucursal(num);
+
+            }catch { return Ok("La sucursal no ha sido agregada"); }
+
+            return Ok("La sucursal se ha agregado exitosamente");
+        }
+
+        [HttpPost]
+        [Route("ConsultaEmpeadoCompleto")]
+        public IHttpActionResult ConsultaEmpeadoCompleto(Sucursal_Completa suc)
+        {
+            try
+            {
+                Sucursal sucursal = new Sucursal();
+                Activo activo = new Activo();
+                Numeros_sucursal num = new Numeros_sucursal();
+                sucursal.ID = suc.ID;
+                sucursal.Max_capacidad = suc.Max_capacidad;
+                sucursal.Nombre = suc.Nombre;
+                sucursal.Provincia = suc.Provincia;
+                sucursal.Canton = suc.Canton;
+                sucursal.Distrito = suc.Distrito;
+                sucursal.Fecha_apertura = suc.Fecha_apertura;
+                Proyecto2.DataRequest.BDConection.agregar_sucursal(sucursal);
+
+                activo.ID = suc.ID;
+                activo.Spa = suc.Spa;
+                activo.Tienda = suc.Tienda;
+                Proyecto2.DataRequest.BDConection.editar_activo(activo);
+
+                num.ID_sucursal = suc.ID;
+                num.Numero = suc.Numero;
+                Proyecto2.DataRequest.BDConection.agregar_numero_sucursal(num);
+
+            }
+            catch { return Ok("La sucursal no ha sido agregada"); }
+
+            return Ok("La sucursal se ha agregado exitosamente");
+        }
     }
 }
