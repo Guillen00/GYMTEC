@@ -981,5 +981,159 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.ClaseCliente());
         }
 
+        //---------------------------------------------------------------------------GET ALL----------------------------------------------------
+        [HttpGet]
+        [Route("All_Sucursal")]
+        public IHttpActionResult All_Sucursal()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Sucursal();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Sucursal());
+        }
+
+        [HttpGet]
+        [Route("All_Clase")]
+        public IHttpActionResult All_Clase()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Clases();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Clases());
+        }
+        [HttpGet]
+        [Route("All_Empleados")]
+        public IHttpActionResult All_Empleado()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Empleados();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Empleados());
+        }
+        [HttpGet]
+        [Route("All_Maquinas")]
+        public IHttpActionResult All_Maquinas()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Maquinas();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Maquinas());
+        }
+        [HttpGet]
+        [Route("All_Productos")]
+        public IHttpActionResult All_Productos()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Productos();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Productos());
+        }
+        [HttpGet]
+        [Route("All_Puestos")]
+        public IHttpActionResult All_Puestos()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Puestos();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Puestos());
+        }
+        [HttpGet]
+        [Route("All_Servicios")]
+        public IHttpActionResult All_Servicios()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Servicios();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Servicios());
+        }
+        [HttpGet]
+        [Route("All_Tipo_Equipo")]
+        public IHttpActionResult All_Tipo_Equipo()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Tipo_Equipo();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Tipo_Equipo());
+        }
+        [HttpGet]
+        [Route("All_Tipo_Planilla")]
+        public IHttpActionResult All_Tipo_Planilla()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Tipo_Planilla();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Tipo_Planilla());
+        }
+        [HttpGet]
+        [Route("All_Tratamientos")]
+        public IHttpActionResult All_Tratamientos()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.ALL_Tratamiento();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Tratamiento());
+        }
+
+
     }
 }

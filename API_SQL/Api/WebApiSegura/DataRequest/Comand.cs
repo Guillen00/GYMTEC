@@ -7,6 +7,7 @@ using Npgsql;
 using System.Data;
 using System.IO;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using Proyecto2;
 using Proyecto1;
@@ -742,5 +743,62 @@ namespace Proyecto2.DataRequest
             con.SaveChanges();
             return con.Clase_R_Cliente;
         }
+
+        //-------------------------------------------------------------------------GET ALL--------------------------------------------------------
+        public static ObjectResult<Consultar_All_Sucursales_Result> ALL_Sucursal()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Sucursales();
+        }
+
+        public static ObjectResult<Consultar_All_Clase_Result> ALL_Clases()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Clase();
+        }
+
+        public static ObjectResult<Consultar_All_Empleados_Result> ALL_Empleados()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Empleados();
+        }
+
+        public static ObjectResult<Consultar_All_Maquinas_Result> ALL_Maquinas()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Maquinas();
+        }
+        public static ObjectResult<Consultar_All_Productos_Result> ALL_Productos()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Productos();
+        }
+        public static ObjectResult<Consultar_All_Puestos_Result> ALL_Puestos()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Puestos();
+        }
+        public static ObjectResult<Consultar_All_Servicios_Result> ALL_Servicios()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Servicios();
+        }
+
+        public static ObjectResult<Consultar_All_Tipo_equipos_Result> ALL_Tipo_Equipo()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Tipo_equipos();
+        }
+        public static ObjectResult<Consultar_All_Tipo_Planillas_Result> ALL_Tipo_Planilla()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Tipo_Planillas();
+        }
+        public static ObjectResult<Consultar_All_Tratamientos_Result> ALL_Tratamiento()
+        {
+            con.SaveChanges();
+            return con.Consultar_All_Tratamientos();
+        }
+
     }
 }
