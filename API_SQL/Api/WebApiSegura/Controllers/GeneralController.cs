@@ -1201,5 +1201,18 @@ namespace Proyecto2.Controllers
 
             return Ok("La sucursal se ha agregado exitosamente");
         }
+
+        [HttpGet]
+        [Route("All_Empleados_Total")]
+        public IHttpActionResult All_Empleados_Total()
+        {
+            try{
+                Proyecto2.DataRequest.BDConection.ALL_Empleado_Total();
+            }catch{
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.ALL_Empleado_Total());
+        }
     }
 }

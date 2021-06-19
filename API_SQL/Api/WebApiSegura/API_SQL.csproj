@@ -279,6 +279,9 @@
     <Compile Include="Consultar_Empleado_Result.cs">
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultar_Empleado_Total_Result.cs">
+      <DependentUpon>GymTEC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Consultar_Maquina_Result.cs">
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>

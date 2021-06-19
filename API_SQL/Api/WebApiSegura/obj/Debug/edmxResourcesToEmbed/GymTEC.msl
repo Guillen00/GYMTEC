@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities2">
+  <EntityContainerMapping StorageEntityContainer="GymTECModelStoreContainer" CdmEntityContainer="GymTECEntities3">
     <EntitySetMapping Name="Activo">
       <EntityTypeMapping TypeName="GymTECModel.Activo">
         <MappingFragment StoreEntitySet="Activo">
@@ -145,6 +145,32 @@
         <MappingFragment StoreEntitySet="Tratamiento">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clase_R_Cliente">
+      <EntityTypeMapping TypeName="GymTECModel.Clase_R_Cliente">
+        <MappingFragment StoreEntitySet="Clase_R_Cliente">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+          <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
+          <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maquina_R_Tipo">
+      <EntityTypeMapping TypeName="GymTECModel.Maquina_R_Tipo">
+        <MappingFragment StoreEntitySet="Maquina_R_Tipo">
+          <ScalarProperty Name="Serie" ColumnName="Serie" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -385,6 +411,24 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultar_Empleado_Total" FunctionName="GymTECModel.Store.Consultar_Empleado_Total">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GymTECModel.Consultar_Empleado_Total_Result">
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Consultar_Maquina" FunctionName="GymTECModel.Store.Consultar_Maquina">
       <ResultMapping>
         <ComplexTypeMapping TypeName="GymTECModel.Consultar_Maquina_Result">
@@ -510,31 +554,5 @@
     <FunctionImportMapping FunctionImportName="Insertar_Tipo_Planilla" FunctionName="GymTECModel.Store.Insertar_Tipo_Planilla" />
     <FunctionImportMapping FunctionImportName="Insertar_Tipos_planillas_empleados" FunctionName="GymTECModel.Store.Insertar_Tipos_planillas_empleados" />
     <FunctionImportMapping FunctionImportName="Insertar_Tratamiento" FunctionName="GymTECModel.Store.Insertar_Tratamiento" />
-    <EntitySetMapping Name="Clase_R_Cliente">
-      <EntityTypeMapping TypeName="GymTECModel.Clase_R_Cliente">
-        <MappingFragment StoreEntitySet="Clase_R_Cliente">
-          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
-          <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
-          <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
-          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
-          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Maquina_R_Tipo">
-      <EntityTypeMapping TypeName="GymTECModel.Maquina_R_Tipo">
-        <MappingFragment StoreEntitySet="Maquina_R_Tipo">
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Costo" ColumnName="Costo" />
-          <ScalarProperty Name="ID_sucursal" ColumnName="ID_sucursal" />
-          <ScalarProperty Name="Marca" ColumnName="Marca" />
-          <ScalarProperty Name="Serie" ColumnName="Serie" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

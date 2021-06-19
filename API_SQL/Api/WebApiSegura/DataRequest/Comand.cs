@@ -22,7 +22,7 @@ namespace Proyecto2.DataRequest
     public static class BDConection {
         
         
-        public static GymTECEntities2 con = new GymTECEntities2();
+        public static GymTECEntities3 con = new GymTECEntities3();
         
         //-------------------------------------------------------------------------------Empleado---------------------------------------------------------------
         public static List<Empleado> lista_empleados() {
@@ -798,6 +798,12 @@ namespace Proyecto2.DataRequest
         {
             con.SaveChanges();
             return con.Consultar_All_Tratamientos();
+        }
+
+        public static ObjectResult<Consultar_Empleado_Total_Result> ALL_Empleado_Total()
+        {
+            con.SaveChanges();
+            return con.Consultar_Empleado_Total();
         }
 
     }

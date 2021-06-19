@@ -15,10 +15,10 @@ namespace Proyecto1
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class GymTECEntities2 : DbContext
+    public partial class GymTECEntities3 : DbContext
     {
-        public GymTECEntities2()
-            : base("name=GymTECEntities2")
+        public GymTECEntities3()
+            : base("name=GymTECEntities3")
         {
         }
     
@@ -625,6 +625,11 @@ namespace Proyecto1
                 new ObjectParameter("Cedula", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Empleado_Admin_Result>("Consultar_Empleado_Admin", cedulaParameter);
+        }
+    
+        public virtual ObjectResult<Consultar_Empleado_Total_Result> Consultar_Empleado_Total()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Empleado_Total_Result>("Consultar_Empleado_Total");
         }
     
         public virtual ObjectResult<Consultar_Maquina_Result> Consultar_Maquina(string serie)

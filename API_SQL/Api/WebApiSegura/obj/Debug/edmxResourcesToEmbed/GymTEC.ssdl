@@ -614,6 +614,7 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
   <Function Name="Consultar_Empleado_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Cedula" Type="int" Mode="In" />
   </Function>
+  <Function Name="Consultar_Empleado_Total" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Consultar_Maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Serie" Type="varchar" Mode="In" />
   </Function>
