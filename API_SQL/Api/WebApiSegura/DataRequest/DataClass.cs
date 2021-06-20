@@ -35,6 +35,7 @@ namespace Proyecto2.DataRequest
         public int Numero { get; set; }
         public string Spa { get; set; }
         public string Tienda { get; set; }
+        public int Administrador { get; set; }
     }
 
     public class EmpleadoCompleto
@@ -49,9 +50,13 @@ namespace Proyecto2.DataRequest
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
         public string Password { get; set; }
-        public string Descripcion { get; set; }
+        public string ID_Puesto { get; set; }
         public string ID_sucursal { get; set; }
+        public string ID { get; set; }
+
     }
+
+
 
         /*
          * Esta clase maneja la informacion de todos los dispositivos, se puede almacenar temporalmente y transportar la informacion

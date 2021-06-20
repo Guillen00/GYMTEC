@@ -273,6 +273,9 @@
     <Compile Include="Consultar_Clase_Result.cs">
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consultar_Empleados_Completos_Result.cs">
+      <DependentUpon>GymTEC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Consultar_Empleado_Admin_Result.cs">
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
@@ -366,6 +369,9 @@
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Sucursal.cs">
+      <DependentUpon>GymTEC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sucursal_Completo_Result.cs">
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipos_planillas_empleados.cs">

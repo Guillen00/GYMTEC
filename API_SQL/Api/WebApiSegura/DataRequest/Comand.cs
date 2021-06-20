@@ -22,11 +22,11 @@ namespace Proyecto2.DataRequest
     public static class BDConection {
         
         
-        public static GymTECEntities3 con = new GymTECEntities3();
+        public static GymTECEntities4 con = new GymTECEntities4();
         
         //-------------------------------------------------------------------------------Empleado---------------------------------------------------------------
         public static List<Empleado> lista_empleados() {
-
+    
             List<Empleado> lista = con.Empleado.ToList<Empleado>();
             
             return lista;
@@ -89,6 +89,15 @@ namespace Proyecto2.DataRequest
             return empleado;
         }
 
+        public static ObjectResult<Consultar_Empleados_Completos_Result> Consultar_empleadoCompleto()
+        {
+            
+            //var customer = con.Empleado.Single(o => o.Cedula == emp.Cedula);
+            //con.Empleado.Remove(customer);
+            con.SaveChanges();
+            return con.Consultar_Empleados_Completos();
+        }
+
         //-------------------------------------------------------------------------------Sucursal--------------------------------------------------------------------
 
         public static void agregar_sucursal(Sucursal suc)
@@ -145,6 +154,14 @@ namespace Proyecto2.DataRequest
             return lista;
         }
 
+        public static ObjectResult<Sucursal_Completo_Result> Consultar_Sucursal_Completo()
+        {
+            con.Sucursal_Completo();
+            //var customer = con.Numeros_sucursal.Single(o => o.ID_sucursal == num.ID_sucursal);
+            //con.Numeros_sucursal.Remove(customer);
+            con.SaveChanges();
+            return con.Sucursal_Completo();
+        }
         //---------------------------------------------------------------Tratamiento------------------------------------------------------------------
         public static void agregar_tratamiento(Tratamiento tra)
         {
@@ -453,6 +470,14 @@ namespace Proyecto2.DataRequest
             //con.Numeros_sucursal.Remove(customer);
             con.SaveChanges();
         }
+        public static void editar_numero_sucursal(Numeros_sucursal num)
+        {
+            con.Actualizar_Numero_Sucursal(num.ID_sucursal,num.Numero);
+            //var customer = con.Numeros_sucursal.Single(o => o.ID_sucursal == num.ID_sucursal);
+            //con.Numeros_sucursal.Remove(customer);
+            con.SaveChanges();
+        }
+
 
         //------------------------------------------------------------------------Tipo de planilla de empleados----------------------------------------------
         public static void agregar_TPE(Tipos_planillas_empleados tpe)
@@ -469,19 +494,12 @@ namespace Proyecto2.DataRequest
             //con.Tipos_planillas_empleados.Remove(customer);
             con.SaveChanges();
         }
-        public static Tipos_planillas_empleados editar_TPE(Tipos_planillas_empleados tpe)
+        public static void editar_TPE(Tipos_planillas_empleados tpe)
         {
-            var customer = con.Tipos_planillas_empleados.Single(o => o.Cedula == tpe.Cedula);
-
-
-            Tipos_planillas_empleados TPE = con.Tipos_planillas_empleados.Find(customer.Cedula);
-
-            if (tpe.ID_tipo_planilla != "") { TPE.ID_tipo_planilla = tpe.ID_tipo_planilla; }
-            if (tpe.Horas != "") { TPE.Horas = tpe.Horas; }
-            if (tpe.Clases != "") { TPE.Clases = tpe.Clases; }
-            con.Actualizar_Tipos_planillas_empleados(TPE.Cedula,TPE.ID_tipo_planilla,TPE.Clases,TPE.Horas);
+            
+            con.Actualizar_Tipos_planillas_empleados(tpe.Cedula, tpe.ID_tipo_planilla, tpe.Clases, tpe.Horas);
             con.SaveChanges();
-            return TPE;
+            
         }
         //----------------------------------------------------------------------Producto-------------------------------------------------------------
         public static void agregar_producto(Producto pro)
@@ -680,6 +698,12 @@ namespace Proyecto2.DataRequest
             return lista;
         }
 
+        public static void editar_Empleado_Admin(Empleado_Admin emp)
+        {
+
+            con.Actualizar_Empleado_Admin(emp.Cedula, emp.ID_sucursal);
+            
+        }
         //---------------------------------------------------------------------Clase Cliente----------------------------------------------------
 
         public static void agregar_Clase_Cliente(Consultar_Clase_Cliente_Result cli)

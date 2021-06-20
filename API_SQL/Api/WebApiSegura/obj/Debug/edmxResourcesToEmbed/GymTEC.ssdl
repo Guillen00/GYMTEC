@@ -88,7 +88,7 @@
       <PropertyRef Name="Bar_code" />
     </Key>
     <Property Name="Bar_code" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="ID_servicio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_servicio" Type="varchar" MaxLength="30" />
     <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Costo" Type="int" Nullable="false" />
     <Property Name="Descripcion" Type="varchar" MaxLength="30" Nullable="false" />
@@ -164,15 +164,15 @@
     </Key>
     <Property Name="Cedula" Type="int" Nullable="false" />
     <Property Name="ID_tipo_planilla" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Clases" Type="varchar" MaxLength="30" />
-    <Property Name="Horas" Type="varchar" MaxLength="30" />
+    <Property Name="Clases" Type="int" />
+    <Property Name="Horas" Type="int" />
   </EntityType>
   <EntityType Name="Tratamiento">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="ID_servicio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_servicio" Type="varchar" MaxLength="30" />
     <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
@@ -286,18 +286,6 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Maquina_Sucursal">
-    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
-    <End Role="Maquina" Type="Self.Maquina" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sucursal">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Maquina">
-        <PropertyRef Name="ID_sucursal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Maquinas_tipos_Maquina">
     <End Role="Maquina" Type="Self.Maquina" Multiplicity="1" />
     <End Role="Maquinas_tipos" Type="Self.Maquinas_tipos" Multiplicity="*" />
@@ -331,18 +319,6 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
       </Principal>
       <Dependent Role="Numeros_sucursal">
         <PropertyRef Name="ID_sucursal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Producto_Servicio">
-    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
-    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Servicio">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Producto">
-        <PropertyRef Name="ID_servicio" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -430,18 +406,6 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Tratamiento_Servicio">
-    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
-    <End Role="Tratamiento" Type="Self.Tratamiento" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Servicio">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Tratamiento">
-        <PropertyRef Name="ID_servicio" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="Actualizar_Activo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="varchar" Mode="In" />
     <Parameter Name="Spa" Type="varchar" Mode="In" />
@@ -469,6 +433,10 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
     <Parameter Name="Apellido2" Type="varchar" Mode="In" />
     <Parameter Name="Password" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="Actualizar_Empleado_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cedula" Type="int" Mode="In" />
+    <Parameter Name="ID_sucursal" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="Actualizar_Maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Serie" Type="varchar" Mode="In" />
     <Parameter Name="ID_sucursal" Type="varchar" Mode="In" />
@@ -478,6 +446,10 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
   <Function Name="Actualizar_Maquinas_Tipos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Serie" Type="varchar" Mode="In" />
     <Parameter Name="ID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Numero_Sucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="Numero" Type="int" Mode="In" />
   </Function>
   <Function Name="Actualizar_Producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Bar_code" Type="varchar" Mode="In" />
@@ -523,8 +495,8 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
   <Function Name="Actualizar_Tipos_planillas_empleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Cedula" Type="int" Mode="In" />
     <Parameter Name="ID_tipo_planilla" Type="varchar" Mode="In" />
-    <Parameter Name="Clases" Type="varchar" Mode="In" />
-    <Parameter Name="Horas" Type="varchar" Mode="In" />
+    <Parameter Name="Clases" Type="int" Mode="In" />
+    <Parameter Name="Horas" Type="int" Mode="In" />
   </Function>
   <Function Name="Actualizar_Tratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="varchar" Mode="In" />
@@ -615,6 +587,7 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
     <Parameter Name="Cedula" Type="int" Mode="In" />
   </Function>
   <Function Name="Consultar_Empleado_Total" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Consultar_Empleados_Completos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Consultar_Maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Serie" Type="varchar" Mode="In" />
   </Function>
@@ -746,14 +719,15 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
   <Function Name="Insertar_Tipos_planillas_empleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Cedula" Type="int" Mode="In" />
     <Parameter Name="ID_tipo_planilla" Type="varchar" Mode="In" />
-    <Parameter Name="Clases" Type="varchar" Mode="In" />
-    <Parameter Name="Horas" Type="varchar" Mode="In" />
+    <Parameter Name="Clases" Type="int" Mode="In" />
+    <Parameter Name="Horas" Type="int" Mode="In" />
   </Function>
   <Function Name="Insertar_Tratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="varchar" Mode="In" />
     <Parameter Name="ID_servicio" Type="varchar" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="Sucursal_Completo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="GymTECModelStoreContainer">
     <EntitySet Name="Activo" EntityType="Self.Activo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
@@ -821,10 +795,6 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
       <End Role="Sucursal" EntitySet="Sucursal" />
       <End Role="Empleados_admin" EntitySet="Empleados_admin" />
     </AssociationSet>
-    <AssociationSet Name="FK_Maquina_Sucursal" Association="Self.FK_Maquina_Sucursal">
-      <End Role="Sucursal" EntitySet="Sucursal" />
-      <End Role="Maquina" EntitySet="Maquina" />
-    </AssociationSet>
     <AssociationSet Name="FK_Maquinas_tipos_Maquina" Association="Self.FK_Maquinas_tipos_Maquina">
       <End Role="Maquina" EntitySet="Maquina" />
       <End Role="Maquinas_tipos" EntitySet="Maquinas_tipos" />
@@ -836,10 +806,6 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
     <AssociationSet Name="FK_Numeros_sucursal_Sucursal" Association="Self.FK_Numeros_sucursal_Sucursal">
       <End Role="Sucursal" EntitySet="Sucursal" />
       <End Role="Numeros_sucursal" EntitySet="Numeros_sucursal" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Producto_Servicio" Association="Self.FK_Producto_Servicio">
-      <End Role="Servicio" EntitySet="Servicio" />
-      <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
     <AssociationSet Name="FK_Puestos_empleados_Empleado" Association="Self.FK_Puestos_empleados_Empleado">
       <End Role="Empleado" EntitySet="Empleado" />
@@ -868,10 +834,6 @@ advertencia 6002: La tabla o vista 'GymTEC.dbo.Maquina_R_Tipo' no tiene definida
     <AssociationSet Name="FK_Tipos_planillas_empleados_Tipo_planilla" Association="Self.FK_Tipos_planillas_empleados_Tipo_planilla">
       <End Role="Tipo_planilla" EntitySet="Tipo_planilla" />
       <End Role="Tipos_planillas_empleados" EntitySet="Tipos_planillas_empleados" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Tratamiento_Servicio" Association="Self.FK_Tratamiento_Servicio">
-      <End Role="Servicio" EntitySet="Servicio" />
-      <End Role="Tratamiento" EntitySet="Tratamiento" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

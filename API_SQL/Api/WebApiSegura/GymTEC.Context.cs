@@ -15,10 +15,10 @@ namespace Proyecto1
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class GymTECEntities3 : DbContext
+    public partial class GymTECEntities4 : DbContext
     {
-        public GymTECEntities3()
-            : base("name=GymTECEntities3")
+        public GymTECEntities4()
+            : base("name=GymTECEntities4")
         {
         }
     
@@ -144,6 +144,19 @@ namespace Proyecto1
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Empleado", cedulaParameter, correoParameter, salarioParameter, provinciaParameter, distritoParameter, cantonParameter, nombreParameter, apellido1Parameter, apellido2Parameter, passwordParameter);
         }
     
+        public virtual int Actualizar_Empleado_Admin(Nullable<int> cedula, string iD_sucursal)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Empleado_Admin", cedulaParameter, iD_sucursalParameter);
+        }
+    
         public virtual int Actualizar_Maquina(string serie, string iD_sucursal, Nullable<int> costo, string marca)
         {
             var serieParameter = serie != null ?
@@ -176,6 +189,19 @@ namespace Proyecto1
                 new ObjectParameter("ID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Maquinas_Tipos", serieParameter, iDParameter);
+        }
+    
+        public virtual int Actualizar_Numero_Sucursal(string iD_sucursal, Nullable<int> numero)
+        {
+            var iD_sucursalParameter = iD_sucursal != null ?
+                new ObjectParameter("ID_sucursal", iD_sucursal) :
+                new ObjectParameter("ID_sucursal", typeof(string));
+    
+            var numeroParameter = numero.HasValue ?
+                new ObjectParameter("Numero", numero) :
+                new ObjectParameter("Numero", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Numero_Sucursal", iD_sucursalParameter, numeroParameter);
         }
     
         public virtual int Actualizar_Producto(string bar_code, string iD_servicio, string nombre, Nullable<int> costo, string descripcion)
@@ -318,7 +344,7 @@ namespace Proyecto1
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipo_Planilla", iDParameter, descripcionParameter);
         }
     
-        public virtual int Actualizar_Tipos_planillas_empleados(Nullable<int> cedula, string iD_tipo_planilla, string clases, string horas)
+        public virtual int Actualizar_Tipos_planillas_empleados(Nullable<int> cedula, string iD_tipo_planilla, Nullable<int> clases, Nullable<int> horas)
         {
             var cedulaParameter = cedula.HasValue ?
                 new ObjectParameter("Cedula", cedula) :
@@ -328,13 +354,13 @@ namespace Proyecto1
                 new ObjectParameter("ID_tipo_planilla", iD_tipo_planilla) :
                 new ObjectParameter("ID_tipo_planilla", typeof(string));
     
-            var clasesParameter = clases != null ?
+            var clasesParameter = clases.HasValue ?
                 new ObjectParameter("Clases", clases) :
-                new ObjectParameter("Clases", typeof(string));
+                new ObjectParameter("Clases", typeof(int));
     
-            var horasParameter = horas != null ?
+            var horasParameter = horas.HasValue ?
                 new ObjectParameter("Horas", horas) :
-                new ObjectParameter("Horas", typeof(string));
+                new ObjectParameter("Horas", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipos_planillas_empleados", cedulaParameter, iD_tipo_planillaParameter, clasesParameter, horasParameter);
         }
@@ -630,6 +656,11 @@ namespace Proyecto1
         public virtual ObjectResult<Consultar_Empleado_Total_Result> Consultar_Empleado_Total()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Empleado_Total_Result>("Consultar_Empleado_Total");
+        }
+    
+        public virtual ObjectResult<Consultar_Empleados_Completos_Result> Consultar_Empleados_Completos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Consultar_Empleados_Completos_Result>("Consultar_Empleados_Completos");
         }
     
         public virtual ObjectResult<Consultar_Maquina_Result> Consultar_Maquina(string serie)
@@ -1061,7 +1092,7 @@ namespace Proyecto1
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tipo_Planilla", iDParameter, descripcionParameter);
         }
     
-        public virtual int Insertar_Tipos_planillas_empleados(Nullable<int> cedula, string iD_tipo_planilla, string clases, string horas)
+        public virtual int Insertar_Tipos_planillas_empleados(Nullable<int> cedula, string iD_tipo_planilla, Nullable<int> clases, Nullable<int> horas)
         {
             var cedulaParameter = cedula.HasValue ?
                 new ObjectParameter("Cedula", cedula) :
@@ -1071,13 +1102,13 @@ namespace Proyecto1
                 new ObjectParameter("ID_tipo_planilla", iD_tipo_planilla) :
                 new ObjectParameter("ID_tipo_planilla", typeof(string));
     
-            var clasesParameter = clases != null ?
+            var clasesParameter = clases.HasValue ?
                 new ObjectParameter("Clases", clases) :
-                new ObjectParameter("Clases", typeof(string));
+                new ObjectParameter("Clases", typeof(int));
     
-            var horasParameter = horas != null ?
+            var horasParameter = horas.HasValue ?
                 new ObjectParameter("Horas", horas) :
-                new ObjectParameter("Horas", typeof(string));
+                new ObjectParameter("Horas", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tipos_planillas_empleados", cedulaParameter, iD_tipo_planillaParameter, clasesParameter, horasParameter);
         }
@@ -1097,6 +1128,11 @@ namespace Proyecto1
                 new ObjectParameter("Nombre", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_Tratamiento", iDParameter, iD_servicioParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<Sucursal_Completo_Result> Sucursal_Completo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sucursal_Completo_Result>("Sucursal_Completo");
         }
     }
 }

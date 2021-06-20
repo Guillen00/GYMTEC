@@ -59,7 +59,6 @@
     <Property Name="ID_sucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Costo" Type="Int32" Nullable="false" />
     <Property Name="Marca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Sucursal" Relationship="Self.FK_Maquina_Sucursal" FromRole="Maquina" ToRole="Sucursal" />
     <NavigationProperty Name="Tipo_equipo" Relationship="Self.Maquinas_tipos" FromRole="Maquina" ToRole="Tipo_equipo" />
   </EntityType>
   <EntityType Name="Numeros_sucursal">
@@ -76,11 +75,10 @@
       <PropertyRef Name="Bar_code" />
     </Key>
     <Property Name="Bar_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ID_servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Costo" Type="Int32" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Servicio" Relationship="Self.FK_Producto_Servicio" FromRole="Producto" ToRole="Servicio" />
   </EntityType>
   <EntityType Name="Puesto">
     <Key>
@@ -105,9 +103,7 @@
     <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ID_sucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Servicio" FromRole="Servicio" ToRole="Producto" />
     <NavigationProperty Name="Sucursal" Relationship="Self.FK_Servicio_Sucursal1" FromRole="Servicio" ToRole="Sucursal" />
-    <NavigationProperty Name="Tratamiento" Relationship="Self.FK_Tratamiento_Servicio" FromRole="Servicio" ToRole="Tratamiento" />
   </EntityType>
   <EntityType Name="Sucursal">
     <Key>
@@ -121,7 +117,6 @@
     <Property Name="Canton" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Fecha_apertura" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Clase" Relationship="Self.FK_Clase_Sucursal" FromRole="Sucursal" ToRole="Clase" />
-    <NavigationProperty Name="Maquina" Relationship="Self.FK_Maquina_Sucursal" FromRole="Sucursal" ToRole="Maquina" />
     <NavigationProperty Name="Numeros_sucursal" Relationship="Self.FK_Numeros_sucursal_Sucursal" FromRole="Sucursal" ToRole="Numeros_sucursal" />
     <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Sucursal1" FromRole="Sucursal" ToRole="Servicio" />
     <NavigationProperty Name="Empleado" Relationship="Self.Empleados_admin" FromRole="Sucursal" ToRole="Empleado" />
@@ -149,8 +144,8 @@
     </Key>
     <Property Name="Cedula" Type="Int32" Nullable="false" />
     <Property Name="ID_tipo_planilla" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Clases" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="Horas" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Clases" Type="Int32" />
+    <Property Name="Horas" Type="Int32" />
     <NavigationProperty Name="Empleado" Relationship="Self.FK_Tipos_planillas_empleados_Empleado" FromRole="Tipos_planillas_empleados" ToRole="Empleado" />
     <NavigationProperty Name="Tipo_planilla" Relationship="Self.FK_Tipos_planillas_empleados_Tipo_planilla" FromRole="Tipos_planillas_empleados" ToRole="Tipo_planilla" />
   </EntityType>
@@ -159,9 +154,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ID_servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Servicio" Relationship="Self.FK_Tratamiento_Servicio" FromRole="Tratamiento" ToRole="Servicio" />
   </EntityType>
   <EntityType Name="Clase_R_Cliente">
     <Key>
@@ -234,18 +228,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Maquina_Sucursal">
-    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
-    <End Role="Maquina" Type="Self.Maquina" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sucursal">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Maquina">
-        <PropertyRef Name="ID_sucursal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Numeros_sucursal_Sucursal">
     <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
     <End Role="Numeros_sucursal" Type="Self.Numeros_sucursal" Multiplicity="*" />
@@ -258,18 +240,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Producto_Servicio">
-    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
-    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Servicio">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Producto">
-        <PropertyRef Name="ID_servicio" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Servicio_Sucursal1">
     <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
     <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
@@ -279,18 +249,6 @@
       </Principal>
       <Dependent Role="Servicio">
         <PropertyRef Name="ID_sucursal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Tratamiento_Servicio">
-    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
-    <End Role="Tratamiento" Type="Self.Tratamiento" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Servicio">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Tratamiento">
-        <PropertyRef Name="ID_servicio" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -326,7 +284,7 @@
     <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
     <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="GymTECEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GymTECEntities4" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Activo" EntityType="Self.Activo" />
     <EntitySet Name="Clase" EntityType="Self.Clase" />
     <EntitySet Name="Cliente" EntityType="Self.Cliente" />
@@ -356,25 +314,13 @@
       <End Role="Empleado" EntitySet="Empleado" />
       <End Role="Tipos_planillas_empleados" EntitySet="Tipos_planillas_empleados" />
     </AssociationSet>
-    <AssociationSet Name="FK_Maquina_Sucursal" Association="Self.FK_Maquina_Sucursal">
-      <End Role="Sucursal" EntitySet="Sucursal" />
-      <End Role="Maquina" EntitySet="Maquina" />
-    </AssociationSet>
     <AssociationSet Name="FK_Numeros_sucursal_Sucursal" Association="Self.FK_Numeros_sucursal_Sucursal">
       <End Role="Sucursal" EntitySet="Sucursal" />
       <End Role="Numeros_sucursal" EntitySet="Numeros_sucursal" />
     </AssociationSet>
-    <AssociationSet Name="FK_Producto_Servicio" Association="Self.FK_Producto_Servicio">
-      <End Role="Servicio" EntitySet="Servicio" />
-      <End Role="Producto" EntitySet="Producto" />
-    </AssociationSet>
     <AssociationSet Name="FK_Servicio_Sucursal1" Association="Self.FK_Servicio_Sucursal1">
       <End Role="Sucursal" EntitySet="Sucursal" />
       <End Role="Servicio" EntitySet="Servicio" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Tratamiento_Servicio" Association="Self.FK_Tratamiento_Servicio">
-      <End Role="Servicio" EntitySet="Servicio" />
-      <End Role="Tratamiento" EntitySet="Tratamiento" />
     </AssociationSet>
     <AssociationSet Name="FK_Tipos_planillas_empleados_Tipo_planilla" Association="Self.FK_Tipos_planillas_empleados_Tipo_planilla">
       <End Role="Tipo_planilla" EntitySet="Tipo_planilla" />
@@ -427,6 +373,10 @@
       <Parameter Name="Apellido2" Mode="In" Type="String" />
       <Parameter Name="Password" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Actualizar_Empleado_Admin">
+      <Parameter Name="Cedula" Mode="In" Type="Int32" />
+      <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="Actualizar_Maquina">
       <Parameter Name="Serie" Mode="In" Type="String" />
       <Parameter Name="ID_sucursal" Mode="In" Type="String" />
@@ -436,6 +386,10 @@
     <FunctionImport Name="Actualizar_Maquinas_Tipos">
       <Parameter Name="Serie" Mode="In" Type="String" />
       <Parameter Name="ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Numero_Sucursal">
+      <Parameter Name="ID_sucursal" Mode="In" Type="String" />
+      <Parameter Name="Numero" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Actualizar_Producto">
       <Parameter Name="Bar_code" Mode="In" Type="String" />
@@ -481,8 +435,8 @@
     <FunctionImport Name="Actualizar_Tipos_planillas_empleados">
       <Parameter Name="Cedula" Mode="In" Type="Int32" />
       <Parameter Name="ID_tipo_planilla" Mode="In" Type="String" />
-      <Parameter Name="Clases" Mode="In" Type="String" />
-      <Parameter Name="Horas" Mode="In" Type="String" />
+      <Parameter Name="Clases" Mode="In" Type="Int32" />
+      <Parameter Name="Horas" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Actualizar_Tratamiento">
       <Parameter Name="ID" Mode="In" Type="String" />
@@ -573,6 +527,7 @@
       <Parameter Name="Cedula" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Consultar_Empleado_Total" ReturnType="Collection(GymTECModel.Consultar_Empleado_Total_Result)" />
+    <FunctionImport Name="Consultar_Empleados_Completos" ReturnType="Collection(GymTECModel.Consultar_Empleados_Completos_Result)" />
     <FunctionImport Name="Consultar_Maquina" ReturnType="Collection(GymTECModel.Consultar_Maquina_Result)">
       <Parameter Name="Serie" Mode="In" Type="String" />
     </FunctionImport>
@@ -704,14 +659,15 @@
     <FunctionImport Name="Insertar_Tipos_planillas_empleados">
       <Parameter Name="Cedula" Mode="In" Type="Int32" />
       <Parameter Name="ID_tipo_planilla" Mode="In" Type="String" />
-      <Parameter Name="Clases" Mode="In" Type="String" />
-      <Parameter Name="Horas" Mode="In" Type="String" />
+      <Parameter Name="Clases" Mode="In" Type="Int32" />
+      <Parameter Name="Horas" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Insertar_Tratamiento">
       <Parameter Name="ID" Mode="In" Type="String" />
       <Parameter Name="ID_servicio" Mode="In" Type="String" />
       <Parameter Name="Nombre" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Sucursal_Completo" ReturnType="Collection(GymTECModel.Sucursal_Completo_Result)" />
   </EntityContainer>
   <ComplexType Name="Consultar_Activo_Result">
     <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
@@ -748,7 +704,7 @@
   </ComplexType>
   <ComplexType Name="Consultar_All_Productos_Result">
     <Property Type="String" Name="Bar_code" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_servicio" Nullable="true" MaxLength="30" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
     <Property Type="Int32" Name="Costo" Nullable="false" />
     <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
@@ -781,7 +737,7 @@
   </ComplexType>
   <ComplexType Name="Consultar_All_Tratamientos_Result">
     <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_servicio" Nullable="true" MaxLength="30" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
   </ComplexType>
   <ComplexType Name="Consultar_Clase_Result">
@@ -828,6 +784,20 @@
     <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ID_sucursal" Nullable="true" MaxLength="20" />
   </ComplexType>
+  <ComplexType Name="Consultar_Empleados_Completos_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido1" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido2" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Canton" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Cedula" Nullable="true" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Distrito" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Provincia" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Salario" Nullable="true" />
+    <Property Type="String" Name="ID_puesto" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ID_tipo_planilla" Nullable="true" MaxLength="30" />
+  </ComplexType>
   <ComplexType Name="Consultar_Maquina_Result">
     <Property Type="String" Name="Serie" Nullable="false" MaxLength="30" />
     <Property Type="String" Name="ID_sucursal" Nullable="true" MaxLength="20" />
@@ -836,7 +806,7 @@
   </ComplexType>
   <ComplexType Name="Consultar_Producto_Result">
     <Property Type="String" Name="Bar_code" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_servicio" Nullable="true" MaxLength="30" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
     <Property Type="Int32" Name="Costo" Nullable="false" />
     <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="30" />
@@ -877,7 +847,7 @@
   </ComplexType>
   <ComplexType Name="Consultar_Tratamiento_Result">
     <Property Type="String" Name="ID" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="ID_servicio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ID_servicio" Nullable="true" MaxLength="30" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
   </ComplexType>
   <ComplexType Name="Generar_Plantilla_Result">
@@ -885,8 +855,19 @@
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
     <Property Type="String" Name="Apellido1" Nullable="false" MaxLength="30" />
     <Property Type="String" Name="Apellido2" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="Clases" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="Horas" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Clases" Nullable="true" />
+    <Property Type="Int32" Name="Horas" Nullable="true" />
     <Property Type="Int32" Name="Pago" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sucursal_Completo_Result">
+    <Property Type="String" Name="ID" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Max_capacidad" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Provincia" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Fecha_apertura" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Distrito" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Canton" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Cedula" Nullable="true" />
+    <Property Type="Int32" Name="Numero" Nullable="true" />
   </ComplexType>
 </Schema>

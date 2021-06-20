@@ -19,7 +19,5 @@ namespace Proyecto1
         public string Nombre { get; set; }
         public int Costo { get; set; }
         public string Descripcion { get; set; }
-    
-        public virtual Servicio Servicio { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace Proyecto1
         public int Costo { get; set; }
         public string Marca { get; set; }
     
-        public virtual Sucursal Sucursal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tipo_equipo> Tipo_equipo { get; set; }
     }

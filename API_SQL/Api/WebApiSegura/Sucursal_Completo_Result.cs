@@ -10,14 +10,17 @@
 namespace Proyecto1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Servicio
+    public partial class Sucursal_Completo_Result
     {
         public string ID { get; set; }
-        public string ID_sucursal { get; set; }
-        public string Descripcion { get; set; }
-    
-        public virtual Sucursal Sucursal { get; set; }
+        public Nullable<int> Max_capacidad { get; set; }
+        public string Nombre { get; set; }
+        public string Provincia { get; set; }
+        public Nullable<System.DateTime> Fecha_apertura { get; set; }
+        public string Distrito { get; set; }
+        public string Canton { get; set; }
+        public Nullable<int> Cedula { get; set; }
+        public Nullable<int> Numero { get; set; }
     }
 }

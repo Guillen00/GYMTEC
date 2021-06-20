@@ -17,7 +17,5 @@ namespace Proyecto1
         public string ID { get; set; }
         public string ID_servicio { get; set; }
         public string Nombre { get; set; }
-    
-        public virtual Servicio Servicio { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace Proyecto1
     {
         public int Cedula { get; set; }
         public string ID_tipo_planilla { get; set; }
-        public string Clases { get; set; }
-        public string Horas { get; set; }
+        public Nullable<int> Clases { get; set; }
+        public Nullable<int> Horas { get; set; }
     
         public virtual Empleado Empleado { get; set; }
         public virtual Tipo_planilla Tipo_planilla { get; set; }

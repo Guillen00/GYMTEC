@@ -11,14 +11,19 @@ namespace Proyecto1
 {
     using System;
     
-    public partial class Generar_Plantilla_Result
+    public partial class Consultar_Empleados_Completos_Result
     {
-        public int Cedula { get; set; }
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
-        public Nullable<int> Clases { get; set; }
-        public Nullable<int> Horas { get; set; }
-        public Nullable<int> Pago { get; set; }
+        public string Canton { get; set; }
+        public Nullable<int> Cedula { get; set; }
+        public string Correo { get; set; }
+        public string Distrito { get; set; }
+        public string Password { get; set; }
+        public string Provincia { get; set; }
+        public Nullable<int> Salario { get; set; }
+        public string ID_puesto { get; set; }
+        public string ID_tipo_planilla { get; set; }
     }
 }

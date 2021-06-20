@@ -59,6 +59,15 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_sucursal(suc));
         }
 
+        [HttpGet]
+        [Route("ConsultarSucursales")]
+        public IHttpActionResult ConsultarSucursales()
+        {
+            try { Proyecto2.DataRequest.BDConection.lista_sucursales(); }
+            catch { return Ok("La sucursal no se ha encontrado"); }
+
+            return Ok(Proyecto2.DataRequest.BDConection.lista_sucursales());
+        }
         //----------------------------------------------------------------------Tratamiento-----------------------------------------------------------
 
         [HttpPost]
@@ -1146,6 +1155,7 @@ namespace Proyecto2.Controllers
                 Sucursal sucursal = new Sucursal();
                 Activo activo = new Activo();
                 Numeros_sucursal num = new Numeros_sucursal();
+                Empleado_Admin adm = new Empleado_Admin();
                 sucursal.ID = suc.ID;
                 sucursal.Max_capacidad = suc.Max_capacidad;
                 sucursal.Nombre = suc.Nombre;
@@ -1164,20 +1174,27 @@ namespace Proyecto2.Controllers
                 num.Numero = suc.Numero;
                 Proyecto2.DataRequest.BDConection.agregar_numero_sucursal(num);
 
-            }catch { return Ok("La sucursal no ha sido agregada"); }
+                adm.Cedula = suc.Administrador;
+                adm.ID_sucursal = suc.ID;
+                Proyecto2.DataRequest.BDConection.agregar_Empleado_Admin(adm);
+
+
+            }
+            catch { return Ok("La sucursal no ha sido agregada"); }
 
             return Ok("La sucursal se ha agregado exitosamente");
         }
 
         [HttpPost]
-        [Route("ConsultaEmpeadoCompleto")]
-        public IHttpActionResult ConsultaEmpeadoCompleto(Sucursal_Completa suc)
+        [Route("EditarSucursalCompleta")]
+        public IHttpActionResult EditarSucursalCompleta(Sucursal_Completa suc)
         {
             try
             {
                 Sucursal sucursal = new Sucursal();
                 Activo activo = new Activo();
                 Numeros_sucursal num = new Numeros_sucursal();
+                Empleado_Admin adm = new Empleado_Admin();
                 sucursal.ID = suc.ID;
                 sucursal.Max_capacidad = suc.Max_capacidad;
                 sucursal.Nombre = suc.Nombre;
@@ -1185,7 +1202,7 @@ namespace Proyecto2.Controllers
                 sucursal.Canton = suc.Canton;
                 sucursal.Distrito = suc.Distrito;
                 sucursal.Fecha_apertura = suc.Fecha_apertura;
-                Proyecto2.DataRequest.BDConection.agregar_sucursal(sucursal);
+                Proyecto2.DataRequest.BDConection.editar_sucursal(sucursal);
 
                 activo.ID = suc.ID;
                 activo.Spa = suc.Spa;
@@ -1194,12 +1211,32 @@ namespace Proyecto2.Controllers
 
                 num.ID_sucursal = suc.ID;
                 num.Numero = suc.Numero;
-                Proyecto2.DataRequest.BDConection.agregar_numero_sucursal(num);
+                Proyecto2.DataRequest.BDConection.editar_numero_sucursal(num);
+
+                adm.Cedula = suc.Administrador;
+                adm.ID_sucursal = suc.ID;
+                Proyecto2.DataRequest.BDConection.editar_Empleado_Admin(adm);
 
             }
-            catch { return Ok("La sucursal no ha sido agregada"); }
+            catch { return Ok("La sucursal no ha sido editada"); }
 
-            return Ok("La sucursal se ha agregado exitosamente");
+            return Ok("La sucursal se ha editado exitosamente");
+        }
+
+        [HttpGet]
+        [Route("ConsultarSucursalCompleta")]
+        public IHttpActionResult ConsultarSucursalCompleta()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.Consultar_Sucursal_Completo();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.Consultar_Sucursal_Completo());
         }
 
         [HttpGet]
@@ -1213,6 +1250,94 @@ namespace Proyecto2.Controllers
             }
 
             return Ok(Proyecto2.DataRequest.BDConection.ALL_Empleado_Total());
+        }
+
+        [HttpPost]
+        [Route("AgregarEmpleadoCompleto")]
+        public IHttpActionResult AgregarEmpleadoCompleto(EmpleadoCompleto emp)
+        {
+            try{
+                Empleado em = new Empleado();
+                Consultar_Puestos_empleados_Result pue = new Consultar_Puestos_empleados_Result();
+                Tipos_planillas_empleados tip = new Tipos_planillas_empleados();
+                em.Cedula = emp.Cedula;
+                em.Nombre = emp.Nombre;
+                em.Apellido1 = emp.Apellido1;
+                em.Apellido2 = emp.Apellido2;
+                em.Canton = emp.Canton;
+                em.Correo = emp.Correo;
+                em.Distrito = emp.Distrito;
+                em.Password = emp.Password;
+                em.Provincia = emp.Provincia;
+                em.Salario = emp.Salario;
+                Proyecto2.DataRequest.BDConection.agregar_empleado(em);
+
+                pue.Cedula = emp.Cedula;
+                pue.ID_puesto = emp.ID_Puesto;
+                Proyecto2.DataRequest.BDConection.agregar_Puestos_Empleados(pue);
+
+                tip.Cedula = emp.Cedula;
+                tip.ID_tipo_planilla = emp.ID;
+                tip.Clases = 0;
+                tip.Horas = 0;
+                Proyecto2.DataRequest.BDConection.agregar_TPE(tip);
+            }catch{
+                return Ok("Error");
+            }
+
+            return Ok("Se agrego correctamente");
+        }
+
+        [HttpPost]
+        [Route("EditarEmpleadoCompleto")]
+        public IHttpActionResult EditarEmpleadoCompleto(EmpleadoCompleto emp)
+        {
+            try{
+                Empleado em = new Empleado();
+                Consultar_Puestos_empleados_Result pue = new Consultar_Puestos_empleados_Result();
+                Tipos_planillas_empleados tip = new Tipos_planillas_empleados();
+                em.Cedula = emp.Cedula;
+                em.Nombre = emp.Nombre;
+                em.Apellido1 = emp.Apellido1;
+                em.Apellido2 = emp.Apellido2;
+                em.Canton = emp.Canton;
+                em.Correo = emp.Correo;
+                em.Distrito = emp.Distrito;
+                em.Password = emp.Password;
+                em.Provincia = emp.Provincia;
+                em.Salario = emp.Salario;
+                Proyecto2.DataRequest.BDConection.editar_empleado(em);
+
+                pue.Cedula = emp.Cedula;
+                pue.ID_puesto = emp.ID_Puesto;
+                Proyecto2.DataRequest.BDConection.editar__Puestos_Empleados(pue);
+
+                tip.Cedula = emp.Cedula;
+                tip.ID_tipo_planilla = emp.ID;
+                tip.Clases = 0;
+                tip.Horas = 0;
+                Proyecto2.DataRequest.BDConection.editar_TPE(tip);
+            }catch{
+                return Ok("Error");
+            }
+
+            return Ok("Se edito correctamente");
+        }
+
+        [HttpGet]
+        [Route("ConsultarEmpleadoCompleto")]
+        public IHttpActionResult ConsultarEmpleadoCompleto()
+        {
+            try
+            {
+                Proyecto2.DataRequest.BDConection.Consultar_empleadoCompleto();
+            }
+            catch
+            {
+                return Ok("Error");
+            }
+
+            return Ok(Proyecto2.DataRequest.BDConection.Consultar_empleadoCompleto());
         }
     }
 }

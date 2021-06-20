@@ -18,7 +18,6 @@ namespace Proyecto1
         public Sucursal()
         {
             this.Clase = new HashSet<Clase>();
-            this.Maquina = new HashSet<Maquina>();
             this.Numeros_sucursal = new HashSet<Numeros_sucursal>();
             this.Servicio = new HashSet<Servicio>();
             this.Empleado = new HashSet<Empleado>();
@@ -34,8 +33,6 @@ namespace Proyecto1
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Clase> Clase { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Maquina> Maquina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Numeros_sucursal> Numeros_sucursal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
