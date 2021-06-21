@@ -38,14 +38,14 @@ namespace Proyecto2.DataRequest
             
             //con.Empleado.Add(emp);
 
-            con.SaveChanges();
+            
         }
         public static void borrar_empleado(Empleado emp)
         {
             con.Borrar_Empleado(emp.Cedula);
             //var customer = con.Empleado.Single(o => o.Cedula == emp.Cedula);
             //con.Empleado.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Empleado login_empleado(Empleado emp)
         {
@@ -54,7 +54,7 @@ namespace Proyecto2.DataRequest
 
             Empleado empleado = con.Empleado.Find(customer.Cedula);
             
-            con.SaveChanges();
+            
             return empleado;
         }
 
@@ -85,7 +85,7 @@ namespace Proyecto2.DataRequest
             
             con.Actualizar_Empleado(empleado.Cedula,empleado.Correo,empleado.Salario,empleado.Provincia,empleado.Distrito,empleado.Canton,empleado.Nombre,empleado.Apellido1,empleado.Apellido2,empleado.Password);
             
-            con.SaveChanges();
+            
             return empleado;
         }
 
@@ -94,7 +94,7 @@ namespace Proyecto2.DataRequest
             
             //var customer = con.Empleado.Single(o => o.Cedula == emp.Cedula);
             //con.Empleado.Remove(customer);
-            con.SaveChanges();
+            
             return con.Consultar_Empleados_Completos();
         }
 
@@ -105,14 +105,14 @@ namespace Proyecto2.DataRequest
 
             //con.Sucursal.Add(suc);
             con.Insertar_Sucursal(suc.ID, suc.Max_capacidad, suc.Nombre, suc.Provincia, suc.Distrito, suc.Canton, suc.Fecha_apertura);
-            con.SaveChanges();
+            
         }
         public static void borrar_sucursal(Sucursal suc)
         {
             con.Borrar_Sucursal(suc.ID);
             //var customer = con.Sucursal.Single(o => o.ID == suc.ID);
             //con.Sucursal.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Sucursal editar_sucursal(Sucursal suc)
         {
@@ -133,7 +133,7 @@ namespace Proyecto2.DataRequest
             con.Actualizar_Sucursal(sucursal.ID, sucursal.Max_capacidad, sucursal.Nombre, sucursal.Provincia, sucursal.Distrito, sucursal.Canton, sucursal.Fecha_apertura);
 
 
-            con.SaveChanges();
+            
             return sucursal;
         }
         public static Sucursal Consulta_sucursal(Sucursal suc)
@@ -143,7 +143,7 @@ namespace Proyecto2.DataRequest
 
             Sucursal sucursal = con.Sucursal.Find(customer.ID);
 
-            con.SaveChanges();
+            
             return sucursal;
         }
         public static List<Sucursal> lista_sucursales()
@@ -159,7 +159,7 @@ namespace Proyecto2.DataRequest
             con.Sucursal_Completo();
             //var customer = con.Numeros_sucursal.Single(o => o.ID_sucursal == num.ID_sucursal);
             //con.Numeros_sucursal.Remove(customer);
-            con.SaveChanges();
+            
             return con.Sucursal_Completo();
         }
         //---------------------------------------------------------------Tratamiento------------------------------------------------------------------
@@ -168,14 +168,14 @@ namespace Proyecto2.DataRequest
 
             //con.Tratamiento.Add(tra);
             con.Insertar_Tratamiento(tra.ID, tra.ID_servicio, tra.Nombre);
-            con.SaveChanges();
+            
         }
         public static void borrar_tratamiento(Tratamiento tra)
         {
             con.Borrar_Tratamiento(tra.ID);
             //var customer = con.Tratamiento.Single(o => o.ID == tra.ID);
             //con.Tratamiento.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Tratamiento editar_tratamiento(Tratamiento tra)
         {
@@ -189,7 +189,7 @@ namespace Proyecto2.DataRequest
             if (tra.Nombre != "") { tratamiento.Nombre = tra.Nombre; }
             con.Actualizar_Tratamiento(tratamiento.ID, tratamiento.ID_servicio, tratamiento.Nombre);
 
-            con.SaveChanges();
+            
             return tratamiento;
         }
         public static Tratamiento Consulta_tratamiento(Tratamiento tra)
@@ -199,7 +199,7 @@ namespace Proyecto2.DataRequest
 
             Tratamiento tratamiento = con.Tratamiento.Find(customer.ID);
 
-            con.SaveChanges();
+            
             return tratamiento;
         }
 
@@ -217,14 +217,14 @@ namespace Proyecto2.DataRequest
 
             //con.Puesto.Add(pue);
             con.Insertar_Puesto(pue.ID, pue.Descripcion);
-            con.SaveChanges();
+            
         }
         public static void borrar_Puesto(Puesto pue)
         {
             con.Borrar_Puesto(pue.ID);
             //var customer = con.Puesto.Single(o => o.ID == pue.ID);
             //con.Puesto.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Puesto editar_Puesto(Puesto pue)
         {
@@ -235,7 +235,7 @@ namespace Proyecto2.DataRequest
 
             if (pue.Descripcion != "") { puesto.Descripcion = pue.Descripcion; }
             con.Actualizar_Puesto(pue.ID, pue.Descripcion);
-            con.SaveChanges();
+            
             return puesto;
         }
         public static Puesto Consulta_Puesto(Puesto pue)
@@ -245,7 +245,7 @@ namespace Proyecto2.DataRequest
 
             Puesto puesto = con.Puesto.Find(customer.ID);
 
-            con.SaveChanges();
+            
             return puesto;
         }
 
@@ -262,14 +262,14 @@ namespace Proyecto2.DataRequest
 
             //con.Tipo_planilla.Add(Tpla);
             con.Insertar_Tipo_Planilla(Tpla.ID, Tpla.Descripcion);
-            con.SaveChanges();
+            
         }
         public static void borrar_Tplanilla(Tipo_planilla Tpla)
         {
             con.Borrar_Tipo_Planilla(Tpla.ID);
             //var customer = con.Tipo_planilla.Single(o => o.ID == Tpla.ID);
             //con.Tipo_planilla.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Tipo_planilla editar_Tplanilla(Tipo_planilla Tpla)
         {
@@ -280,7 +280,7 @@ namespace Proyecto2.DataRequest
 
             if (Tpla.Descripcion != "") { tplanilla.Descripcion = Tpla.Descripcion; }
             con.Actualizar_Tipo_Planilla(tplanilla.ID, tplanilla.Descripcion);
-            con.SaveChanges();
+            
             return tplanilla;
         }
         public static Tipo_planilla Consulta_Tplanilla(Tipo_planilla Tpla)
@@ -290,7 +290,7 @@ namespace Proyecto2.DataRequest
 
             Tipo_planilla tplanilla = con.Tipo_planilla.Find(customer.ID);
 
-            con.SaveChanges();
+            
             return tplanilla;
         }
         public static List<Tipo_planilla> lista_tipo_planilla()
@@ -306,14 +306,14 @@ namespace Proyecto2.DataRequest
 
             //con.Servicio.Add(ser);
             con.Insertar_Servicio(ser.ID, ser.ID_sucursal, ser.Descripcion);
-            con.SaveChanges();
+            
         }
         public static void borrar_Servicio(Servicio ser)
         {
             con.Borrar_Servicio(ser.ID);
             //var customer = con.Servicio.Single(o => o.ID == ser.ID);
             //con.Servicio.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Servicio editar_Servicio(Servicio ser)
         {
@@ -325,7 +325,7 @@ namespace Proyecto2.DataRequest
             if (ser.ID_sucursal != "") { servicio.ID_sucursal = ser.ID_sucursal; }
             if (ser.Descripcion != "") { servicio.Descripcion = ser.Descripcion; }
             con.Actualizar_Servicio(servicio.ID, servicio.ID_sucursal, ser.Descripcion);
-            con.SaveChanges();
+            
             return servicio;
         }
         public static Servicio Consulta_Servicio(Servicio ser)
@@ -335,7 +335,7 @@ namespace Proyecto2.DataRequest
 
             Servicio servicio = con.Servicio.Find(customer.ID);
 
-            con.SaveChanges();
+            
             return servicio;
         }
         public static List<Servicio> lista_Servicio()
@@ -351,14 +351,14 @@ namespace Proyecto2.DataRequest
             con.Insertar_Tipo_equipo(Tequi.ID, Tequi.Nombre);
             //con.Tipo_equipo.Add(Tequi);
 
-            con.SaveChanges();
+            
         }
         public static void borrar_TEquipo(Tipo_equipo Tequi)
         {
             con.Borrar_Tipo_equipo(Tequi.ID);
             //var customer = con.Tipo_equipo.Single(o => o.ID == Tequi.ID);
             //con.Tipo_equipo.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Tipo_equipo editar_TEquipo(Tipo_equipo Tequi)
         {
@@ -370,7 +370,7 @@ namespace Proyecto2.DataRequest
             if (Tequi.Nombre != "") { tequipo.Nombre = Tequi.Nombre; }
 
             con.Actualizar_Tipo_equipo(tequipo.ID, tequipo.Nombre);
-            con.SaveChanges();
+            
             return tequipo;
         }
         public static Tipo_equipo Consulta_TEquipo(Tipo_equipo Tequi)
@@ -380,7 +380,7 @@ namespace Proyecto2.DataRequest
 
             Tipo_equipo tequipo = con.Tipo_equipo.Find(customer.ID);
 
-            con.SaveChanges();
+            
             return tequipo;
         }
 
@@ -397,14 +397,14 @@ namespace Proyecto2.DataRequest
 
             //con.Maquina.Add(maq);
             con.Insertar_Maquina(maq.Serie, maq.ID_sucursal, maq.Costo, maq.Marca);
-            con.SaveChanges();
+            
         }
         public static void borrar_Maquina(Maquina maq)
         {
             con.Borrar_Maquina(maq.Serie);
             //var customer = con.Maquina.Single(o => o.Serie == maq.Serie);
             //con.Maquina.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static Maquina editar_Maquina(Maquina maq)
         {
@@ -417,7 +417,7 @@ namespace Proyecto2.DataRequest
             if (maq.Marca != "") { maquina.Marca = maq.Marca; }
             if (maq.Costo != 0) { maquina.Costo = maq.Costo; }
             con.Actualizar_Maquina(maquina.Serie, maquina.ID_sucursal, maquina.Costo, maquina.Marca);
-            con.SaveChanges();
+            
             return maquina;
         }
         public static Maquina Consulta_Maquina(Maquina maq)
@@ -427,7 +427,7 @@ namespace Proyecto2.DataRequest
 
             Maquina maquina = con.Maquina.Find(customer.Serie);
 
-            con.SaveChanges();
+            
             return maquina;
         }
         public static List<Maquina> lista_Maquina()
@@ -445,14 +445,14 @@ namespace Proyecto2.DataRequest
             con.Insertar_Rol(rol.ID,rol.Descripcion);
             //con.Rol.Add(rol);
 
-            con.SaveChanges();
+            
         }
         public static void borrar_Rol(Rol rol)
         {
             con.Borrar_Rol(rol.ID);
            // var customer = con.Rol.Single(o => o.ID == rol.ID);
             //con.Rol.Remove(customer);
-            con.SaveChanges();
+            
         }
 
         //--------------------------------------------------------------------------Numeros de Sucursal----------------------------------------------------
@@ -461,21 +461,21 @@ namespace Proyecto2.DataRequest
             con.Insertar_Numeros_sucursal(num.ID_sucursal, num.Numero);
             //con.Numeros_sucursal.Add(num);
 
-            con.SaveChanges();
+            
         }
         public static void borrar_numero_sucursal(Numeros_sucursal num)
         {
             con.Borrar_Numeros_sucursal(num.ID_sucursal);
             //var customer = con.Numeros_sucursal.Single(o => o.ID_sucursal == num.ID_sucursal);
             //con.Numeros_sucursal.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static void editar_numero_sucursal(Numeros_sucursal num)
         {
             con.Actualizar_Numero_Sucursal(num.ID_sucursal,num.Numero);
             //var customer = con.Numeros_sucursal.Single(o => o.ID_sucursal == num.ID_sucursal);
             //con.Numeros_sucursal.Remove(customer);
-            con.SaveChanges();
+            
         }
 
 
@@ -485,20 +485,20 @@ namespace Proyecto2.DataRequest
             con.Insertar_Tipos_planillas_empleados(tpe.Cedula, tpe.ID_tipo_planilla, tpe.Clases, tpe.Horas);
             //con.Tipos_planillas_empleados.Add(tpe);
 
-            con.SaveChanges();
+            
         }
         public static void borrar_TPE(Tipos_planillas_empleados tpe)
         {
             con.Borrar_Tipos_planillas_empleados(tpe.Cedula);
             //var customer = con.Tipos_planillas_empleados.Single(o => o.ID_tipo_planilla == tpe.ID_tipo_planilla);
             //con.Tipos_planillas_empleados.Remove(customer);
-            con.SaveChanges();
+            
         }
         public static void editar_TPE(Tipos_planillas_empleados tpe)
         {
             
             con.Actualizar_Tipos_planillas_empleados(tpe.Cedula, tpe.ID_tipo_planilla, tpe.Clases, tpe.Horas);
-            con.SaveChanges();
+            
             
         }
         //----------------------------------------------------------------------Producto-------------------------------------------------------------
@@ -506,14 +506,14 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Producto(pro.Bar_code, pro.ID_servicio, pro.Nombre, pro.Costo, pro.Descripcion);
             //con.Producto.Add(pro);
-            con.SaveChanges();
+            
         }
         public static void borrar_producto(Producto pro)
         {
             con.Borrar_Producto(pro.Bar_code);
             //var customer = con.Producto.Single(o => o.Bar_code == pro.Bar_code);
             //con.Producto.Remove(customer);
-            con.SaveChanges();
+            
         }
 
         public static Producto editar_producto(Producto pro)
@@ -528,7 +528,7 @@ namespace Proyecto2.DataRequest
 
             if (pro.Descripcion != "") { producto.Descripcion = pro.Descripcion; }
             con.Actualizar_Producto(pro.Bar_code, pro.ID_servicio, pro.Nombre, pro.Costo, pro.Descripcion);
-            con.SaveChanges();
+            
             return producto;
         }
 
@@ -543,7 +543,7 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Activo(act.ID, act.Spa, act.Tienda);
             
-            con.SaveChanges();
+            
         }
         public static void editar_activo(Activo act)
         {
@@ -557,7 +557,7 @@ namespace Proyecto2.DataRequest
 
 
             con.Actualizar_Activo(act.ID, act.Spa, act.Tienda);
-            con.SaveChanges();
+            
         }
         public static Activo consultar_Activo(Activo act)
         {
@@ -572,12 +572,12 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Clase(cla.ID, cla.ID_sucursal, cla.Tipo, cla.Modalidad, cla.Instructor, cla.Hora_inicio, cla.Hora_fin, cla.Fecha);
             
-            con.SaveChanges();
+            
         }
         public static void borrar__Clase(Clase cla)
         {
             con.Borrar_Clase(cla.ID);
-            con.SaveChanges();
+            
         }
 
         public static Clase editar__Clase(Clase cla)
@@ -586,7 +586,7 @@ namespace Proyecto2.DataRequest
 
             Clase clase = con.Clase.Find(customer.ID);
             con.Actualizar_Clase(cla.ID, cla.ID_sucursal, cla.Tipo, cla.Modalidad, cla.Instructor, cla.Hora_inicio, cla.Hora_fin, cla.Fecha);
-            con.SaveChanges();
+            
             return clase;
         }
 
@@ -604,12 +604,12 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Cliente(cli.Cedula);
 
-            con.SaveChanges();
+            
         }
         public static void borrar__Cliente(Cliente cli)
         {
             con.Borrar_Cliente(cli.Cedula);
-            con.SaveChanges();
+            
         }
 
         public static List<Cliente> lista_Cliente()
@@ -624,19 +624,19 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Roles_empleados(rol.Cedula, rol.ID_rol);
 
-            con.SaveChanges();
+            
         }
         public static void borrar__Roles_Empleados(Consultar_Roles_empleados_Result rol)
         {
             con.Borrar_Roles_empleados(rol.Cedula);
-            con.SaveChanges();
+            
         }
 
         public static void editar__Roles_Empleados(Consultar_Roles_empleados_Result rol)
         {
 
             con.Actualizar_Roles_empleados(rol.Cedula, rol.ID_rol);
-            con.SaveChanges();
+            
             
         }
 
@@ -654,19 +654,19 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Puestos_empleados(pue.Cedula, pue.ID_puesto);
 
-            con.SaveChanges();
+            
         }
         public static void borrar__Puestos_Empleados(Consultar_Puestos_empleados_Result pue)
         {
             con.Borrar_Roles_empleados(pue.Cedula);
-            con.SaveChanges();
+            
         }
 
         public static void editar__Puestos_Empleados(Consultar_Puestos_empleados_Result pue)
         {
 
             con.Actualizar_Puestos_empleados(pue.Cedula, pue.ID_puesto);
-            con.SaveChanges();
+            
 
         }
 
@@ -683,12 +683,12 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Empleado_Admin(emp.Cedula, emp.ID_sucursal);
 
-            con.SaveChanges();
+            
         }
         public static void borrar__Empleado_Admin(Empleado_Admin emp)
         {
             con.Borrar_Empleado_Admin(emp.Cedula);
-            con.SaveChanges();
+            
         }
 
         public static List<Consultar_Empleado_Admin_Result> consultar_Empleado_Admin(Consultar_Empleado_Admin_Result emp)
@@ -710,12 +710,12 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Clase_Cliente(cli.Cedula, cli.ID_clase);
 
-            con.SaveChanges();
+            
         }
         public static void borrar__Clase_Cliente(Consultar_Clase_Cliente_Result cli)
         {
             con.Borrar_Clase_Cliente(cli.Cedula);
-            con.SaveChanges();
+            
         }
 
         public static List<Consultar_Clase_Cliente_Result> consultar_Clase_Cliente(Consultar_Clase_Cliente_Result cli)
@@ -730,19 +730,19 @@ namespace Proyecto2.DataRequest
         {
             con.Insertar_Maquinas_Tipos(maq.Serie, maq.ID);
 
-            con.SaveChanges();
+            
         }
         public static void borrar__Maquina_Tipo(Maquina_Tipo maq)
         {
             con.Borrar_Maquinas_Tipos(maq.Serie);
-            con.SaveChanges();
+            
         }
 
         public static void editar__Maquina_Tipo(Maquina_Tipo maq)
         {
 
             con.Actualizar_Maquinas_Tipos(maq.Serie, maq.ID);
-            con.SaveChanges();
+            
 
         }
 
@@ -752,81 +752,81 @@ namespace Proyecto2.DataRequest
         {
 
             con.Generar_Plantilla();
-            con.SaveChanges();
+            
             return con.Generar_Plantilla();
         }
 
         public static DbSet<Maquina_R_Tipo> MaquinaTipo()
         {
-            con.SaveChanges();
+            
             return con.Maquina_R_Tipo;
         }
 
         public static DbSet<Clase_R_Cliente> ClaseCliente()
         {
-            con.SaveChanges();
+            
             return con.Clase_R_Cliente;
         }
 
         //-------------------------------------------------------------------------GET ALL--------------------------------------------------------
         public static ObjectResult<Consultar_All_Sucursales_Result> ALL_Sucursal()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Sucursales();
         }
 
         public static ObjectResult<Consultar_All_Clase_Result> ALL_Clases()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Clase();
         }
 
         public static ObjectResult<Consultar_All_Empleados_Result> ALL_Empleados()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Empleados();
         }
 
         public static ObjectResult<Consultar_All_Maquinas_Result> ALL_Maquinas()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Maquinas();
         }
         public static ObjectResult<Consultar_All_Productos_Result> ALL_Productos()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Productos();
         }
         public static ObjectResult<Consultar_All_Puestos_Result> ALL_Puestos()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Puestos();
         }
         public static ObjectResult<Consultar_All_Servicios_Result> ALL_Servicios()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Servicios();
         }
 
         public static ObjectResult<Consultar_All_Tipo_equipos_Result> ALL_Tipo_Equipo()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Tipo_equipos();
         }
         public static ObjectResult<Consultar_All_Tipo_Planillas_Result> ALL_Tipo_Planilla()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Tipo_Planillas();
         }
         public static ObjectResult<Consultar_All_Tratamientos_Result> ALL_Tratamiento()
         {
-            con.SaveChanges();
+            
             return con.Consultar_All_Tratamientos();
         }
 
         public static ObjectResult<Consultar_Empleado_Total_Result> ALL_Empleado_Total()
         {
-            con.SaveChanges();
+           
             return con.Consultar_Empleado_Total();
         }
 
