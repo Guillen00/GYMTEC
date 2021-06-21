@@ -1,11 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\API_MONGO",
-    "\\API_MONGO\\Api",
     "\\API_MONGO\\Api\\WebApiSegura",
-    "\\API_MONGO\\Api\\WebApiSegura\\Controllers"
+    "\\API_MONGO\\Api\\WebApiSegura\\Controllers",
+    "\\API_SQL",
+    "\\API_SQL\\Api"
   ],
-  "SelectedNode": "\\API_MONGO\\Api\\WebApiSegura\\Controllers\\LoginController.cs",
+  "SelectedNode": "\\API_SQL\\Api\\API_SQL.sln",
   "PreviewInSolutionExplorer": false
 }

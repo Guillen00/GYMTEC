@@ -160,7 +160,6 @@ C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\System.Web.Ht
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\es\System.Web.Http.resources.dll
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\API_MONGO.csprojAssemblyReference.cache
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\API_MONGO.csproj.CoreCompileInputs.cache
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\API_MONGO.csproj.CopyComplete
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\Poyecto1.dll
@@ -168,3 +167,4 @@ C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\Poyecto
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\MongoDB.Driver.Legacy.dll
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\MongoDB.Driver.Legacy.xml
 C:\Users\leona\Source\Repos\GYM-TEC\API_MONGO\Api\WebApiSegura\bin\EasyEncryption.dll
+C:\Users\leona\source\repos\GYM-TEC\API_MONGO\Api\WebApiSegura\obj\Debug\API_MONGO.csproj.AssemblyReference.cache

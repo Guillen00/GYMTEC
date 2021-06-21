@@ -20,7 +20,9 @@ namespace Proyecto2.Controllers
          */
     public class LoginController : ApiController
     {
-        
+        /*
+         * Este post registra un nuevo cliente a la base de datos en mongo db
+         */
         [HttpPost]
         [Route("Registrar")]
         public IHttpActionResult Registrar(Cliente nuevo)
@@ -36,7 +38,9 @@ namespace Proyecto2.Controllers
             }
             return Ok("Usuario Registrado");
         }
-
+        /*
+         * Esta peticion verifica si los datos ingresados son correctos y se relacionan con algun cliente almacenado en la base de datos
+         */
         [HttpPost]
         [Route("Verificar")]
         public IHttpActionResult Verificar(Cliente nuevo)
@@ -69,7 +73,9 @@ namespace Proyecto2.Controllers
 
             
         }
-
+        /*
+         * Este get retorna todos los empleados, que tiene almacenados la base de datos en mongo db
+         */
         [HttpGet]
         [Route("ConsultarTodos")]
         public IHttpActionResult Consultar_todos()
@@ -80,7 +86,9 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BD_Mongo_Conection.Consultar_todos());
             
         }
-
+        /*
+         * Por medio del correo del cliente se puede pedir toda la informacion de un cliente
+         */
         [HttpPost]
         [Route("Consultar_Correo")]
         public IHttpActionResult Consultar_correo(Cliente nuevo)
@@ -98,8 +106,10 @@ namespace Proyecto2.Controllers
 
         }
 
-        
 
+        /*
+         * Este post recibe un numero de cedula el cual utiliza par borra al cliente en la base de datos
+         */
         [HttpPost]
         [Route("Borrar")]
         public IHttpActionResult Borrar(Cliente nuevo)
@@ -112,7 +122,9 @@ namespace Proyecto2.Controllers
             
             return Ok("Usuario ha sido borrado");
         }
-
+        /*
+         * De igual manera recibe un numero de cedula, la cual utiliza como parametro fijo o llave para poder editar los demas atributos
+         */
         [HttpPost]
         [Route("Editar")]
         public IHttpActionResult Editar(Cliente nuevo)

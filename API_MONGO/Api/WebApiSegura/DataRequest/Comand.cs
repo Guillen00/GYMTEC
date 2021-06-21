@@ -14,13 +14,17 @@ using MongoDB.Driver.Builders;
 namespace Proyecto2.DataRequest
 {
     /*
-     *  
+     *  En esta clase se creara la conexion a la base de datos den mongodb y ademas se crearan las diferentes peticoiones a la base, relacionados a la variable 
+     *  que contiene la infromacion de la base de datos
      */
     public static class BD_Mongo_Conection
     {
 
 
-
+        /*
+         * Se crean las variables necesarias para la coneccion de la base de datos y en la funcion contructora inicializa la variable con una ruta a la cual se le 
+         * realizaran las peticiones 
+         */
         private static MongoServer server;
         private static string database { get; set; }
         public static void MongoDataService()
@@ -30,7 +34,9 @@ namespace Proyecto2.DataRequest
             server = client.GetServer();
 
         }
-
+        /*
+         * Esta funcion realiza una insercion a la collecion cliente 
+         */
         public static string Insertar(Cliente cliente)
         {
             var db = server.GetDatabase("GymTEC");
@@ -41,7 +47,9 @@ namespace Proyecto2.DataRequest
             return ("Insertado");
 
         }
-
+        /*
+         * Esta funcion hace una peticion sobre todos los clientes almacenados
+         */
         public static List<Cliente> Consultar_todos()
         {
             var db = server.GetDatabase("GymTEC");
@@ -50,6 +58,9 @@ namespace Proyecto2.DataRequest
             return (lista);
 
         }
+        /*
+         * Esta funcion busca la informacion sobre un cliente relacionado a un correo electronico
+         */
         public static List<Cliente> Consultar_correo(Cliente cliente)
         {
             var db = server.GetDatabase("GymTEC");
@@ -59,7 +70,9 @@ namespace Proyecto2.DataRequest
             return (resultado);
 
         }
-
+        /*
+         * Esta funcion edita los datos de un cliente , tomando como referencia el numero de cedula de este 
+         */
         public static string Editar(Cliente cliente)
         {
             //error
@@ -80,6 +93,10 @@ namespace Proyecto2.DataRequest
             return ("Editado");
 
         }
+
+        /*
+         * Esta funcion borra un cliente relacionado a un numero de cedula
+         */
         public static string Borrar(Cliente cliente)
         {
             //error
