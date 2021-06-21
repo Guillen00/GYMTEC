@@ -21,7 +21,9 @@ namespace Proyecto2.Controllers
     public class LoginController : ApiController
     {
         
-        //Verifica si el usuario ingresado, correo y Contraseña coinciden con alguno guardado en la base de datos 
+        /*
+         * Esta funcion de encarga de retornan todos los empleados registrados
+         */
         [HttpGet]
         [Route("lista_Empleados")]
         public IHttpActionResult Lista_Empleados()
@@ -31,6 +33,9 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.lista_empleados());
         }
 
+        /*
+         * Este post agrega un nuevo empleado ,llamando a la funcion en command.cs
+         */
         [HttpPost]
         [Route("Agregar_Empleados")]
         public IHttpActionResult Agregar_Empleado(Empleado emp)
@@ -46,6 +51,9 @@ namespace Proyecto2.Controllers
             return Ok("Empleado Agregado");
             
         }
+        /*
+         * Este post elimina un  empleado ,llamando a la funcion en command.cs con la cedula del empleado
+         */
         [HttpPost]
         [Route("Borrar_Empleado")]
         public IHttpActionResult Borrar_Empleado(Empleado emp)
@@ -58,7 +66,9 @@ namespace Proyecto2.Controllers
 
             return Ok("Empleado Borrado");
         }
-
+        /*
+         * Este post comprueba la existencia de un empleado ,llamando a la funcion en command.cs login, verificando que si existe y que su password es correcta
+         */
         [HttpPost]
         [Route("Login_Empleados")]
         public IHttpActionResult Login_Empleado(Empleado emp)
@@ -72,13 +82,15 @@ namespace Proyecto2.Controllers
 
            
            if (EasyEncryption.MD5.ComputeMD5Hash(emp.Password) == revisar.Password) {
-                //Arreglar el rol ingresando en la tabla rol que tiene el mismo id--------------------------------------------------------------------------------------
+                
                 return Ok(revisar.Rol);
             }
 
             return Ok("Password incorrecta");
         }
-
+        /*
+         * Este post edita un empleado ,llamando a la funcion en command.cs relacionado a un numero de cedula unico
+         */
         [HttpPost]
         [Route("Editar_Empleados")]
         public IHttpActionResult Editar_Empleado(Empleado emp)
@@ -92,6 +104,10 @@ namespace Proyecto2.Controllers
             return Ok("Empleado Actualizado");
             
         }
+
+        /*
+         * Este post consulta un  empleado ,llamando a la funcion en command.cs relaconado a un numero de cedula unico
+         */
         [HttpPost]
         [Route("Consultar_Empleado")]
         public IHttpActionResult Consultar_Empleado(Empleado emp)

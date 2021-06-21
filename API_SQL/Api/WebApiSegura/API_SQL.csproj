@@ -315,11 +315,9 @@
     <Compile Include="Consultar_Tratamiento_Result.cs">
       <DependentUpon>GymTEC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GeneralController.cs" />
-    <Compile Include="DataRequest\Correo_PDF.cs" />
     <Compile Include="DataRequest\DataClass.cs" />
     <Compile Include="DataRequest\Comand.cs" />
     <Compile Include="Empleado.cs">

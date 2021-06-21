@@ -12,12 +12,20 @@ namespace Proyecto2.Controllers
     /// <summary>
     /// customer controller class for testing security token 
     /// </summary>
-
+    /*
+     * Es esta Clase GeneralController se controlaran y crearan todas las peticiones disponibles para el API donde se editaran las diferentes tablas creadas en 
+     * la base de datos de SQL Server, agrupa la informacion retornante para el dominio de la pagina web la cual es la que realuza peticiones a este servicio web
+     */
     [AllowAnonymous]
     //[Authorize]
     [RoutePrefix("api/general")]
     public class GeneralController : ApiController
     {
+        /*
+         * Para el apartado se sucursal, recibe los tipos de datos especificados en su clase, la cual tiene la funcion de agregar una sucursal nueva ,edita todos los 
+         * datos de esta la cual no vayan en nulo, referenciados de su llave primaria ID, de igual forma borra y consulta de manera especifica para un solo elemento y 
+         * una consuta de manera general la cual trae todas las sucursales y todos los servicios, tratamiento, productos clases relacionados a las sucursales.
+         */
         //---------------------------------------------------------------------------Sucursal-----------------------------------------------------
         [HttpPost]
         [Route("AgregarSucursal")]
@@ -68,6 +76,12 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.lista_sucursales());
         }
+
+        /*
+         *Para el apartado de los tatamientos, la cual se maneja el tipo de informacion y se realizan peticiones como agregar tratamientos ,editar , borra y consulta
+         *personalizada dependiedo de su llave primaria Id y una consulta la cual retorna toda la informacion de los tratamientos para el manejo de la pagina web.
+         *
+         */
         //----------------------------------------------------------------------Tratamiento-----------------------------------------------------------
 
         [HttpPost]
@@ -110,6 +124,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_tratamiento(tra));
         }
 
+        /*
+         * Para el apartado de puesto, se contienen las cuatro funciones basicas personalizadas, agregar, editar, borra y consultar ubicando por la llave primaria
+         * con la cual es un listado de puestos, donde tiene un id y el nombre del puesto,y una consulta general donde retorna todos los puestos .
+         */
         //--------------------------------------------------------------------Puesto------------------------------------------------------------------
 
         [HttpPost]
@@ -149,6 +167,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_Puesto(pue));
         }
 
+        /*
+         * En el apatado de Tipo de planilla , se agregan , borran , editan y se consulta de manera personalizada , retornando una tupla especifica,manejada por in ID 
+         * el cual es su llave primaria , de igaul manera es una tabla la cual contiene un Id y una descripcion del tipo de planilla.
+         */
         //---------------------------------------------------------------Tipo de Plantilla------------------------------------------------------------
 
         [HttpPost]
@@ -188,6 +210,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_Tplanilla(Tp));
         }
 
+        /*
+         * En el siguiente apartado de servicios, se aplican las peticiones de agregar , editar, borrar ,controlado por un ID el cual es su llave primaria, y debe estar conectado
+         * a una sucursal por su ID , ya que es su llave foranea , tambien una consulta personalizada por el id del servicio.
+         */
         //------------------------------------------------------------------Servicio------------------------------------------------------------------
         [HttpPost]
         [Route("AgregarServicio")]
@@ -227,6 +253,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_Servicio(ser));
         }
 
+        /*
+         * En el apartado Tipo de equipo,contiene las peticiones de Agregar, editar, borra y consultar de una manera especifica identificado por el tipo de planilla
+         * identificado por un id y una descripcion del tipo de equipo
+         */
         //-------------------------------------------------------------Tipo de Equipo------------------------------------------------------------------
 
         [HttpPost]
@@ -267,6 +297,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_TEquipo(TE));
         }
 
+        /*
+         * En el apartado Maquina, contiene las maquinas de las sucursales , con las peticiones de Agregar, editar, borrar y una consulta sobre un numero de serie 
+         * retornando todos los datos de la maquina.
+         */
         //-----------------------------------------------------------------------------Maquina-------------------------------------------------------
 
         [HttpPost]
@@ -306,6 +340,11 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.Consulta_Maquina(maq));
         }
+
+        /*
+         * En este apartado, de manejan los tipos de Productos, cuando tiene las peticiones de agregar, editar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //---------------------------------------------------------------------------Productos------------------------------------------------------
         [HttpPost]
         [Route("AgregarProducto")]
@@ -371,6 +410,11 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.consultar_producto(pro));
         }
+
+        /*
+         * En este apartado, de manejan los tipos de Rol, cuando tiene las peticiones de agregar, borrar  por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //-------------------------------------------------------------------------Rol-------------------------------------------------------------
 
         [HttpPost]
@@ -406,6 +450,10 @@ namespace Proyecto2.Controllers
             return Ok("Rol borrado");
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Numeros de sucursal, cuando tiene las peticiones de agregar , borrar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //---------------------------------------------------------------------Numero Sucursal-----------------------------------------------------------
         [HttpPost]
         [Route("AgregarNumero_Sucursal")]
@@ -440,6 +488,10 @@ namespace Proyecto2.Controllers
             return Ok("Numero de Sucursal borrado");
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Tipo Planilla Empleado, cuando tiene las peticiones de agregar, editar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //-----------------------------------------------------------------Tipo_Planilla_Empleado-----------------------------------------------------
         [HttpPost]
         [Route("AgregarTipo_Planilla_Empleado")]
@@ -490,6 +542,10 @@ namespace Proyecto2.Controllers
             return Ok("Tipo de Planilla relacionada a un empleado editado");
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Activo, cuando tiene las peticiones de agregar, editar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //-------------------------------------------------------------------------Activo---------------------------------------------------------------
         [HttpPost]
         [Route("AgregarActivo")]
@@ -540,6 +596,11 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.consultar_Activo(act));
         }
+
+        /*
+         * En este apartado, de manejan los tipos de Clase, cuando tiene las peticiones de agregar, editar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
 
         //------------------------------------------------------------------------Clase------------------------------------------------------
         [HttpPost]
@@ -607,6 +668,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.consultar__Clase(cla));
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Clase Cliente, cuando tiene las peticiones de agregar, borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //--------------------------------------------------------------------------------Clase_Cliente------------------------------------------------------
         [HttpPost]
         [Route("AgregarClase_Cliente")]
@@ -658,6 +723,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.consultar_Clase_Cliente(cla));
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Cliente, cuando tiene las peticiones de agregar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //-----------------------------------------------------------------------Cliente------------------------------------------------------------------
         [HttpPost]
         [Route("AgregarCliente")]
@@ -709,6 +778,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.lista_Cliente());
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Empleado Admin, cuando tiene las peticiones de agregar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //---------------------------------------------------------------------------Empleado_Admin----------------------------------------------
 
         [HttpPost]
@@ -749,15 +822,19 @@ namespace Proyecto2.Controllers
         [Route("ConsultarEmpleado_Admin")]
         public IHttpActionResult ConsultarEmpleado_Admin(Consultar_Empleado_Admin_Result emp)
         {
-            //try{
+            try{
                 Proyecto2.DataRequest.BDConection.consultar_Empleado_Admin(emp);
-            //}catch{
-                //return Ok("Empleado_Admin no encontrados");
-            //}
+            }catch{
+                return Ok("Empleado_Admin no encontrados");
+            }
 
             return Ok(Proyecto2.DataRequest.BDConection.consultar_Empleado_Admin(emp));
         }
 
+        /*
+         * En este apartado, de manejan los tipos de Maquina Tipo, cuando tiene las peticiones de agregar, editar , borra  por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //---------------------------------------------------------------------Maquina Tipo-------------------------------------------------------------
         [HttpPost]
         [Route("AgregarMaquina_Tipo")]
@@ -807,7 +884,10 @@ namespace Proyecto2.Controllers
 
             return Ok("Maquina Tipo editado");
         }
-
+        /*
+         * En este apartado, de manejan los tipos de Puesto Empleado, cuando tiene las peticiones de agregar, editar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //-----------------------------------------------------------------------------Puesto_Empleado------------------------------------------------
         [HttpPost]
         [Route("AgregarPuesto_Empleado")]
@@ -874,7 +954,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.consultar__Puestos_Empleados(pue));
         }
 
-
+        /*
+         * En este apartado, de manejan los tipos de Roles Empleados, cuando tiene las peticiones de agregar, editar , borra y consultar por medio de la llave foranea 
+         * respectiva de la tabla,llamando funciones respectivas al tipo de datos en command.cs
+         */
         //-------------------------------------------------------------------------Roles_Empleado----------------------------------------------------
         [HttpPost]
         [Route("AgregarRoles_Empleado")]
@@ -941,7 +1024,10 @@ namespace Proyecto2.Controllers
             return Ok(Proyecto2.DataRequest.BDConection.consultar__Roles_Empleados(rol));
         }
 
-
+        /*
+         * En este apartado, de manejan los tipos de Plantilla, llama la funcion de generar planilla la cual como su nombre lo dice retorna una planilla conformada
+         * por los empleados registrados y con el saldo a pagar por sus servicios 
+         */
         //-----------------------------------------------------------------------------Planilla----------------------------
         [HttpGet]
         [Route("Generar_Planilla")]
@@ -958,7 +1044,10 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.Planilla());
         }
-
+        /*
+         * En este apartado, de manejan los tipos de Vistas, las cuales son funciones de select predeterminadas para visualizar informacion sobre la base de datos de
+         * ciertas tablas 
+         */
         //----------------------------------------------------------------------------Vistas--------
         [HttpGet]
         [Route("Vista1")]
@@ -990,8 +1079,9 @@ namespace Proyecto2.Controllers
             }
 
             return Ok(Proyecto2.DataRequest.BDConection.ClaseCliente());
-        }
-
+        }/*
+         * En este apartado, de manejan los tipos de todas las tablas, se tiene un get el cual retorna en su totalidad todos los elementos de cada tabla
+         */
         //---------------------------------------------------------------------------GET ALL----------------------------------------------------
         [HttpGet]
         [Route("All_Sucursal")]
@@ -1146,7 +1236,10 @@ namespace Proyecto2.Controllers
         }
 
         //-----------------------------------------------------------------------------Extras------------------------------------------------------
-
+        /*
+         * Esta funcion agrega una sucursal de manera completa donde se descompone agregando la sucursal, luego edita la tabla de activo, agrega a la tabla numero de sucursal
+         * su respectivo numero y por ultimo enlaza en la tabla empleado admin, la cedula de un empleado con el id de la sucursal
+         */
         [HttpPost]
         [Route("AgregarSucursalCompleta")]
         public IHttpActionResult AgregarSucursalCompleta(Sucursal_Completa suc)
@@ -1188,7 +1281,10 @@ namespace Proyecto2.Controllers
 
             return Ok("La sucursal se ha agregado exitosamente");
         }
-
+        /*
+         * Edita de manera completa la sucursal, editando en la tabla se sucursal, de acyivo, numero de sucursal y empleado admin, las cuales se relacionan para mantener
+         * un conjunto de datos general se las sucursales
+         */
         [HttpPost]
         [Route("EditarSucursalCompleta")]
         public IHttpActionResult EditarSucursalCompleta(Sucursal_Completa suc)
@@ -1226,7 +1322,10 @@ namespace Proyecto2.Controllers
 
             return Ok("La sucursal se ha editado exitosamente");
         }
-
+        /*
+         * Un get el cual retorna toda la informacion relacionada con la sucursal, desde la informacion basica de la sucursal hasta su numero de telefono , su estado en la tabla activo
+         * y su empleado administrador
+         */
         [HttpGet]
         [Route("ConsultarSucursalCompleta")]
         public IHttpActionResult ConsultarSucursalCompleta()
@@ -1242,7 +1341,10 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.Consultar_Sucursal_Completo());
         }
-
+        /*
+         * Un get el cual retorna un json con todos los empleados , teniendo los atributos de puesto y tipo de planilla para un ,mejor control de la 
+         * informacion del cliente
+         */
         [HttpGet]
         [Route("All_Empleados_Total")]
         public IHttpActionResult All_Empleados_Total()
@@ -1255,7 +1357,10 @@ namespace Proyecto2.Controllers
 
             return Ok(Proyecto2.DataRequest.BDConection.ALL_Empleado_Total());
         }
-
+        /*
+         * Agrega un empleado completo desde la tabla empeado, agrega a la tabla puesto , el puetos ingresado y de la misma manera en la tabla tipo de planilla por empleado
+         * donde relaciona el tipo de planilla con la cedula del empleado
+         */
         [HttpPost]
         [Route("AgregarEmpleadoCompleto")]
         public IHttpActionResult AgregarEmpleadoCompleto(EmpleadoCompleto emp)
@@ -1292,6 +1397,9 @@ namespace Proyecto2.Controllers
             return Ok("Se agrego correctamente");
         }
 
+        /*
+         * Edita el empleado de una manera completa donde edita datos principales de los empleados, su puesto y tipo de planilla relacionado a el
+         */
         [HttpPost]
         [Route("EditarEmpleadoCompleto")]
         public IHttpActionResult EditarEmpleadoCompleto(EmpleadoCompleto emp)
@@ -1327,7 +1435,9 @@ namespace Proyecto2.Controllers
 
             return Ok("Se edito correctamente");
         }
-
+        /*
+         * Consultala infomacion completa de un Empleado desde su informacion basica hasta su puesto y tipo de planilla relacionada
+         */
         [HttpGet]
         [Route("ConsultarEmpleadoCompleto")]
         public IHttpActionResult ConsultarEmpleadoCompleto()
